@@ -1,32 +1,29 @@
 cff-version: 1.2.0
 message: "This repository contains multiple papers. Please cite the repository as a whole. For citing individual papers, please refer to the README.md."
-
-# 著者情報
 authors:
   - family-names: "Miyazaki"
     given-names: "Masahiro"
-
-# 2つの論文を包括するタイトル
-title: "Studies on Ancient Japanese History with Interdisciplinary Approaches"
-version: 1.0.0
-date-released: 2025-10-03 # または最新論文の公開日
+title: "Interdisciplinary Studies on Ancient Japanese History and Texts"
+version: 1.1.0 # 更新を反映
+date-released: 2024-01-01 # または最新の公開日
 repository-code: "https://github.com/masahiromiyazaki/-ancient-history-of-japan"
-
-# abstractで各論文の概要を記載
 abstract: >-
   This repository contains a collection of research papers applying interdisciplinary methods
-  to the ancient history of Japan.
+  to the ancient history and classical texts of Japan.
   It includes:
-  1. "The First Emperor Was A Chemist?": A scientific inquiry into the mercury poisoning theory of Emperor Jinmu.
-  2. "Reconstructing Japanese Phonetics in the 3rd Century": A linguistic study on the phonetics of the Yamatai period.
-
-# 両方の論文に関連するキーワード
+  1. "The First Emperor Was a Chemist": A study deciphering the 1300-year-old mystery of the 'Musui-zōame' cipher in the Nihon Shoki.
+  2. "A Phonological Analysis of the 'Yama-ichi-koku' Notation in the Wajinden": A study proposing a '3rd-Century Phonological Transition Model'.
 keywords:
   - "ancient-history"
   - "japan"
-  - "archaeology"
+  - "Nihon-Shoki"
+  - "Wajinden" # 魏志倭人伝を追加
+  - "Yama-ichi-koku" # 邪馬壹國を追加
+  - "cipher"
+  - "Musui-zoame"
   - "mercury"
   - "linguistics"
+  - "phonology" # 音韻学を追加
   - "phonetics"
   - "interdisciplinary-research"
-license: "CC-BY-NC-4.0" # ご自身のライセンスに合わせてください
+license: "CC-BY-NC-4.0"
