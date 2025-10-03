@@ -63,10 +63,10 @@ To cite this project as a whole, please use the "Cite this repository" button on
 ### 1. The First Emperor Was A Chemist?
 
 ```bibtex
-@article{miyazaki2024emperor,
+@article{miyazaki2025emperor,
   title   = {The First Emperor Was A Chemist? A Scientific Inquiry into the Mercury Poisoning Theory of Emperor Jinmu},
   author  = {Miyazaki, Masahiro},
-  year    = {2024},
+  year    = {2025},
   journal = {Research Papers on Ancient Japanese History},
   url     = {https://masahiromiyazaki.github.io/-ancient-history-of-japan/first-emperor-was-a-chemist.html}
 }
@@ -75,10 +75,10 @@ To cite this project as a whole, please use the "Cite this repository" button on
 ### 2. Reconstructing Japanese Phonetics in the 3rd Century
 
 ```bibtex
-@article{miyazaki2024phonetics,
+@article{miyazaki2025phonetics,
   title   = {Reconstructing Japanese Phonetics in the 3rd Century},
   author  = {Miyazaki, Masahiro},
-  year    = {2024},
+  year    = {2025},
   journal = {Research Papers on Ancient Japanese History},
   url     = {https://masahiromiyazaki.github.io/-ancient-history-of-japan/japanese-phonetics-3rd-century.html}
 }
