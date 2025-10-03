@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+authors:
+  - family-names: "Miyazaki"
+    given-names: "Masahiro"
+    # 複数の著者がいる場合は、- family-names: ... のブロックを繰り返します
+title: "The First Emperor Was A Chemist? A Scientific Inquiry into the Mercury Poisoning Theory of Emperor Jinmu" # 論文の正式名称を記載してください
+version: 1.0.0 # 論文のバージョン（必要に応じて変更）
+date-released: 2025-19-03 # 公開日を YYYY-MM-DD 形式で記載
+repository-code: "https://github.com/masahiromiyazaki/-ancient-history-of-japan" # GitHubリポジトリのURL
+url: "https://masahiromiyazaki.github.io/-ancient-history-of-japan/first-emperor-was-a-chemist.html" # 論文が公開されているURL
+keywords:
+  - "archaeology"
+  - "ancient-history"
+  - "japan"
+  - "mercury"
+  - "lead-isotope"
+  - "interdisciplinary-research"
+license: "CC-BY-4.0" # 論文のライセンスに合わせて変更（例: CC-BY-4.0, MITなど）
