@@ -1,19 +1,32 @@
 cff-version: 1.2.0
-message: "If you use this work, please cite it as below."
+message: "This repository contains multiple papers. Please cite the repository as a whole. For citing individual papers, please refer to the README.md."
+
+# 著者情報
 authors:
   - family-names: "Miyazaki"
     given-names: "Masahiro"
-    # 複数の著者がいる場合は、- family-names: ... のブロックを繰り返します
-title: "The First Emperor Was A Chemist? A Scientific Inquiry into the Mercury Poisoning Theory of Emperor Jinmu" # 論文の正式名称を記載してください
-version: 1.0.0 # 論文のバージョン（必要に応じて変更）
-date-released: 2025-19-03 # 公開日を YYYY-MM-DD 形式で記載
-repository-code: "https://github.com/masahiromiyazaki/-ancient-history-of-japan" # GitHubリポジトリのURL
-url: "https://masahiromiyazaki.github.io/-ancient-history-of-japan/first-emperor-was-a-chemist.html" # 論文が公開されているURL
+
+# 2つの論文を包括するタイトル
+title: "Studies on Ancient Japanese History with Interdisciplinary Approaches"
+version: 1.0.0
+date-released: 2025-10-03 # または最新論文の公開日
+repository-code: "https://github.com/masahiromiyazaki/-ancient-history-of-japan"
+
+# abstractで各論文の概要を記載
+abstract: >-
+  This repository contains a collection of research papers applying interdisciplinary methods
+  to the ancient history of Japan.
+  It includes:
+  1. "The First Emperor Was A Chemist?": A scientific inquiry into the mercury poisoning theory of Emperor Jinmu.
+  2. "Reconstructing Japanese Phonetics in the 3rd Century": A linguistic study on the phonetics of the Yamatai period.
+
+# 両方の論文に関連するキーワード
 keywords:
-  - "archaeology"
   - "ancient-history"
   - "japan"
+  - "archaeology"
   - "mercury"
-  - "lead-isotope"
+  - "linguistics"
+  - "phonetics"
   - "interdisciplinary-research"
-license: "CC-BY-4.0" # 論文のライセンスに合わせて変更（例: CC-BY-4.0, MITなど）
+license: "CC-BY-NC-4.0" # ご自身のライセンスに合わせてください
