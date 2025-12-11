@@ -363,7 +363,7 @@
             <div class="info-box">
                 <h4>⚠️ ご利用上の注意</h4>
                 <ul>
-                    <!-- ここに推奨環境を追加しました -->
+                    <!-- 推奨環境 -->
                     <li><strong>推奨環境:</strong> 本ツールは Windows 11 + Google Chrome にて最適化しています。</li>
                     <li><strong>赤字の語句</strong>（邪馬臺國など）は、後世の史書や訂正説に基づく表記です。</li>
                     <li><strong>特殊記号の処理:</strong> TTSで再生可能な近似音に置換されます。</li>
@@ -977,5 +977,21 @@ if (document.readyState === 'loading') {
     init();
 }
 </script>
+
+<div style="
+    position: fixed; 
+    bottom: 20px;       /* 5pxから20pxに上げて、隠れにくくしました */
+    right: 20px;        /* 右端からも少し離しました */
+    font-size: 0.8rem;  /* 文字を少し大きく */
+    color: #333;        /* 文字を濃く */
+    background: rgba(255, 255, 255, 0.9); /* 白い背景を追加して見やすく */
+    padding: 5px 10px;  /* 余白を追加 */
+    border-radius: 5px; /* 角を丸く */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* 影をつけて浮き上がらせる */
+    z-index: 9999;      /* 確実に一番手前に表示 */
+">
+    License: <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" style="color: #0066cc; text-decoration: underline;">CC BY-NC-SA 4.0</a> (Non-commercial use only)
+</div>
+
 </body>
 </html>
