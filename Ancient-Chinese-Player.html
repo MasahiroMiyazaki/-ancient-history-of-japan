@@ -13,23 +13,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <!-- ファビコン (ブラウザタブ用アイコン) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌏</text></svg>">
+
     <!-- SEO & Metadata -->
     <title>魏志倭人伝・古代中国語発音プレーヤー | Ancient Japanese & Chinese Pronunciation Player</title>
     <meta name="description" content="魏志倭人伝に登場する邪馬台国（邪馬壹国）、卑弥呼、官職名などの古代日本語および中国語（上古音・中古音）の再構音声を再生・比較できるWebツール。Baxter-Sagart体系などに基づく発音シミュレーション。">
     <meta name="keywords" content="魏志倭人伝,邪馬台国,卑弥呼,古代中国語,上古音,中古音,発音,IPA,Baxter-Sagart,歴史言語学">
     
-    <!-- ご自身のサイトのURLに変更してください -->
-    <link rel="canonical" href="https://your-domain.com/ancient-chinese-player.html">
+    <!-- URL設定 (GitHub Pagesに合わせて最適化) -->
+    <link rel="canonical" href="https://masahiromiyazaki.github.io/-ancient-history-of-japan/Ancient-Chinese-Player.html">
 
     <!-- Open Graph Protocol (SNS共有用) -->
     <meta property="og:title" content="魏志倭人伝・古代発音プレーヤー">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://your-domain.com/ancient-chinese-player.html">
-    <!-- 画像URLを設定してください（推奨サイズ: 1200x630px） -->
-    <meta property="og:image" content="https://your-domain.com/ogp-image.png"> 
+    <meta property="og:url" content="https://masahiromiyazaki.github.io/-ancient-history-of-japan/Ancient-Chinese-Player.html">
+    <meta property="og:image" content="https://masahiromiyazaki.github.io/-ancient-history-of-japan/og-image.png"> 
     <meta property="og:description" content="邪馬台国や卑弥呼はどう発音されたのか？古代中国語（上古音・中古音）の再構音声をブラウザで再生できるツールです。">
     <meta property="og:site_name" content="古代発音研究ラボ">
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://masahiromiyazaki.github.io/-ancient-history-of-japan/og-image.png">
 
     <!-- 構造化データ (JSON-LD) -->
     <script type="application/ld+json">
@@ -38,6 +41,8 @@
       "@type": "WebApplication",
       "name": "魏志倭人伝・古代発音プレーヤー",
       "description": "魏志倭人伝の固有名詞を古代中国語の再構音で再生するツール",
+      "url": "https://masahiromiyazaki.github.io/-ancient-history-of-japan/Ancient-Chinese-Player.html",
+      "image": "https://masahiromiyazaki.github.io/-ancient-history-of-japan/og-image.png",
       "applicationCategory": "EducationalApplication",
       "operatingSystem": "Browser",
       "offers": {
@@ -47,7 +52,8 @@
       },
       "author": {
         "@type": "Person",
-        "name": "Masahiro Miyazaki"
+        "name": "Masahiro Miyazaki",
+        "url": "https://masahiromiyazaki.github.io/-ancient-history-of-japan/"
       }
     }
     </script>
@@ -76,12 +82,11 @@
             background: linear-gradient(135deg, var(--bg-grad-start) 0%, var(--bg-grad-end) 100%);
             min-height: 100vh;
             display: flex;
-            flex-direction: column; /* Changed for footer/article flow */
+            flex-direction: column;
             align-items: center;
             color: var(--text-main);
         }
 
-        /* スクリーンリーダー用だがレイアウトには影響しない隠しクラス */
         .visually-hidden {
             position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
             overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
@@ -98,7 +103,7 @@
             display: flex;
             flex-direction: column;
             overflow: hidden;
-            margin-top: 20px; /* Added margin */
+            margin-top: 20px;
         }
         
         header {
@@ -119,7 +124,6 @@
             overflow: hidden;
         }
         
-        /* Nav semantic change from div */
         .left-panel {
             width: 320px;
             background: #f8f9fa;
@@ -297,7 +301,6 @@
         .list-container { padding: 1rem; padding-bottom: 2rem; }
         .category-group { margin-bottom: 1.5rem; }
         
-        /* Changed to h3 for semantics, styling remains */
         .category-header {
             position: sticky; top: 0; background: rgba(248, 249, 250, 0.95); backdrop-filter: blur(5px);
             z-index: 10; padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.05);
@@ -324,7 +327,6 @@
         .text-variant { color: var(--danger); }
         .wc-note { font-size: 0.65rem; color: var(--danger); margin-top: 4px; }
 
-        /* SEO Article Section at bottom */
         .seo-content {
             width: 95%; max-width: 1100px; margin: 2rem auto;
             background: rgba(255,255,255,0.8); padding: 1.5rem; border-radius: 12px;
@@ -346,22 +348,17 @@
 </head>
 <body>
 
-<!-- メインアプリケーションコンテナ -->
 <div class="container">
     <header>
         <div class="header-titles">
             <h1>🌏 魏志倭人伝・古代発音プレーヤー</h1>
             <span class="subtitle">Wei zhi Wajin den: Ancient Pronunciation Player</span>
         </div>
-        <!-- 実際のロゴ画像がある場合はここに追加 -->
-        <!-- <img src="logo.png" alt="古代発音研究ラボ ロゴ" width="40" height="40"> -->
     </header>
 
     <main class="main-content">
-        <!-- Sidebar: Navigation & Settings -->
         <nav class="left-panel" aria-label="設定と時代選択">
             
-            <!-- Period Selection -->
             <section>
                 <h2 class="section-heading">時代・再構体系の選択</h2>
                 <div class="period-selector">
@@ -427,10 +424,8 @@
             </section>
         </nav>
 
-        <!-- Main Area -->
         <div class="right-panel">
             
-            <!-- Top: Player -->
             <section class="player-area" aria-label="発音プレーヤー">
                 <h2 class="visually-hidden">発音再生エリア</h2>
                 <div class="badge-container">
@@ -467,7 +462,6 @@
                 </div>
             </section>
 
-            <!-- Bottom: List -->
             <section class="list-area" aria-label="語句一覧">
                 <h2 class="visually-hidden">収録語句リスト</h2>
                 <div class="search-container">
@@ -482,7 +476,6 @@
     </main>
 </div>
 
-<!-- SEO Content Section -->
 <article class="seo-content">
     <h2>このツールについて</h2>
     <p>
