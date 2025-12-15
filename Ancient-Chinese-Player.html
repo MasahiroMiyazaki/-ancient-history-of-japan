@@ -7,28 +7,50 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-N2X0B9FEPB');
     </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- SEO Meta Tags -->
+    <!-- SEO & Metadata -->
     <title>魏志倭人伝・古代中国語発音プレーヤー | Ancient Japanese & Chinese Pronunciation Player</title>
-    <meta name="description" content="邪馬台国（邪馬壹国）、卑弥呼、官職名などの古代日本語（晩期上古音、3世紀推定音）および中国語（中古音）の再構音声を、IPA（国際音声記号）を用いて再生・比較できる学習用Webツールです。">
-    <meta name="keywords" content="古代日本語, 上古音, 中古音, 邪馬台国, 卑弥呼, 魏志倭人伝, IPA, 発音, 再構, 3世紀, 音声合成, Baxter-Sagart, 切韻, Old Japanese, Wei zhi Wajin den">
-    <meta name="author" content="Masahiro Miyazaki">
-    <meta name="robots" content="index, follow">
+    <meta name="description" content="魏志倭人伝に登場する邪馬台国（邪馬壹国）、卑弥呼、官職名などの古代日本語および中国語（上古音・中古音）の再構音声を再生・比較できるWebツール。Baxter-Sagart体系などに基づく発音シミュレーション。">
+    <meta name="keywords" content="魏志倭人伝,邪馬台国,卑弥呼,古代中国語,上古音,中古音,発音,IPA,Baxter-Sagart,歴史言語学">
+    
+    <!-- ご自身のサイトのURLに変更してください -->
+    <link rel="canonical" href="https://your-domain.com/ancient-chinese-player.html">
 
-    <!-- OGP Settings -->
+    <!-- Open Graph Protocol (SNS共有用) -->
     <meta property="og:title" content="魏志倭人伝・古代発音プレーヤー">
-    <meta property="og:description" content="3世紀の日本語（邪馬台国時代）の発音を再構・再生できるツール">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://masahiromiyazaki.github.io/-ancient-history-of-japan/player.html">
+    <meta property="og:url" content="https://your-domain.com/ancient-chinese-player.html">
+    <!-- 画像URLを設定してください（推奨サイズ: 1200x630px） -->
+    <meta property="og:image" content="https://your-domain.com/ogp-image.png"> 
+    <meta property="og:description" content="邪馬台国や卑弥呼はどう発音されたのか？古代中国語（上古音・中古音）の再構音声をブラウザで再生できるツールです。">
+    <meta property="og:site_name" content="古代発音研究ラボ">
+    <meta name="twitter:card" content="summary_large_image">
 
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://masahiromiyazaki.github.io/-ancient-history-of-japan/player.html">
+    <!-- 構造化データ (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "魏志倭人伝・古代発音プレーヤー",
+      "description": "魏志倭人伝の固有名詞を古代中国語の再構音で再生するツール",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "JPY"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Masahiro Miyazaki"
+      }
+    }
+    </script>
 
     <style>
         :root {
@@ -54,9 +76,15 @@
             background: linear-gradient(135deg, var(--bg-grad-start) 0%, var(--bg-grad-end) 100%);
             min-height: 100vh;
             display: flex;
+            flex-direction: column; /* Changed for footer/article flow */
             align-items: center;
-            justify-content: center;
             color: var(--text-main);
+        }
+
+        /* スクリーンリーダー用だがレイアウトには影響しない隠しクラス */
+        .visually-hidden {
+            position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+            overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
         }
 
         .container {
@@ -70,9 +98,9 @@
             display: flex;
             flex-direction: column;
             overflow: hidden;
+            margin-top: 20px; /* Added margin */
         }
         
-        /* Header */
         header {
             padding: 1rem 1.5rem;
             background: #fff;
@@ -83,16 +111,15 @@
             flex-shrink: 0;
         }
         .header-titles h1 { margin: 0; font-size: 1.25rem; color: #2c3e50; font-weight: 600; }
-        .header-titles .subtitle { color: var(--text-sub); font-size: 0.75rem; margin-top: 4px; }
+        .header-titles .subtitle { color: var(--text-sub); font-size: 0.75rem; margin-top: 4px; display: block; }
 
-        /* Main Layout */
         .main-content {
             display: flex;
             flex: 1;
             overflow: hidden;
         }
         
-        /* Left Panel */
+        /* Nav semantic change from div */
         .left-panel {
             width: 320px;
             background: #f8f9fa;
@@ -105,7 +132,6 @@
             overflow-y: auto;
         }
 
-        /* Right Panel */
         .right-panel {
             flex: 1;
             padding: 0;
@@ -114,7 +140,7 @@
             overflow: hidden;
         }
 
-        .section-label {
+        .section-heading {
             font-size: 0.75rem;
             font-weight: 600;
             color: #8898aa;
@@ -122,9 +148,9 @@
             letter-spacing: 0.5px;
             margin-bottom: 0.5rem;
             display: block;
+            margin-top: 0;
         }
 
-        /* Period Selector */
         .period-selector { display: flex; flex-direction: column; gap: 8px; }
         .period-card {
             background: white; border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px;
@@ -150,7 +176,6 @@
         }
         .period-card.active .check-icon { opacity: 1; }
 
-        /* Reference Link */
         .reference-box {
             background: #eef6fc; border: 1px solid #d0e3f5; padding: 12px; border-radius: 8px;
             font-size: 0.8rem; color: #2c5282; line-height: 1.5;
@@ -158,9 +183,7 @@
         .reference-box a {
             color: #3182ce; font-weight: bold; text-decoration: none; display: block; margin-top: 4px;
         }
-        .reference-box a:hover { text-decoration: underline; }
 
-        /* Warning Box */
         .info-box {
             padding: 0.8rem; background: #fff8e1; border: 1px solid #ffe082;
             border-radius: 6px; font-size: 0.75rem; color: #856404; line-height: 1.5;
@@ -169,7 +192,6 @@
         .info-box ul { margin: 0; padding-left: 1.2rem; }
         .info-box li { margin-bottom: 4px; }
 
-        /* Audio Controls */
         .audio-controls {
             background: white; padding: 12px; border-radius: 8px; border: 1px solid var(--border);
         }
@@ -190,13 +212,11 @@
             background: #fdfdfd;
         }
 
-        /* Player Area */
         .player-area {
             padding: 1.2rem; background: white; border-bottom: 1px solid var(--border); flex-shrink: 0;
             display: flex; flex-direction: column; gap: 10px;
         }
         
-        /* バッジ */
         .badge-container {
             display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 0.5rem;
         }
@@ -206,7 +226,6 @@
         .selected-word-badge { color: var(--primary-dark); background: #eef6fc; border-color: #d0e3f5; }
         .selected-period-badge { color: #d97706; background: #fffaf0; border-color: #fbd38d; }
 
-        /* ボタン共通 */
         .sm-btn {
             background: transparent; border: 1px solid #ccc; border-radius: 4px; font-size: 0.75rem;
             cursor: pointer; padding: 3px 10px; color: #555; display: flex; align-items: center; gap: 5px;
@@ -262,7 +281,6 @@
             white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
         }
 
-        /* List Area */
         .list-area {
             flex: 1; background: #f8f9fa; overflow-y: auto; padding: 0; position: relative;
         }
@@ -278,18 +296,20 @@
 
         .list-container { padding: 1rem; padding-bottom: 2rem; }
         .category-group { margin-bottom: 1.5rem; }
+        
+        /* Changed to h3 for semantics, styling remains */
         .category-header {
             position: sticky; top: 0; background: rgba(248, 249, 250, 0.95); backdrop-filter: blur(5px);
             z-index: 10; padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.05);
             margin-bottom: 10px; font-size: 0.85rem; font-weight: 600; color: #4a5568;
-            display: flex; align-items: center;
+            display: flex; align-items: center; margin-top: 0;
         }
         .category-header::before {
             content: ''; display: block; width: 4px; height: 1em; background: var(--accent);
             margin-right: 8px; border-radius: 2px;
         }
         .item-grid {
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px;
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 10px;
         }
         .word-card {
             background: white; border: 1px solid #e1e4e8; border-radius: 6px; padding: 10px 12px;
@@ -298,13 +318,23 @@
         .word-card:hover {
             border-color: var(--primary); box-shadow: 0 4px 6px rgba(0,0,0,0.05); transform: translateY(-2px);
         }
-        .wc-kanji { font-weight: 500; color: #2d3748; font-size: 1rem; margin-bottom: 3px; }
-        .wc-pron { font-size: 0.75rem; color: #718096; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .wc-kanji { font-weight: 500; color: #2d3748; font-size: 1rem; margin-bottom: 2px; }
+        .wc-ja { font-size: 0.7rem; color: #718096; margin-bottom: 6px; border-bottom: 1px dashed #eee; padding-bottom: 3px; }
+        .wc-pron { font-size: 0.75rem; color: #555; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-family: 'Segoe UI', monospace; }
         .text-variant { color: var(--danger); }
-        .wc-note { font-size: 0.65rem; color: var(--danger); margin-top: 2px; }
+        .wc-note { font-size: 0.65rem; color: var(--danger); margin-top: 4px; }
+
+        /* SEO Article Section at bottom */
+        .seo-content {
+            width: 95%; max-width: 1100px; margin: 2rem auto;
+            background: rgba(255,255,255,0.8); padding: 1.5rem; border-radius: 12px;
+            color: #444; font-size: 0.9rem; line-height: 1.6;
+        }
+        .seo-content h2 { font-size: 1.2rem; color: #2c3e50; border-bottom: 2px solid #ddd; padding-bottom: 0.5rem; margin-bottom: 1rem; }
+        .seo-content p { margin-bottom: 1rem; }
 
         @media (max-width: 768px) {
-            .container { height: auto; max-height: none; width: 100%; border-radius: 0; }
+            .container { height: auto; max-height: none; width: 100%; border-radius: 0; margin-top: 0; }
             .main-content { flex-direction: column; }
             .left-panel { width: 100%; border-right: none; border-bottom: 1px solid var(--border); padding: 1rem;}
             .item-grid { grid-template-columns: repeat(2, 1fr); }
@@ -316,21 +346,24 @@
 </head>
 <body>
 
+<!-- メインアプリケーションコンテナ -->
 <div class="container">
     <header>
         <div class="header-titles">
-            <h1>🌏 魏志倭人伝・古代中国語発音プレーヤー</h1>
-            <div class="subtitle">Ancient Japanese & Chinese Reconstructed Pronunciations</div>
+            <h1>🌏 魏志倭人伝・古代発音プレーヤー</h1>
+            <span class="subtitle">Wei zhi Wajin den: Ancient Pronunciation Player</span>
         </div>
+        <!-- 実際のロゴ画像がある場合はここに追加 -->
+        <!-- <img src="logo.png" alt="古代発音研究ラボ ロゴ" width="40" height="40"> -->
     </header>
 
-    <div class="main-content">
-        <!-- Sidebar -->
-        <div class="left-panel">
+    <main class="main-content">
+        <!-- Sidebar: Navigation & Settings -->
+        <nav class="left-panel" aria-label="設定と時代選択">
             
             <!-- Period Selection -->
-            <div>
-                <label class="section-label">時代・再構体系の選択</label>
+            <section>
+                <h2 class="section-heading">時代・再構体系の選択</h2>
                 <div class="period-selector">
                     <label class="period-card" id="card-old" onclick="selectPeriod(this, 'old')">
                         <input type="radio" name="period" value="old">
@@ -353,7 +386,7 @@
                         <span class="check-icon">✔</span>
                     </label>
                 </div>
-            </div>
+            </section>
 
             <div class="reference-box">
                 📚 3世紀推定音の詳細はこちら:
@@ -363,47 +396,45 @@
             <div class="info-box">
                 <h4>⚠️ ご利用上の注意</h4>
                 <ul>
-                    <!-- 推奨環境 -->
-                    <li><strong>推奨環境:</strong> 本ツールは Windows 11 + Google Chrome にて最適化しています。</li>
-                    <li><strong>赤字の語句</strong>（邪馬臺國など）は、後世の史書や訂正説に基づく表記です。</li>
-                    <li><strong>特殊記号の処理:</strong> TTSで再生可能な近似音に置換されます。</li>
-                    <li><strong>発音精度:</strong> 現代英語等のエンジンによる近似再生であり、厳密ではありません。</li>
+                    <li><strong>推奨環境:</strong> Windows 11 + Chrome (英語音声エンジン)。</li>
+                    <li><strong>赤字の語句</strong>は後世の史書や訂正説に基づく表記です。</li>
+                    <li>「おまけ」を選択すると、時代ボタンがラテン語用に切り替わります。</li>
                 </ul>
             </div>
 
-            <div style="margin-top:auto;">
-                <label class="section-label">再生設定</label>
+            <section style="margin-top:auto;">
+                <h2 class="section-heading">再生設定</h2>
                 <div class="audio-controls">
-                    <!-- 声の選択 -->
                     <div class="slider-group">
                         <div class="slider-label"><span>声の種類 (英語推奨)</span></div>
-                        <select id="voiceSelect" class="voice-select">
+                        <select id="voiceSelect" class="voice-select" aria-label="音声合成の声を選択">
                             <option value="">自動選択</option>
                         </select>
                     </div>
                     <div class="slider-group">
                         <div class="slider-label"><span>速度</span><span id="rateValue">1.0</span></div>
-                        <input type="range" id="rate" min="0.1" max="3" step="0.1" value="1.0">
+                        <input type="range" id="rate" min="0.1" max="3" step="0.1" value="1.0" aria-label="再生速度">
                     </div>
                     <div class="slider-group">
                         <div class="slider-label"><span>ピッチ</span><span id="pitchValue">1.0</span></div>
-                        <input type="range" id="pitch" min="0" max="2" step="0.1" value="1.0">
+                        <input type="range" id="pitch" min="0" max="2" step="0.1" value="1.0" aria-label="声の高さ">
                     </div>
                     <div class="slider-group">
                         <div class="slider-label"><span>音量</span><span id="volumeValue">1.0</span></div>
-                        <input type="range" id="volume" min="0" max="1" step="0.1" value="1.0">
+                        <input type="range" id="volume" min="0" max="1" step="0.1" value="1.0" aria-label="音量">
                     </div>
                 </div>
-            </div>
-        </div>
+            </section>
+        </nav>
 
         <!-- Main Area -->
         <div class="right-panel">
             
             <!-- Top: Player -->
-            <div class="player-area">
+            <section class="player-area" aria-label="発音プレーヤー">
+                <h2 class="visually-hidden">発音再生エリア</h2>
                 <div class="badge-container">
-                    <label class="section-label" style="margin: 0; margin-right: 5px;">テキスト入力 (IPA記号)</label>
+                    <span class="section-heading" style="margin: 0; margin-right: 5px;">テキスト入力 (IPA記号)</span>
                     <span id="currentWordDisplay" class="selected-word-badge"></span>
                     <span id="currentPeriodDisplay" class="selected-period-badge"></span>
                     
@@ -416,13 +447,13 @@
                 </div>
                 
                 <div class="input-wrapper">
-                    <textarea id="textInput" placeholder="下の一覧から語句を選択するか、IPAを入力してください..."></textarea>
+                    <textarea id="textInput" placeholder="下の一覧から語句を選択するか、IPAを入力してください..." aria-label="発音記号(IPA)入力欄"></textarea>
                 </div>
                 
-                <div id="conversionPreview" class="preview-line"></div>
+                <div id="conversionPreview" class="preview-line" aria-live="polite"></div>
 
                 <div class="controls-row">
-                    <div id="playStatus" class="status-badge">
+                    <div id="playStatus" class="status-badge" role="status">
                         <span id="statusLabel" style="margin-right: auto;">待機中</span>
                         <div class="sound-bars">
                             <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
@@ -434,21 +465,39 @@
                         <button class="btn btn-play" id="speakBtn">▶ 再生</button>
                     </div>
                 </div>
-            </div>
+            </section>
 
             <!-- Bottom: List -->
-            <div class="list-area">
+            <section class="list-area" aria-label="語句一覧">
+                <h2 class="visually-hidden">収録語句リスト</h2>
                 <div class="search-container">
-                    <input type="text" id="searchInput" class="search-box" placeholder="🔍 語句を検索 (例: 卑弥呼, 奴國...)">
+                    <input type="text" id="searchInput" class="search-box" placeholder="🔍 語句を検索 (例: 卑弥呼, 奴國...)" aria-label="語句検索">
                 </div>
                 
                 <div class="list-container" id="examplesList">
                     <!-- Javascript will populate this -->
                 </div>
-            </div>
+            </section>
         </div>
-    </div>
+    </main>
 </div>
+
+<!-- SEO Content Section -->
+<article class="seo-content">
+    <h2>このツールについて</h2>
+    <p>
+        「魏志倭人伝・古代発音プレーヤー」は、3世紀の中国の歴史書『魏志倭人伝』に登場する日本の地名（邪馬台国、伊都国など）や人名（卑弥呼、難升米など）が、当時の中国でどのように発音されていたかをシミュレーションできるWebツールです。
+    </p>
+    <p>
+        Baxter-Sagart体系に基づく「上古音」、3世紀当時の推定音、そして後の時代の「中古音」の3つの体系を切り替えて聴き比べることができます。現代の日本語読みとは異なる、古代の響きを体験してください。
+    </p>
+    <h3>主な機能</h3>
+    <ul>
+        <li><strong>3つの時代区分:</strong> 紀元前の上古音、邪馬台国時代の3世紀音、隋唐時代の中古音を比較可能。</li>
+        <li><strong>IPA再生:</strong> 国際音声記号(IPA)を入力して任意の古代音声を合成可能。</li>
+        <li><strong>変遷再生:</strong> ひとつの単語が時代とともにどう変化したかを連続再生。</li>
+    </ul>
+</article>
 
 <script>
 // --- Data & Config ---
@@ -458,77 +507,115 @@ var currentAncientPeriod = 'third';
 var selectedWordIndex = null; 
 var isHistoryPlaying = false; 
 
+// ラベル管理
+var defaultLabels = {
+    old: { name: '晩期上古音', year: '~200 BCE', desc: 'Baxter-Sagart体系' },
+    third: { name: '3世紀推定音', year: '~280 CE', desc: '推定モデル' },
+    mid: { name: '中古音', year: '~600 CE', desc: '切韻体系' }
+};
+
 var periodNames = {
-    'old': '晩期上古音',
-    'third': '3世紀推定音',
-    'mid': '中古音'
+    'old': defaultLabels.old.name,
+    'third': defaultLabels.third.name,
+    'mid': defaultLabels.mid.name
 };
 
 var periodOrder = ['old', 'third', 'mid']; 
 
-// Data source
 var ancientData = [
     // 主要国名
-    { type: '主要国名', k: '對海國', old: '*tˤəj-s-*m̥ˤəʔ', third: '*tuj-mɔʔ', mid: 'twojH-hmojX' },
-    { type: '主要国名', k: '一大國', old: '*ʔit-*lˤat-s', third: '*ʔit-dat', mid: "'jit-dajH" },
-    { type: '主要国名', k: '末盧國', old: '*mˤat-*ra', third: '*mat-ra', mid: 'mwat-lu' },
-    { type: '主要国名', k: '伊都國', old: '*ʔij-*tˤa', third: '*ʔij-tɔ', mid: "'jij-tuo" },
-    { type: '主要国名', k: '奴國', old: '*nˤa', third: '*nɔ', mid: 'nu' },
-    { type: '主要国名', k: '不彌國', old: '*pə-*mij', third: '*pə-mij', mid: 'pjuw-mjie' },
-    { type: '主要国名', k: '投馬國', old: '*C.do-*mˤraʔ', third: '*do-maʔ', mid: 'duw-mhaeX' },
-    { type: '主要国名', k: '邪馬壹國', old: '*s-la-*mˤraʔ-*ʔit', third: '*zja-maʔ-it', mid: "zjia-mhaeX-'jit" },
-    { type: '主要国名', k: '邪馬臺國', old: '*s-la-*mˤraʔ-*lˤə', third: '*zja-maʔ-da', mid: 'zjia-mhaeX-doj', highlight: true, note: '※魏志原文は「壹」' },
-    { type: '主要国名', k: '狗奴國', old: '*kˤoʔ-*nˤa', third: '*kɔʔ-nɔ', mid: 'kuwX-nu' },
+    { type: '主要国名', k: '對海國', ja: 'たいかいこく (対馬)', old: '*tˤəj-s-*m̥ˤəʔ', third: '*tuj-mɔʔ', mid: 'twojH-hmojX' },
+    { type: '主要国名', k: '一大國', ja: 'いちだいこく (壱岐)', old: '*ʔit-*lˤat-s', third: '*ʔit-dat', mid: "'jit-dajH" },
+    { type: '主要国名', k: '末盧國', ja: 'まつらこく', old: '*mˤat-*ra', third: '*mat-ra', mid: 'mwat-lu' },
+    { type: '主要国名', k: '伊都國', ja: 'いとこく', old: '*ʔij-*tˤa', third: '*ʔij-tɔ', mid: "'jij-tuo" },
+    { type: '主要国名', k: '奴國', ja: 'なこく', old: '*nˤa', third: '*nɔ', mid: 'nu' },
+    { type: '主要国名', k: '不彌國', ja: 'ふみこく', old: '*pə-*mij', third: '*pə-mij', mid: 'pjuw-mjie' },
+    { type: '主要国名', k: '投馬國', ja: 'とうまこく', old: '*C.do-*mˤraʔ', third: '*do-maʔ', mid: 'duw-mhaeX' },
+    { type: '主要国名', k: '邪馬壹國', ja: 'やまいちこく', old: '*s-la-*mˤraʔ-*ʔit', third: '*zja-maʔ-it', mid: "zjia-mhaeX-'jit" },
+    { type: '主要国名', k: '邪馬臺國', ja: 'やまたいこく', old: '*s-la-*mˤraʔ-*lˤə', third: '*zja-maʔ-da', mid: 'zjia-mhaeX-doj', highlight: true, note: '※魏志原文は「壹」' },
+    { type: '主要国名', k: '狗奴國', ja: 'くなこく', old: '*kˤoʔ-*nˤa', third: '*kɔʔ-nɔ', mid: 'kuwX-nu' },
     
     // 傍国
-    { type: '傍国', k: '斯馬國', old: '*sə-*mˤraʔ', third: '*sə-maʔ', mid: 'sje-mhaeX' },
-    { type: '傍国', k: '已百支國', old: '*ɢ(r)əʔ-*pˤrak-*kje', third: '*jiʔ-prak-kje', mid: 'yiX-paek-tsye' },
-    { type: '傍国', k: '伊邪國', old: '*ʔij-*s-la', third: '*ʔij-zja', mid: "'jij-zjia" },
-    { type: '傍国', k: '都支國', old: '*tˤa-*kje', third: '*tɔ-kje', mid: 'tuo-tsye' },
-    { type: '傍国', k: '彌奴國', old: '*mij-*nˤa', third: '*mij-nɔ', mid: 'mjie-nu' },
-    { type: '傍国', k: '好古都國', old: '*qʰˤuʔ-*kˤaʔ-*tˤa', third: '*xoʔ-kɔʔ-tɔ', mid: 'huwX-kuX-tuo' },
-    { type: '傍国', k: '不呼國', old: '*pə-*qʰˤa', third: '*pə-qɔ', mid: 'pjuw-hu' },
-    { type: '傍国', k: '姐奴國', old: '*tsajʔ-*nˤa', third: '*tsjaʔ-nɔ', mid: 'tsjoX-nu' },
-    { type: '傍国', k: '對蘇國', old: '*tˤəj-s-*sˤa', third: '*tuj-sɔ', mid: 'twojH-su' },
-    { type: '傍国', k: '蘇奴國', old: '*sˤa-*nˤa', third: '*sɔ-nɔ', mid: 'su-nu' },
-    { type: '傍国', k: '呼邑國', old: '*qʰˤa-*ʔip', third: '*qɔ-ʔip', mid: "hu-'ip" },
-    { type: '傍国', k: '華奴蘇奴國', old: '*qʷˤra-*nˤa-*sˤa-*nˤa', third: '*qʷaj-nɔ-sɔ-nɔ', mid: 'hwa-nu-su-nu' },
-    { type: '傍国', k: '鬼國', old: '*qʷəjʔ', third: '*kujʔ', mid: 'kjwijX' },
-    { type: '傍国', k: '爲吾國', old: '*ɢʷaj-*ŋˤa', third: '*wəj-ŋɔ', mid: 'hjwe-ngu' },
-    { type: '傍国', k: '鬼奴國', old: '*qʷəjʔ-*nˤa', third: '*kujʔ-nɔ', mid: 'kjwijX-nu' },
-    { type: '傍国', k: '邪馬國', old: '*s-la-*mˤraʔ', third: '*zja-maʔ', mid: 'zjia-mhaeX' },
-    { type: '傍国', k: '躬臣國', old: '*kʷəŋ-*[g]in', third: '*kuŋ-gin', mid: 'kjuwng-zyin' },
-    { type: '傍国', k: '巴利國', old: '*prˤaj-*C.ri[t]-s', third: '*paj-riʔ', mid: 'pae-lijH' },
-    { type: '傍国', k: '支惟國', old: '*kje-*C.wij', third: '*kje-wij', mid: 'tsye-ywij' },
-    { type: '傍国', k: '烏奴國', old: '*ʔˤa-*nˤa', third: '*ʔɔ-nɔ', mid: "'u-nu" },
+    { type: '傍国', k: '斯馬國', ja: 'しまこく', old: '*sə-*mˤraʔ', third: '*sə-maʔ', mid: 'sje-mhaeX' },
+    { type: '傍国', k: '已百支國', ja: 'いほきこく', old: '*ɢ(r)əʔ-*pˤrak-*kje', third: '*jiʔ-prak-kje', mid: 'yiX-paek-tsye' },
+    { type: '傍国', k: '伊邪國', ja: 'いやこく', old: '*ʔij-*s-la', third: '*ʔij-zja', mid: "'jij-zjia" },
+    { type: '傍国', k: '都支國', ja: 'ときこく', old: '*tˤa-*kje', third: '*tɔ-kje', mid: 'tuo-tsye' },
+    { type: '傍国', k: '彌奴國', ja: 'みなこく', old: '*mij-*nˤa', third: '*mij-nɔ', mid: 'mjie-nu' },
+    { type: '傍国', k: '好古都國', ja: 'こうことこく', old: '*qʰˤuʔ-*kˤaʔ-*tˤa', third: '*xoʔ-kɔʔ-tɔ', mid: 'huwX-kuX-tuo' },
+    { type: '傍国', k: '不呼國', ja: 'ふここく', old: '*pə-*qʰˤa', third: '*pə-qɔ', mid: 'pjuw-hu' },
+    { type: '傍国', k: '姐奴國', ja: 'しゃなこく', old: '*tsajʔ-*nˤa', third: '*tsjaʔ-nɔ', mid: 'tsjoX-nu' },
+    { type: '傍国', k: '對蘇國', ja: 'ついそこく', old: '*tˤəj-s-*sˤa', third: '*tuj-sɔ', mid: 'twojH-su' },
+    { type: '傍国', k: '蘇奴國', ja: 'そなこく', old: '*sˤa-*nˤa', third: '*sɔ-nɔ', mid: 'su-nu' },
+    { type: '傍国', k: '呼邑國', ja: 'こゆうこく', old: '*qʰˤa-*ʔip', third: '*qɔ-ʔip', mid: "hu-'ip" },
+    { type: '傍国', k: '華奴蘇奴國', ja: 'かなそなこく', old: '*qʷˤra-*nˤa-*sˤa-*nˤa', third: '*qʷaj-nɔ-sɔ-nɔ', mid: 'hwa-nu-su-nu' },
+    { type: '傍国', k: '鬼國', ja: 'きこく', old: '*qʷəjʔ', third: '*kujʔ', mid: 'kjwijX' },
+    { type: '傍国', k: '爲吾國', ja: 'いごこく', old: '*ɢʷaj-*ŋˤa', third: '*wəj-ŋɔ', mid: 'hjwe-ngu' },
+    { type: '傍国', k: '鬼奴國', ja: 'きなこく', old: '*qʷəjʔ-*nˤa', third: '*kujʔ-nɔ', mid: 'kjwijX-nu' },
+    { type: '傍国', k: '邪馬國', ja: 'やまこく', old: '*s-la-*mˤraʔ', third: '*zja-maʔ', mid: 'zjia-mhaeX' },
+    { type: '傍国', k: '躬臣國', ja: 'きゅうしんこく', old: '*kʷəŋ-*[g]in', third: '*kuŋ-gin', mid: 'kjuwng-zyin' },
+    { type: '傍国', k: '巴利國', ja: 'はりこく', old: '*prˤaj-*C.ri[t]-s', third: '*paj-riʔ', mid: 'pae-lijH' },
+    { type: '傍国', k: '支惟國', ja: 'きいこく', old: '*kje-*C.wij', third: '*kje-wij', mid: 'tsye-ywij' },
+    { type: '傍国', k: '烏奴國', ja: 'うなこく', old: '*ʔˤa-*nˤa', third: '*ʔɔ-nɔ', mid: "'u-nu" },
 
     // 人名
-    { type: '人名', k: '卑彌呼', old: '*pe-*mij-*qʰˤa', third: '*pij-mij-qɔ', mid: 'pjie-mjie-hu' },
-    { type: '人名', k: '壹與', old: '*ʔit-*laʔ', third: '*ʔit-jo', mid: "'jit-yoX" },
-    { type: '人名', k: '臺與', old: '*lˤə-*laʔ', third: '*da-jo', mid: 'doj-yoX', highlight: true, note: '※魏志原文は「壹」' },
-    { type: '人名', k: '難升米', old: '*nˤan-*s-təŋ-*mˤejʔ', third: '*nan-s(j)əŋ-məjʔ', mid: 'nan-sying-mejX' },
-    { type: '人名', k: '都市牛利', old: '*tˤa-*d(r)əʔ-*ŋʷa-*C.ri[t]-s', third: '*tɔ-dʑiʔ-ŋo-raj', mid: 'tuo-dzyiX-ngjuw-lijH' },
-    { type: '人名', k: '伊聲耆', old: '*ʔij-*l̥eŋ-*[g]ij', third: '*ʔij-s(j)eŋ-gij', mid: "'jij-syeng-gij" },
-    { type: '人名', k: '掖邪狗', old: '*lak-*s-la-*kˤoʔ', third: '*jak-zja-kɔʔ', mid: 'yek-zjia-kuwX' },
-    { type: '人名', k: '載斯烏越', old: '*tsˤəʔ-*sə-*ʔˤa-*ɢʷat', third: '*tsəʔ-se-ʔɔ-ɢʷat', mid: "tsojH-sje-'u-hwat" },
-    { type: '人名', k: '卑彌弓呼', old: '*pe-*mij-*kʷəŋ-*qʰˤa', third: '*pij-mij-k(r)uŋ-qɔ', mid: 'pjie-mjie-kjuwng-hu' },
+    { type: '人名', k: '卑彌呼', ja: 'ひみこ', old: '*pe-*mij-*qʰˤa', third: '*pij-mij-qɔ', mid: 'pjie-mjie-hu' },
+    { type: '人名', k: '壹與', ja: 'いよ', old: '*ʔit-*laʔ', third: '*ʔit-jo', mid: "'jit-yoX" },
+    { type: '人名', k: '臺與', ja: 'とよ', old: '*lˤə-*laʔ', third: '*da-jo', mid: 'doj-yoX', highlight: true, note: '※魏志原文は「壹」' },
+    { type: '人名', k: '難升米', ja: 'なしめ', old: '*nˤan-*s-təŋ-*mˤejʔ', third: '*nan-s(j)əŋ-məjʔ', mid: 'nan-sying-mejX' },
+    { type: '人名', k: '都市牛利', ja: 'としごり', old: '*tˤa-*d(r)əʔ-*ŋʷa-*C.ri[t]-s', third: '*tɔ-dʑiʔ-ŋo-raj', mid: 'tuo-dzyiX-ngjuw-lijH' },
+    { type: '人名', k: '伊聲耆', ja: 'いせいき', old: '*ʔij-*l̥eŋ-*[g]ij', third: '*ʔij-s(j)eŋ-gij', mid: "'jij-syeng-gij" },
+    { type: '人名', k: '掖邪狗', ja: 'えきやく', old: '*lak-*s-la-*kˤoʔ', third: '*jak-zja-kɔʔ', mid: 'yek-zjia-kuwX' },
+    { type: '人名', k: '載斯烏越', ja: 'さしうえつ', old: '*tsˤəʔ-*sə-*ʔˤa-*ɢʷat', third: '*tsəʔ-se-ʔɔ-ɢʷat', mid: "tsojH-sje-'u-hwat" },
+    { type: '人名', k: '卑彌弓呼', ja: 'ひみくこ', old: '*pe-*mij-*kʷəŋ-*qʰˤa', third: '*pij-mij-k(r)uŋ-qɔ', mid: 'pjie-mjie-kjuwng-hu' },
 
     // 官職名
-    { type: '官職名', k: '卑狗', old: '*pe-*kˤoʔ', third: '*pij-kɔʔ', mid: 'pjie-kuwX' },
-    { type: '官職名', k: '卑奴母離', old: '*pe-*nˤa-*mˤəʔ-*C.raj', third: '*pij-nɔ-moʔ-raj', mid: 'pjie-nu-muwX-ljej' },
-    { type: '官職名', k: '爾支', old: '*neʔ-*kje', third: '*ne-kje', mid: 'nyeX-tsye' },
-    { type: '官職名', k: '泄謨觚', old: '*ljet-*ma-*kˤa', third: '*set-ma-kɔ', mid: 'sjet-mu-ku' },
-    { type: '官職名', k: '柄渠觚', old: '*praŋʔ-*g(r)a-*kˤa', third: '*pjaŋ-gja-kɔ', mid: 'pjaengX-gja-ku' },
-    { type: '官職名', k: '兕馬觚', old: '*s.ɢijʔ-*mˤraʔ-*kˤa', third: '*ziʔ-maʔ-kɔ', mid: 'zijX-mhaeX-ku' },
-    { type: '官職名', k: '多模', old: '*tˤaj-*ma', third: '*tˤaj-mɔ', mid: 'ta-mu' },
-    { type: '官職名', k: '彌彌', old: '*mij-*mij', third: '*mij-mij', mid: 'mjie-mjie' },
-    { type: '官職名', k: '彌彌那利', old: '*mij-*mij-*nˤaj-*C.ri[t]-s', third: '*mij-mij-nɔ-raj', mid: 'mjie-mjie-na-lijH' },
-    { type: '官職名', k: '伊支馬', old: '*ʔij-*kje-*mˤraʔ', third: '*ʔij-kje-maʔ', mid: "'jij-tsye-mhaeX" },
-    { type: '官職名', k: '彌馬升', old: '*mij-*mˤraʔ-*s-təŋ', third: '*mij-maʔ-s(j)əŋ', mid: 'mjie-mhaeX-sying' },
-    { type: '官職名', k: '彌馬獲支', old: '*mij-*mˤraʔ-*ɢʷˤrek-*kje', third: '*mij-maʔ-ɢʷˤek-kje', mid: 'mjie-mhaeX-hwak-tsye' },
-    { type: '官職名', k: '奴佳鞮', old: '*nˤa-*kˤre-*tij', third: '*nɔ-kaj-tej', mid: 'nu-kea-tej' },
-    { type: '官職名', k: '狗古智卑狗', old: '*kˤoʔ-*kˤaʔ-*trje-*pe-*kˤoʔ', third: '*kɔʔ-kɔʔ-tij-pij-kɔʔ', mid: 'kuwX-kuX-tsye-pjie-kuwX' },
-    { type: '官職名', k: '大倭', old: '*lˤat-s-*ʔʷaj', third: '*dat-ʔwaj', mid: "dajH-'uaj" }
+    { type: '官職名', k: '卑狗', ja: 'ひこ', old: '*pe-*kˤoʔ', third: '*pij-kɔʔ', mid: 'pjie-kuwX' },
+    { type: '官職名', k: '卑奴母離', ja: 'ひなもり', old: '*pe-*nˤa-*mˤəʔ-*C.raj', third: '*pij-nɔ-moʔ-raj', mid: 'pjie-nu-muwX-ljej' },
+    { type: '官職名', k: '爾支', ja: 'にき', old: '*neʔ-*kje', third: '*ne-kje', mid: 'nyeX-tsye' },
+    { type: '官職名', k: '泄謨觚', ja: 'せつもこ', old: '*ljet-*ma-*kˤa', third: '*set-ma-kɔ', mid: 'sjet-mu-ku' },
+    { type: '官職名', k: '柄渠觚', ja: 'へいきょこ', old: '*praŋʔ-*g(r)a-*kˤa', third: '*pjaŋ-gja-kɔ', mid: 'pjaengX-gja-ku' },
+    { type: '官職名', k: '兕馬觚', ja: 'しまこ', old: '*s.ɢijʔ-*mˤraʔ-*kˤa', third: '*ziʔ-maʔ-kɔ', mid: 'zijX-mhaeX-ku' },
+    { type: '官職名', k: '多模', ja: 'たも', old: '*tˤaj-*ma', third: '*tˤaj-mɔ', mid: 'ta-mu' },
+    { type: '官職名', k: '彌彌', ja: 'みみ', old: '*mij-*mij', third: '*mij-mij', mid: 'mjie-mjie' },
+    { type: '官職名', k: '彌彌那利', ja: 'みみなり', old: '*mij-*mij-*nˤaj-*C.ri[t]-s', third: '*mij-mij-nɔ-raj', mid: 'mjie-mjie-na-lijH' },
+    { type: '官職名', k: '伊支馬', ja: 'いきま', old: '*ʔij-*kje-*mˤraʔ', third: '*ʔij-kje-maʔ', mid: "'jij-tsye-mhaeX" },
+    { type: '官職名', k: '彌馬升', ja: 'みましょう', old: '*mij-*mˤraʔ-*s-təŋ', third: '*mij-maʔ-s(j)əŋ', mid: 'mjie-mhaeX-sying' },
+    { type: '官職名', k: '彌馬獲支', ja: 'みまかくき', old: '*mij-*mˤraʔ-*ɢʷˤrek-*kje', third: '*mij-maʔ-ɢʷˤek-kje', mid: 'mjie-mhaeX-hwak-tsye' },
+    { type: '官職名', k: '奴佳鞮', ja: 'なかてい', old: '*nˤa-*kˤre-*tij', third: '*nɔ-kaj-tej', mid: 'nu-kea-tej' },
+    { type: '官職名', k: '狗古智卑狗', ja: 'くこちひこ', old: '*kˤoʔ-*kˤaʔ-*trje-*pe-*kˤoʔ', third: '*kɔʔ-kɔʔ-tij-pij-kɔʔ', mid: 'kuwX-kuX-tsye-pjie-kuwX' },
+    { type: '官職名', k: '大倭', ja: 'だいわ', old: '*lˤat-s-*ʔʷaj', third: '*dat-ʔwaj', mid: "dajH-'uaj" },
+
+    // おまけ (ラテン語変遷)
+    { 
+        type: 'おまけ（ラテン語）', 
+        k: '来た、見た、勝った', 
+        ja: 'ウェーニー・ウィーディー...',
+        old: 'weːniː wiːdiː wiːkiː', 
+        third: 'weːniː wiːdiː wiːkiː', 
+        mid: 'veni vidi viʧi', 
+        highlight: true, 
+        note: '羅: Veni, vidi, vici',
+        labels: { 
+            old: { name: '古典ラテン語', year: '~100 BCE', desc: 'Classical Latin' }, 
+            third: { name: '俗ラテン語', year: '~4c CE', desc: 'Vulgar Latin' }, 
+            mid: { name: '教会ラテン語', year: 'Medieval', desc: 'Ecclesiastical' } 
+        }
+    },
+    { 
+        type: 'おまけ（ラテン語）', 
+        k: 'ユリウス・カエサル', 
+        ja: 'ジュリアス・シーザー', 
+        old: 'juːliʊs kaesar', 
+        third: 'juːliʊs kesar', 
+        mid: 'juːliʊs tʃesar', 
+        highlight: true, 
+        note: '変遷: カエサル(古)→ケサル(俗)→チェサル(教)',
+        labels: { 
+            old: { name: '古典ラテン語', year: '~100 BCE', desc: 'Classical Latin' }, 
+            third: { name: '俗ラテン語', year: '~4c CE', desc: 'Vulgar Latin' }, 
+            mid: { name: '教会ラテン語', year: 'Medieval', desc: 'Ecclesiastical' } 
+        }
+    }
 ];
 
 var ipaToSpeech = {
@@ -554,24 +641,39 @@ var ipaToSpeech = {
 
 // --- UI Logic ---
 
-// URLの状態を更新 (手入力にも対応)
+function updatePeriodLabels(customLabels) {
+    var map = customLabels || defaultLabels;
+    
+    var dOld = map.old;
+    document.querySelector('#card-old .p-name').innerHTML = `${dOld.name} <span class="year-text">${dOld.year}</span>`;
+    document.querySelector('#card-old .p-desc').textContent = dOld.desc;
+    
+    var dThird = map.third;
+    document.querySelector('#card-third .p-name').innerHTML = `${dThird.name} <span class="year-text">${dThird.year}</span>`;
+    document.querySelector('#card-third .p-desc').textContent = dThird.desc;
+
+    var dMid = map.mid;
+    document.querySelector('#card-mid .p-name').innerHTML = `${dMid.name} <span class="year-text">${dMid.year}</span>`;
+    document.querySelector('#card-mid .p-desc').textContent = dMid.desc;
+
+    periodNames['old'] = dOld.name;
+    periodNames['third'] = dThird.name;
+    periodNames['mid'] = dMid.name;
+}
+
 function updateUrlState() {
     var url = new URL(window.location);
     url.searchParams.set('period', currentAncientPeriod);
     
-    // 現在のテキスト
     var currentText = document.getElementById('textInput').value.trim();
 
     if (selectedWordIndex !== null) {
-        // リストから選択されている場合
         url.searchParams.set('word', ancientData[selectedWordIndex].k);
         url.searchParams.delete('text');
     } else if (currentText !== "") {
-        // 手入力の場合
         url.searchParams.delete('word');
         url.searchParams.set('text', currentText);
     } else {
-        // 空の場合
         url.searchParams.delete('word');
         url.searchParams.delete('text');
     }
@@ -580,7 +682,7 @@ function updateUrlState() {
 }
 
 function copyCurrentUrl() {
-    updateUrlState(); // 確実に最新の状態にする
+    updateUrlState();
     var url = window.location.href;
     navigator.clipboard.writeText(url).then(function() {
         var btn = document.getElementById('copyUrlBtn');
@@ -594,14 +696,12 @@ function copyCurrentUrl() {
     });
 }
 
-// Xシェア機能
 function shareOnX() {
     updateUrlState();
     var url = window.location.href;
-    var text = "古代日本語/中国語の発音プレーヤー";
+    var text = "魏志倭人伝・古代発音プレーヤー";
     var hashtags = "古代日本語,邪馬台国";
 
-    // 文言をダイナミックに変える
     if (selectedWordIndex !== null) {
         var data = ancientData[selectedWordIndex];
         var pron = document.getElementById('textInput').value;
@@ -692,16 +792,14 @@ function updateAncientExamples(filterTerm) {
     var container = document.getElementById('examplesList');
     container.innerHTML = '';
     
-    var types = ['主要国名', '傍国', '人名', '官職名']; 
+    var types = ['主要国名', '傍国', '人名', '官職名', 'おまけ（ラテン語）']; 
     
     types.forEach(function(type) {
         var filteredItems = ancientData.filter(function(d) {
             if (d.type !== type) return false;
             if (!filterTerm) return true;
             return d.k.includes(filterTerm) || 
-                   (d.old && d.old.includes(filterTerm)) ||
-                   (d.third && d.third.includes(filterTerm)) ||
-                   (d.mid && d.mid.includes(filterTerm));
+                   (d.ja && d.ja.includes(filterTerm));
         });
 
         if (filteredItems.length === 0) return;
@@ -709,7 +807,8 @@ function updateAncientExamples(filterTerm) {
         var group = document.createElement('div');
         group.className = 'category-group';
         
-        var header = document.createElement('div');
+        // Changed to h3
+        var header = document.createElement('h3');
         header.className = 'category-header';
         header.textContent = type;
         group.appendChild(header);
@@ -722,11 +821,13 @@ function updateAncientExamples(filterTerm) {
             var pron = data[currentAncientPeriod] || "(データなし)";
             var kanjiClass = data.highlight ? 'wc-kanji text-variant' : 'wc-kanji';
             var noteHtml = data.highlight ? `<div class="wc-note">${data.note}</div>` : '';
+            var jaText = data.ja ? data.ja : '';
             
             var card = document.createElement('div');
             card.className = 'word-card';
             card.innerHTML = `
                 <div class="${kanjiClass}">${data.k}</div>
+                <div class="wc-ja">${jaText}</div>
                 <div class="wc-pron">${pron}</div>
                 ${noteHtml}
             `;
@@ -735,7 +836,15 @@ function updateAncientExamples(filterTerm) {
                 if (isHistoryPlaying) stopHistory();
                 if (pron && pron !== "(データなし)") {
                     selectedWordIndex = originalIndex;
+                    
+                    if (data.labels) {
+                        updatePeriodLabels(data.labels);
+                    } else {
+                        updatePeriodLabels(null); 
+                    }
+
                     updateBadges(data.k, data.highlight);
+                    
                     document.getElementById('textInput').value = pron;
                     updatePreview();
                     updateUrlState(); 
@@ -893,7 +1002,6 @@ function toggleHistory() {
     }
 }
 
-// URLパラメータから初期状態セット (手入力も復元)
 function checkUrlParams() {
     var params = new URLSearchParams(window.location.search);
     var word = params.get('word');
@@ -914,6 +1022,12 @@ function checkUrlParams() {
             var data = ancientData[index];
             var pron = data[currentAncientPeriod];
             
+            if (data.labels) {
+                updatePeriodLabels(data.labels);
+            } else {
+                updatePeriodLabels(null);
+            }
+
             updateBadges(data.k, data.highlight);
             if (pron) {
                 document.getElementById('textInput').value = pron;
@@ -923,9 +1037,9 @@ function checkUrlParams() {
             updateAncientExamples(word);
         }
     } else if (textParam) {
-        // 手入力パラメータがある場合
         document.getElementById('textInput').value = textParam;
         updatePreview();
+        updatePeriodLabels(null); 
     }
 }
 
@@ -942,9 +1056,10 @@ function init() {
     
     document.getElementById('textInput').oninput = function() {
         selectedWordIndex = null;
+        updatePeriodLabels(null); 
         updateBadges(null);
         updatePreview();
-        updateUrlState(); // 手入力時にURL更新
+        updateUrlState();
         if (isHistoryPlaying) stopHistory();
     };
     
@@ -980,17 +1095,17 @@ if (document.readyState === 'loading') {
 
 <div style="
     position: fixed; 
-    bottom: 20px;       /* 5pxから20pxに上げて、隠れにくくしました */
-    right: 20px;        /* 右端からも少し離しました */
-    font-size: 0.8rem;  /* 文字を少し大きく */
-    color: #333;        /* 文字を濃く */
-    background: rgba(255, 255, 255, 0.9); /* 白い背景を追加して見やすく */
-    padding: 5px 10px;  /* 余白を追加 */
-    border-radius: 5px; /* 角を丸く */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* 影をつけて浮き上がらせる */
-    z-index: 9999;      /* 確実に一番手前に表示 */
+    bottom: 20px; 
+    right: 20px; 
+    font-size: 0.8rem; 
+    color: #333; 
+    background: rgba(255, 255, 255, 0.9); 
+    padding: 5px 10px; 
+    border-radius: 5px; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
+    z-index: 9999;
 ">
-    License: <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" style="color: #0066cc; text-decoration: underline;">CC BY-NC-SA 4.0</a> (Non-commercial use only)
+    License: <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" style="color: #0066cc; text-decoration: underline;">CC BY-NC-SA 4.0</a>
 </div>
 
 </body>
