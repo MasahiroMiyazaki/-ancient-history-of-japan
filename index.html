@@ -78,7 +78,7 @@
           "name": "邪馬台国はどこにあったのですか？",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "本研究では、音韻学的分析により、魏志倭人伝に記された「邪馬壹國」が九州の「山門（ヤマト）」を指すことを実証しています。従来の畿内説は音韻学的根拠を欠いています。"
+            "text": "本研究では、音韻学的分析により、魏志倭人伝に記された「邪馬壹國」が九州の「山門（ヤマト）」を指すという説を音韻学的に強く支持しています。一方、畿内説の根拠とされる「臺」表記は、3世紀の音韻から見て説明が困難です。"
           }
         },
         {
@@ -91,224 +91,276 @@
         },
         {
           "@type": "Question",
+          "name": "なぜ音韻学が重要なのですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "3世紀当時、中国人が日本の地名をどう聞き取り、どの漢字で音写したかを科学的に復元できるからです。現代の読み方ではなく、当時の発音を再現することで、地名の真の意味が明らかになります。"
+          }
+        },
+        {
+          "@type": "Question",
           "name": "神武天皇は実在したのですか？",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "本研究では、日本書紀に記された「無水造飴」の儀式が、実際の化学プロセス（辰砂からの水銀精製）を暗号化したものであることを解明。神話ではなく史実を反映している可能性を示しています。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "従来の研究との違いは何ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "従来の文献史学に加えて、音韻論・分析化学・軍事地理学などの理系的手法を導入している点です。主観的解釈ではなく、科学的に検証可能な証拠に基づいて論を展開しています。"
           }
         }
       ]
     }
     </script>
     
+    <!-- Structured Data - WebSite with dateModified -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "宮崎政宏 古代史研究",
+      "url": "https://masahiromiyazaki.github.io/-ancient-history-of-japan/",
+      "dateModified": "2025-12-16",
+      "inLanguage": "ja"
+    }
+    </script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+
     <style>
-        * {
+        body {
+            font-family: "Noto Serif JP", "Yu Mincho", serif;
+            line-height: 1.7;
+            background-color: #f9f9f9;
+            color: #333;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
-        
-        body {
-            font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro', 'Yu Gothic', '游ゴシック', 'Meiryo', 'メイリオ', sans-serif;
-            line-height: 1.8;
-            color: #333;
-            background: #f9f9f9;
-        }
-        
         .container {
             max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 20px;
+            margin: 20px auto;
+            padding: 20px;
         }
-        
-        header {
+        .header {
             text-align: center;
-            margin-bottom: 60px;
-            padding-bottom: 30px;
-            border-bottom: 2px solid #e0e0e0;
-        }
-        
-        h1 {
-            font-size: 2.2em;
-            margin-bottom: 15px;
-            color: #2c3e50;
-        }
-        
-        .subtitle {
-            font-size: 1.1em;
-            color: #666;
-            margin-bottom: 20px;
-        }
-        
-        .lang-toggle {
-            margin-top: 20px;
-        }
-        
-        .lang-toggle a {
-            margin: 0 10px;
-            padding: 8px 20px;
-            color: white;
-            background: #3498db;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 5px;
-            transition: background 0.3s;
-        }
-        
-        .lang-toggle a:hover {
-            background: #2980b9;
-        }
-        
-        .lang-toggle a.active {
-            background: #2c3e50;
-        }
-        
-        section {
-            background: white;
-            padding: 40px;
+            border-bottom: 2px solid #333;
+            padding-bottom: 20px;
             margin-bottom: 40px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
-        
-        h2 {
+        .header h1 {
             font-size: 1.8em;
-            margin-bottom: 30px;
-            color: #2c3e50;
-            border-left: 5px solid #3498db;
-            padding-left: 15px;
+            margin: 0;
+            line-height: 1.3;
         }
-        
-        h3 {
-            font-size: 1.4em;
-            margin: 30px 0 15px 0;
-            color: #34495e;
+        @media(min-width: 768px) {
+            .header h1 { font-size: 2.2em; }
         }
-        
-        h4 {
+        .header p {
             font-size: 1.1em;
-            margin: 25px 0 10px 0;
             color: #555;
+            margin-top: 10px;
         }
         
-        p {
+        .language-switcher {
+            text-align: right;
             margin-bottom: 20px;
         }
-        
-        .paper-link {
+        .lang-btn {
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 10pt;
+            font-family: inherit;
+            text-decoration: none;
             display: inline-block;
-            margin-top: 15px;
-            padding: 12px 30px;
-            background: #3498db;
+            margin: 0 5px;
+        }
+        .lang-btn.active {
+            background-color: #333;
             color: white;
+            border-color: #333;
+        }
+        
+        .category-title {
+            text-align: center;
+            margin: 60px 0 30px;
+            font-size: 1.3em;
+            color: #2c3e50;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .category-title::before, .category-title::after {
+            content: "";
+            height: 1px;
+            background-color: #ccc;
+            flex-grow: 1;
+            margin: 0 20px;
+        }
+        .category-title:first-of-type {
+            margin-top: 10px;
+        }
+
+        .paper-section {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .paper-section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .paper-section h2 {
+            font-size: 1.6em;
+            margin-top: 0;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+            color: #2c3e50;
+        }
+        .paper-section h3 {
+            font-size: 1.1em;
+            font-style: italic;
+            color: #666;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+        .summary {
+            font-size: 1.05em;
+            text-align: justify;
+        }
+        .translation-note {
+            font-size: 0.9em;
+            color: #555;
+            margin-top: 15px;
+            text-align: right;
+            font-style: italic;
+        }
+        
+        /* ボタンのデザインと色分け */
+        .read-more-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            background-color: #2c3e50;
+            color: #fff;
             text-decoration: none;
             border-radius: 5px;
             font-weight: bold;
-            transition: background 0.3s;
+            transition: opacity 0.3s;
         }
-        
-        .paper-link:hover {
-            background: #2980b9;
+        .read-more-btn.tool-btn {
+            background-color: #d35400;
         }
-        
+        .read-more-btn.note-btn {
+            background-color: #41b592;
+        }
+        .read-more-btn:hover {
+            opacity: 0.85;
+        }
+
         .faq-item {
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             padding: 20px;
             background: #f8f9fa;
             border-radius: 5px;
-            border-left: 4px solid #3498db;
+            border-left: 4px solid #2c3e50;
         }
         
         .faq-question {
             font-weight: bold;
-            font-size: 1.1em;
+            font-size: 1.05em;
             margin-bottom: 10px;
             color: #2c3e50;
         }
         
         .faq-answer {
             color: #555;
+            line-height: 1.7;
         }
-        
-        footer {
+
+        .footer {
             text-align: center;
-            padding: 40px 20px;
-            color: #666;
-            border-top: 2px solid #e0e0e0;
             margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid #ddd;
+            font-size: 0.9em;
+            color: #777;
         }
-        
-        .about {
-            background: #ecf0f1;
-            padding: 25px;
+        .author-bio {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            text-align: left;
+            background: #f4f4f4;
+            padding: 15px 20px;
             border-radius: 5px;
-            margin-top: 30px;
+            font-size: 0.95em;
+            color: #444;
         }
-        
-        .contact-link {
-            color: #3498db;
+        .footer a {
+            color: #2c3e50;
             text-decoration: none;
         }
-        
-        .contact-link:hover {
+        .footer a:hover {
             text-decoration: underline;
-        }
-        
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 1.8em;
-            }
-            
-            section {
-                padding: 25px;
-            }
-            
-            .container {
-                padding: 20px 15px;
-            }
         }
     </style>
 </head>
+
 <body>
     <div class="container">
-        <header>
-            <div class="lang-toggle">
-                <a href="index.html" class="active">日本語</a>
-                <a href="index-en.html">English</a>
-            </div>
-            
+        <!-- 言語切り替えボタン -->
+        <div class="language-switcher">
+            <a href="index.html" class="lang-btn active">日本語</a>
+            <a href="index-en.html" class="lang-btn">English</a>
+        </div>
+
+        <header class="header">
             <h1>宮崎政宏 古代史研究</h1>
-            <p class="subtitle">科学的音韻論と化学分析で「邪馬台国」と「日本の起源」を再構築する</p>
+            <p>科学的音韻論と化学分析で「邪馬台国」と「日本の起源」を再構築する</p>
         </header>
-        
+
         <main>
-            <!-- 研究論文セクション -->
-            <section id="papers">
-                <h2>研究論文</h2>
-                
-                <article>
-                    <h3>『魏志倭人伝』「邪馬壹國」表記の音韻学的分析</h3>
-                    <h4>科学が拓く邪馬台国論争の新地平</h4>
-                    <p>100年以上にわたる論争の膠着を打ち破る革命的論証。一般に「邪馬台国（やまたいこく）」と読まれるが、これは後世の誤読であることが最新の研究で明らかになりつつある。本稿は、最古級の写本が示す「邪馬壹國」を「3世紀音韻変化期モデル」で分析。その結果、<strong>「壹（ichi）」に含まれる閉鎖音が、当時の九州「山門（ヤマト）」の音を正確に捉えた唯一の合理的音写であることを実証する。これにより、「臺（tai）」を「ヤマト」と読む畿内説の音韻学的根拠は完全に崩壊し、邪馬壹國＝九州・山門説が科学的に裏付けられる。</strong></p>
-                    <a href="japanese-phonetics-3rd-century.html" class="paper-link">論文全文を読む →</a>
-                </article>
-                
-                <article style="margin-top: 50px;">
-                    <h3>初代天皇は化学者だった</h3>
-                    <h4>日本書紀『無水造飴』の暗号、1300年の謎を解く</h4>
-                    <p>日本の建国神話に隠された、驚くべき科学技術の真実。初代天皇・神武が行ったとされる奇妙な儀式「無水造飴」は、神話ではなく、辰砂から戦略物資である水銀を精製する高度な化学プロセスを記述した「暗号化された技術書」であった。鉛同位体比分析や考古科学の物証を駆使し、ヤマト王権が武力ではなく技術覇権によって国家を築いたという、日本の起源を覆す新たな歴史像を提示する。</p>
-                    <p><small>※この論文は英語翻訳を併記しています。</small></p>
-                    <a href="first-emperor-was-a-chemist.html" class="paper-link">論文全文を読む →</a>
-                </article>
+            <!-- カテゴリ：研究論文 -->
+            <div class="category-title">研究論文</div>
+
+            <section class="paper-section">
+                <h2>『魏志倭人伝』「邪馬壹國」表記の音韻学的分析</h2>
+                <h3>科学が拓く邪馬台国論争の新地平</h3>
+                <p class="summary">
+                    100年以上にわたる論争の膠着を打ち破る革命的論証。一般に「邪馬台国（やまたいこく）」と読まれるが、これは後世の誤読であることが最新の研究で明らかになりつつある。本稿は、最古級の写本が示す「邪馬壹國」を「3世紀音韻変化期モデル」で分析。その結果、<strong>「壹（ichi）」に含まれる閉鎖音が、当時の九州「山門（ヤマト）」の音を正確に捉えた唯一の合理的音写であることを実証する。一方、「臺（tai）」は3世紀の音韻（「ラ」や「ドゥ」に近い音）から見て、「ヤマト」の音写として音韻学的に成立しない。本稿は、邪馬壹國＝九州・山門説を音韻学的に強く支持する。</strong>
+                </p>
+                <a href="japanese-phonetics-3rd-century.html" class="read-more-btn" target="_blank">論文全文を読む →</a>
             </section>
-            
-            <!-- FAQセクション -->
-            <section id="faq">
-                <h2>よくある質問</h2>
-                
+
+            <section class="paper-section">
+                <h2>初代天皇は化学者だった</h2>
+                <h3>日本書紀『無水造飴』の暗号、1300年の謎を解く</h3>
+                <p class="summary">
+                    日本の建国神話に隠された、驚くべき科学技術の真実。初代天皇・神武が行ったとされる奇妙な儀式「無水造飴」は、神話ではなく、辰砂から戦略物資である水銀を精製する高度な化学プロセスを記述した「暗号化された技術書」であった。鉛同位体比分析や考古科学の物証を駆使し、ヤマト王権が武力ではなく技術覇権によって国家を築いたという、日本の起源を覆す新たな歴史像を提示する。
+                </p>
+                <p class="translation-note">※この論文は英語翻訳を併記しています。</p>
+                <a href="first-emperor-was-a-chemist.html" class="read-more-btn" target="_blank">論文全文を読む →</a>
+            </section>
+
+            <!-- カテゴリ：よくある質問 -->
+            <div class="category-title">よくある質問</div>
+
+            <section class="paper-section">
                 <div class="faq-item">
                     <div class="faq-question">Q: 邪馬台国はどこにあったのですか？</div>
-                    <div class="faq-answer">A: 本研究では、音韻学的分析により、魏志倭人伝に記された「邪馬壹國」が九州の「山門（ヤマト）」を指すことを実証しています。従来の畿内説は音韻学的根拠を欠いています。</div>
+                    <div class="faq-answer">A: 本研究では、音韻学的分析により、魏志倭人伝に記された「邪馬壹國」が九州の「山門（ヤマト）」を指すという説を音韻学的に強く支持しています。一方、畿内説の根拠とされる「臺」表記は、3世紀の音韻から見て説明が困難です。</div>
                 </div>
                 
                 <div class="faq-item">
@@ -331,44 +383,40 @@
                     <div class="faq-answer">A: 従来の文献史学に加えて、音韻論・分析化学・軍事地理学などの理系的手法を導入している点です。主観的解釈ではなく、科学的に検証可能な証拠に基づいて論を展開しています。</div>
                 </div>
             </section>
-            
-            <!-- 研究ツール -->
-            <section id="tools">
-                <h2>研究ツール</h2>
-                
-                <article>
-                    <h3>上古中国語 音声プレーヤー</h3>
-                    <h4>『魏志倭人伝』の「音」を再現するデジタルツール</h4>
-                    <p>論文『邪馬壹國表記の音韻学的分析』の研究過程で開発されたWebツールです。漢字を入力することで、複数の再構体系（Starostin、Baxter、Zhengzhang等）に基づく上古中国語（Old Chinese）の発音を再生・比較できます。「壹」と「臺」の実際の音響的差異を確認し、古代の記述者が耳にしていた「音」の真実を探るための支援ツールとして公開します。</p>
-                    <a href="Ancient-Chinese-Player.html" class="paper-link">ツールを使う →</a>
-                </article>
+
+            <!-- カテゴリ：研究ツール -->
+            <div class="category-title">研究ツール</div>
+
+            <section class="paper-section">
+                <h2>上古中国語 音声プレーヤー</h2>
+                <h3>『魏志倭人伝』の「音」を再現するデジタルツール</h3>
+                <p class="summary">
+                    論文『邪馬壹國表記の音韻学的分析』の研究過程で開発されたWebツールです。漢字を入力することで、複数の再構体系（Starostin、Baxter、Zhengzhang等）に基づく上古中国語（Old Chinese）の発音を再生・比較できます。「壹」と「臺」の実際の音響的差異を確認し、古代の記述者が耳にしていた「音」の真実を探るための支援ツールとして公開します。
+                </p>
+                <a href="Ancient-Chinese-Player.html" class="read-more-btn tool-btn" target="_blank">ツールを使う →</a>
             </section>
-            
-            <!-- 関連メディア -->
-            <section id="media">
-                <h2>関連メディア</h2>
-                
-                <article>
-                    <h3>筆者公式 Note</h3>
-                    <h4>研究ノート・コラム・最新情報</h4>
-                    <p>古代史研究にまつわるコラムや、論文執筆の舞台裏、まだ論文になっていない最新の考察などを発信しています。</p>
-                    <a href="https://note.com/airrium" class="paper-link" target="_blank" rel="noopener">Noteを読む →</a>
-                </article>
-            </section>
-            
-            <!-- About -->
-            <section id="about">
-                <h2>About</h2>
-                <div class="about">
-                    <p><strong>宮崎政宏 (Masahiro Miyazaki)</strong></p>
-                    <p>独立古代史研究家。大学や研究機関に属さない自由な立場から、100年以上膠着する歴史論争に科学的手法で切り込む。音韻論による『魏志倭人伝』の再分析、化学プロセスとしての古代儀式の解読など、文理融合の独自アプローチで日本の起源に新たな光を当てる。</p>
-                </div>
+
+            <!-- カテゴリ：関連メディア -->
+            <div class="category-title">関連メディア</div>
+
+            <section class="paper-section">
+                <h2>筆者公式 Note</h2>
+                <h3>研究ノート・コラム・最新情報</h3>
+                <p class="summary">
+                    古代史研究にまつわるコラムや、論文執筆の舞台裏、まだ論文になっていない最新の考察などを発信しています。
+                </p>
+                <a href="https://note.com/airrium" class="read-more-btn note-btn" target="_blank" rel="noopener noreferrer">Noteを読む →</a>
             </section>
         </main>
-        
-        <footer>
-            <p>© 2025 Masahiro Miyazaki. All rights reserved.</p>
-            <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSdVXaY9ixUxivmsbug2KYuKNVc6cRH-LwBuPqZ0ZbJcuYvvhQ/viewform" class="contact-link" target="_blank" rel="noopener">お問い合わせ</a></p>
+
+        <footer class="footer">
+            <!-- 著者紹介 (E-E-A-T対策) -->
+            <div class="author-bio">
+                <strong>About: 宮崎政宏 (Masahiro Miyazaki)</strong><br>
+                独立古代史研究家。大学や研究機関に属さない自由な立場から、100年以上膠着する歴史論争に科学的手法で切り込む。音韻論による『魏志倭人伝』の再分析、化学プロセスとしての古代儀式の解読など、文理融合の独自アプローチで日本の起源に新たな光を当てる。
+            </div>
+            <p>&copy; 2025 Masahiro Miyazaki. All rights reserved.</p>
+            <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSdVXaY9ixUxivmsbug2KYuKNVc6cRH-LwBuPqZ0ZbJcuYvvhQ/viewform?usp=sharing&ouid=110924460437971683976" target="_blank" rel="noopener noreferrer">お問い合わせ</a></p>
             <p style="margin-top: 20px; font-size: 0.9em;">最終更新: 2025年12月16日</p>
         </footer>
     </div>
