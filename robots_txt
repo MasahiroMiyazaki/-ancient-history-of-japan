@@ -1,0 +1,15 @@
+# robots.txt for masahiromiyazaki.github.io/-ancient-history-of-japan/
+
+# すべての検索エンジンにアクセスを許可
+User-agent: *
+Allow: /
+
+# サイトマップの場所を指定
+Sitemap: https://masahiromiyazaki.github.io/-ancient-history-of-japan/sitemap.xml
+
+# クロール頻度の調整（オプション）
+# Crawl-delay: 1
+
+# 除外するファイル・ディレクトリがある場合はここに記述
+# 例: Disallow: /private/
+# 例: Disallow: /draft/
