@@ -23,8 +23,8 @@
     <meta property="og:site_name" content="Masahiro Miyazaki Ancient History Research">
     <meta property="og:locale" content="en_US">
     <meta property="og:locale:alternate" content="ja_JP">
-<meta property="og:image" content="https://masahiromiyazaki.github.io/-ancient-history-of-japan/images/ogp.jpg">
-<meta name="twitter:image" content="https://masahiromiyazaki.github.io/-ancient-history-of-japan/images/ogp.jpg">
+    <meta property="og:image" content="https://masahiromiyazaki.github.io/-ancient-history-of-japan/images/ogp.jpg">
+    <meta name="twitter:image" content="https://masahiromiyazaki.github.io/-ancient-history-of-japan/images/ogp.jpg">
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
@@ -131,13 +131,14 @@
     }
     </script>
     
+    <!-- Font Optimization: preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
-
+    
+    <!-- Critical CSS (Above the Fold) -->
     <style>
         body {
-            font-family: "Noto Serif JP", "Times New Roman", serif;
+            font-family: "Times New Roman", Georgia, serif;
             line-height: 1.7;
             background-color: #f9f9f9;
             color: #333;
@@ -149,26 +150,19 @@
             margin: 20px auto;
             padding: 20px;
         }
-        .header {
-            text-align: center;
-            border-bottom: 2px solid #333;
-            padding-bottom: 20px;
-            margin-bottom: 40px;
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #2c3e50;
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            z-index: 100;
         }
-        .header h1 {
-            font-size: 1.8em;
-            margin: 0;
-            line-height: 1.3;
+        .skip-link:focus {
+            top: 0;
         }
-        @media(min-width: 768px) {
-            .header h1 { font-size: 2.2em; }
-        }
-        .header p {
-            font-size: 1.1em;
-            color: #555;
-            margin-top: 10px;
-        }
-        
         .language-switcher {
             text-align: right;
             margin-bottom: 20px;
@@ -183,11 +177,55 @@
             text-decoration: none;
             display: inline-block;
             margin: 0 5px;
+            transition: all 0.2s ease;
         }
         .lang-btn.active {
             background-color: #333;
             color: white;
             border-color: #333;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #333;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+        .header h1 {
+            font-size: 1.8em;
+            margin: 0;
+            line-height: 1.3;
+        }
+        .header p {
+            font-size: 1.1em;
+            color: #555;
+            margin-top: 10px;
+        }
+        @media(min-width: 768px) {
+            .header h1 { font-size: 2.2em; }
+        }
+    </style>
+
+    <!-- Async Font Loading -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+    </noscript>
+
+    <!-- Non-Critical CSS -->
+    <style>
+        body.fonts-loaded {
+            font-family: "Noto Serif JP", "Times New Roman", serif;
+        }
+        
+        .lang-btn:focus {
+            outline: 2px solid #2c3e50;
+            outline-offset: 2px;
+        }
+        .lang-btn:hover {
+            background-color: #e0e0e0;
+        }
+        .lang-btn.active:hover {
+            background-color: #1a252f;
         }
         
         .category-title {
@@ -218,13 +256,17 @@
             padding: 25px;
             margin-bottom: 30px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .paper-section:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
         }
-        .paper-section h2 {
+        .paper-section:focus-within {
+            outline: 2px solid #2c3e50;
+            outline-offset: 4px;
+        }
+        .paper-section h2, .paper-section h3 {
             font-size: 1.6em;
             margin-top: 0;
             border-bottom: 1px solid #eee;
@@ -237,6 +279,7 @@
             color: #666;
             margin-top: 10px;
             margin-bottom: 20px;
+            border-bottom: none;
         }
         .summary {
             font-size: 1.05em;
@@ -250,7 +293,6 @@
             font-style: italic;
         }
         
-        /* Buttons */
         .read-more-btn {
             display: inline-block;
             margin-top: 20px;
@@ -260,7 +302,7 @@
             text-decoration: none;
             border-radius: 5px;
             font-weight: bold;
-            transition: opacity 0.3s;
+            transition: all 0.3s ease;
         }
         .read-more-btn.tool-btn {
             background-color: #d35400;
@@ -270,6 +312,11 @@
         }
         .read-more-btn:hover {
             opacity: 0.85;
+            transform: translateY(-2px);
+        }
+        .read-more-btn:focus {
+            outline: 3px solid #333;
+            outline-offset: 3px;
         }
 
         .faq-item {
@@ -313,53 +360,80 @@
         .footer a {
             color: #2c3e50;
             text-decoration: none;
+            transition: all 0.2s ease;
         }
         .footer a:hover {
             text-decoration: underline;
         }
+        .footer a:focus {
+            outline: 2px solid #2c3e50;
+            outline-offset: 2px;
+        }
     </style>
+
+    <!-- Font Loading Detection -->
+    <script>
+        if ('fonts' in document) {
+            document.fonts.ready.then(function() {
+                document.body.classList.add('fonts-loaded');
+            });
+        }
+    </script>
 </head>
 
 <body>
+    <!-- Skip Link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
     <div class="container">
         <!-- Language Switcher -->
-        <div class="language-switcher">
-            <a href="index.html" class="lang-btn">日本語</a>
-            <a href="index-en.html" class="lang-btn active">English</a>
-        </div>
+        <nav aria-label="Language switcher" class="language-switcher">
+            <a href="index.html" class="lang-btn" lang="ja" aria-label="日本語版に切り替える">日本語</a>
+            <a href="index-en.html" class="lang-btn active" aria-current="page" aria-label="English version (current page)">English</a>
+        </nav>
 
         <header class="header">
             <h1>Masahiro Miyazaki Ancient History Research</h1>
             <p>Reconstructing "Yamatai" and "Japan's Origins" via Scientific Phonology and Chemical Analysis</p>
         </header>
 
-        <main>
-            <!-- Category: Research Papers -->
-            <div class="category-title">Research Papers</div>
+        <main id="main-content">
+            <h2 class="category-title">Research Papers</h2>
 
-            <section class="paper-section">
-                <h2>Phonological Analysis of the "Yamaichi-koku" Notation in <i>Gishi Wajinden</i></h2>
-                <h3>New Horizons in the Yamatai Controversy Opened by Science</h3>
+            <article class="paper-section">
+                <h3>Phonological Analysis of the "Yamaichi-koku" Notation in <i>Gishi Wajinden</i></h3>
+                <p class="summary" style="font-style: italic; color: #666;">New Horizons in the Yamatai Controversy Opened by Science</p>
                 <p class="summary">
                     A revolutionary demonstration breaking over 100 years of stagnation in the debate. While generally read as "Yamatai-koku," recent research reveals this is a later misreading. This paper analyzes "Yamaichi-koku," found in the oldest manuscripts, using a "3rd-century Phonological Shift Model." The results demonstrate that <strong>the stop sound contained in "Ichi" (壹) is the only phonologically rational transcription that accurately captures the sound of "Yamato" (Mountain Gate) in Kyushu at that time. Conversely, "Tai" (臺) does not phonologically hold up as a transcription of "Yamato" given 3rd-century phonology (sounds closer to "la" or "dwe"). This paper strongly supports the theory that Yamaichi-koku was located in Yamato (Yamon), Kyushu.</strong>
                 </p>
-                <a href="japanese-phonetics-3rd-century.html" class="read-more-btn" target="_blank">Read Full Paper →</a>
-            </section>
+                <a href="japanese-phonetics-3rd-century.html" 
+                   class="read-more-btn" 
+                   target="_blank"
+                   aria-label="Read the full paper on Phonological Analysis of Yamaichi-koku (opens in new tab)">
+                   Read Full Paper →
+                </a>
+            </article>
 
-            <section class="paper-section">
-                <h2>The First Emperor Was a Chemist</h2>
-                <h3>Deciphering the 1,300-Year Mystery of "Musui-zo-ame" in <i>Nihon Shoki</i></h3>
+            <article class="paper-section">
+                <h3>The First Emperor Was a Chemist</h3>
+                <p class="summary" style="font-style: italic; color: #666;">Deciphering the 1,300-Year Mystery of "Musui-zo-ame" in <i>Nihon Shoki</i></p>
                 <p class="summary">
                     The surprising truth of scientific technology hidden within Japan's founding mythology. The strange ritual of "Musui-zo-ame" (Waterless Candy Making) performed by the first Emperor, Jimmu, was not a myth but an "encrypted technical manual" describing a sophisticated chemical process for refining mercury (a strategic material) from cinnabar. By utilizing lead isotope analysis and archaeological science, this paper presents a new historical image overturning the origins of Japan, suggesting the Yamato sovereignty was built on technological hegemony rather than mere military force.
                 </p>
                 <p class="translation-note">* This paper includes English translations.</p>
-                <a href="first-emperor-was-a-chemist.html" class="read-more-btn" target="_blank">Read Full Paper →</a>
-            </section>
+                <a href="first-emperor-was-a-chemist.html" 
+                   class="read-more-btn" 
+                   target="_blank"
+                   aria-label="Read the full paper on The First Emperor Was a Chemist (opens in new tab)">
+                   Read Full Paper →
+                </a>
+            </article>
 
-            <!-- Category: FAQ -->
-            <div class="category-title">FAQ</div>
+            <h2 class="category-title">FAQ</h2>
 
-            <section class="paper-section">
+            <section class="paper-section" aria-labelledby="faq-heading">
+                <h3 id="faq-heading" style="border-bottom: none; font-size: 1.3em; font-style: normal;">Frequently Asked Questions</h3>
+                
                 <div class="faq-item">
                     <div class="faq-question">Q: Where was Yamatai located?</div>
                     <div class="faq-answer">A: This research strongly supports the theory that "Yamaichi-koku" in the <i>Gishi Wajinden</i> refers to "Yamato" (Yamon) in Kyushu, based on phonological analysis. Conversely, the "Tai" notation used as the basis for the Kinai theory is difficult to explain given 3rd-century phonology.</div>
@@ -386,40 +460,57 @@
                 </div>
             </section>
 
-            <!-- Category: Research Tools -->
-            <div class="category-title">Research Tools</div>
+            <h2 class="category-title">Research Tools</h2>
 
-            <section class="paper-section">
-                <h2>Old Chinese Audio Player</h2>
-                <h3>Digital Tool to Reproduce the "Sounds" of <i>Gishi Wajinden</i></h3>
+            <article class="paper-section">
+                <h3>Old Chinese Audio Player</h3>
+                <p class="summary" style="font-style: italic; color: #666;">Digital Tool to Reproduce the "Sounds" of <i>Gishi Wajinden</i></p>
                 <p class="summary">
                     A web tool developed during the research for the paper "Phonological Analysis of the Yamaichi-koku Notation." By inputting kanji, you can play and compare Old Chinese pronunciations based on multiple reconstruction systems (Starostin, Baxter, Zhengzhang, etc.). This tool is released to help confirm the actual acoustic differences between "Ichi" (壹) and "Tai" (臺) and to explore the reality of the "sounds" heard by ancient scribes.
                 </p>
-                <a href="Ancient-Chinese-Player.html" class="read-more-btn tool-btn" target="_blank">Launch Tool →</a>
-            </section>
+                <a href="Ancient-Chinese-Player.html" 
+                   class="read-more-btn tool-btn" 
+                   target="_blank"
+                   aria-label="Launch Old Chinese Audio Player tool (opens in new tab)">
+                   Launch Tool →
+                </a>
+            </article>
 
-            <!-- Category: Related Media -->
-            <div class="category-title">Related Media</div>
+            <h2 class="category-title">Related Media</h2>
 
-            <section class="paper-section">
-                <h2>Official Note (Blog)</h2>
-                <h3>Research Notes, Columns, and Updates</h3>
+            <article class="paper-section">
+                <h3>Official Note (Blog)</h3>
+                <p class="summary" style="font-style: italic; color: #666;">Research Notes, Columns, and Updates</p>
                 <p class="summary">
                     I publish columns related to ancient history research, behind-the-scenes stories of paper writing, and the latest observations that have not yet been made into papers. (Primarily in Japanese)
                 </p>
-                <a href="https://note.com/airrium" class="read-more-btn note-btn" target="_blank" rel="noopener noreferrer">Read Note →</a>
-            </section>
+                <a href="https://note.com/airrium" 
+                   class="read-more-btn note-btn" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   aria-label="Read Masahiro Miyazaki's official Note blog (opens in new tab)">
+                   Read Note →
+                </a>
+            </article>
         </main>
 
         <footer class="footer">
-            <!-- Author Bio (E-E-A-T) -->
             <div class="author-bio">
                 <strong>About: Masahiro Miyazaki</strong><br>
                 Independent Ancient History Researcher. Operating freely outside of university or institutional affiliations, he cuts into history controversies that have been deadlocked for over a century using scientific methods. He sheds new light on Japan's origins through unique cross-disciplinary approaches, such as re-analyzing the <i>Gishi Wajinden</i> via phonology and deciphering ancient rituals as chemical processes.
             </div>
             <p>&copy; 2025 Masahiro Miyazaki. All rights reserved.</p>
-            <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSdVXaY9ixUxivmsbug2KYuKNVc6cRH-LwBuPqZ0ZbJcuYvvhQ/viewform?usp=sharing&ouid=110924460437971683976" target="_blank" rel="noopener noreferrer">Contact</a></p>
-            <p style="margin-top: 20px; font-size: 0.9em;">Last Modified: December 16, 2025</p>
+            <p>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdVXaY9ixUxivmsbug2KYuKNVc6cRH-LwBuPqZ0ZbJcuYvvhQ/viewform?usp=sharing&ouid=110924460437971683976" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   aria-label="Contact form (opens in new tab)">
+                   Contact
+                </a>
+            </p>
+            <p style="margin-top: 20px; font-size: 0.9em;">
+                <time datetime="2025-12-16">Last Modified: December 16, 2025</time>
+            </p>
         </footer>
     </div>
 </body>

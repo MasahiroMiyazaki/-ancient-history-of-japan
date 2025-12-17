@@ -23,8 +23,8 @@
     <meta property="og:site_name" content="宮崎政宏 古代史研究">
     <meta property="og:locale" content="ja_JP">
     <meta property="og:locale:alternate" content="en_US">
-<meta property="og:image" content="https://masahiromiyazaki.github.io/-ancient-history-of-japan/images/ogp.jpg">
-<meta name="twitter:image" content="https://masahiromiyazaki.github.io/-ancient-history-of-japan/images/ogp.jpg">
+    <meta property="og:image" content="https://masahiromiyazaki.github.io/-ancient-history-of-japan/images/ogp.jpg">
+    <meta name="twitter:image" content="https://masahiromiyazaki.github.io/-ancient-history-of-japan/images/ogp.jpg">
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
@@ -131,13 +131,15 @@
     }
     </script>
     
+    <!-- 🆕 フォントの最適化：preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
-
+    
+    <!-- 🆕 Critical CSS（ファーストビューに必須のスタイル）をインライン化 -->
     <style>
+        /* === Critical CSS - Above the Fold === */
         body {
-            font-family: "Noto Serif JP", "Yu Mincho", serif;
+            font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
             line-height: 1.7;
             background-color: #f9f9f9;
             color: #333;
@@ -149,26 +151,19 @@
             margin: 20px auto;
             padding: 20px;
         }
-        .header {
-            text-align: center;
-            border-bottom: 2px solid #333;
-            padding-bottom: 20px;
-            margin-bottom: 40px;
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #2c3e50;
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            z-index: 100;
         }
-        .header h1 {
-            font-size: 1.8em;
-            margin: 0;
-            line-height: 1.3;
+        .skip-link:focus {
+            top: 0;
         }
-        @media(min-width: 768px) {
-            .header h1 { font-size: 2.2em; }
-        }
-        .header p {
-            font-size: 1.1em;
-            color: #555;
-            margin-top: 10px;
-        }
-        
         .language-switcher {
             text-align: right;
             margin-bottom: 20px;
@@ -183,11 +178,58 @@
             text-decoration: none;
             display: inline-block;
             margin: 0 5px;
+            transition: all 0.2s ease;
         }
         .lang-btn.active {
             background-color: #333;
             color: white;
             border-color: #333;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #333;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+        .header h1 {
+            font-size: 1.8em;
+            margin: 0;
+            line-height: 1.3;
+        }
+        .header p {
+            font-size: 1.1em;
+            color: #555;
+            margin-top: 10px;
+        }
+        @media(min-width: 768px) {
+            .header h1 { font-size: 2.2em; }
+        }
+    </style>
+
+    <!-- 🆕 フォントの非同期読み込み -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+    </noscript>
+
+    <!-- 🆕 残りのCSS（遅延読み込み可能） -->
+    <style>
+        /* === Non-Critical CSS === */
+        
+        /* Web Fontが読み込まれたら適用 */
+        body.fonts-loaded {
+            font-family: "Noto Serif JP", "Yu Mincho", serif;
+        }
+        
+        .lang-btn:focus {
+            outline: 2px solid #2c3e50;
+            outline-offset: 2px;
+        }
+        .lang-btn:hover {
+            background-color: #e0e0e0;
+        }
+        .lang-btn.active:hover {
+            background-color: #1a252f;
         }
         
         .category-title {
@@ -218,13 +260,17 @@
             padding: 25px;
             margin-bottom: 30px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .paper-section:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
         }
-        .paper-section h2 {
+        .paper-section:focus-within {
+            outline: 2px solid #2c3e50;
+            outline-offset: 4px;
+        }
+        .paper-section h2, .paper-section h3 {
             font-size: 1.6em;
             margin-top: 0;
             border-bottom: 1px solid #eee;
@@ -237,6 +283,7 @@
             color: #666;
             margin-top: 10px;
             margin-bottom: 20px;
+            border-bottom: none;
         }
         .summary {
             font-size: 1.05em;
@@ -250,7 +297,6 @@
             font-style: italic;
         }
         
-        /* ボタンのデザインと色分け */
         .read-more-btn {
             display: inline-block;
             margin-top: 20px;
@@ -260,7 +306,7 @@
             text-decoration: none;
             border-radius: 5px;
             font-weight: bold;
-            transition: opacity 0.3s;
+            transition: all 0.3s ease;
         }
         .read-more-btn.tool-btn {
             background-color: #d35400;
@@ -270,6 +316,11 @@
         }
         .read-more-btn:hover {
             opacity: 0.85;
+            transform: translateY(-2px);
+        }
+        .read-more-btn:focus {
+            outline: 3px solid #333;
+            outline-offset: 3px;
         }
 
         .faq-item {
@@ -313,53 +364,81 @@
         .footer a {
             color: #2c3e50;
             text-decoration: none;
+            transition: all 0.2s ease;
         }
         .footer a:hover {
             text-decoration: underline;
         }
+        .footer a:focus {
+            outline: 2px solid #2c3e50;
+            outline-offset: 2px;
+        }
     </style>
+
+    <!-- 🆕 フォント読み込み検知スクリプト -->
+    <script>
+        // Web Fontの読み込み完了を検知
+        if ('fonts' in document) {
+            document.fonts.ready.then(function() {
+                document.body.classList.add('fonts-loaded');
+            });
+        }
+    </script>
 </head>
 
 <body>
+    <!-- スキップリンク -->
+    <a href="#main-content" class="skip-link">メインコンテンツへスキップ</a>
+    
     <div class="container">
-        <!-- 言語切り替えボタン -->
-        <div class="language-switcher">
-            <a href="index.html" class="lang-btn active">日本語</a>
-            <a href="index-en.html" class="lang-btn">English</a>
-        </div>
+        <!-- nav要素でマークアップ -->
+        <nav aria-label="言語切り替え" class="language-switcher">
+            <a href="index.html" class="lang-btn active" aria-current="page" aria-label="日本語版（現在のページ）">日本語</a>
+            <a href="index-en.html" class="lang-btn" lang="en" aria-label="Switch to English version">English</a>
+        </nav>
 
         <header class="header">
             <h1>宮崎政宏 古代史研究</h1>
             <p>科学的音韻論と化学分析で「邪馬台国」と「日本の起源」を再構築する</p>
         </header>
 
-        <main>
-            <!-- カテゴリ：研究論文 -->
-            <div class="category-title">研究論文</div>
+        <main id="main-content">
+            <h2 class="category-title">研究論文</h2>
 
-            <section class="paper-section">
-                <h2>『魏志倭人伝』「邪馬壹國」表記の音韻学的分析</h2>
-                <h3>科学が拓く邪馬台国論争の新地平</h3>
+            <article class="paper-section">
+                <h3>『魏志倭人伝』「邪馬壹國」表記の音韻学的分析</h3>
+                <p class="summary" style="font-style: italic; color: #666;">科学が拓く邪馬台国論争の新地平</p>
                 <p class="summary">
                     100年以上にわたる論争の膠着を打ち破る革命的論証。一般に「邪馬台国（やまたいこく）」と読まれるが、これは後世の誤読であることが最新の研究で明らかになりつつある。本稿は、最古級の写本が示す「邪馬壹國」を「3世紀音韻変化期モデル」で分析。その結果、<strong>「壹（ichi）」に含まれる閉鎖音が、当時の九州「山門（ヤマト）」の音を正確に捉えた唯一の合理的音写であることを実証する。一方、「臺（tai）」は3世紀の音韻（「ラ」や「ドゥ」に近い音）から見て、「ヤマト」の音写として音韻学的に成立しない。本稿は、邪馬壹國＝九州・山門説を音韻学的に強く支持する。</strong>
                 </p>
-                <a href="japanese-phonetics-3rd-century.html" class="read-more-btn" target="_blank">論文全文を読む →</a>
-            </section>
+                <a href="japanese-phonetics-3rd-century.html" 
+                   class="read-more-btn" 
+                   target="_blank"
+                   aria-label="『魏志倭人伝』邪馬壹國表記の音韻学的分析の論文全文を読む（新しいタブで開きます）">
+                   論文全文を読む →
+                </a>
+            </article>
 
-            <section class="paper-section">
-                <h2>初代天皇は化学者だった</h2>
-                <h3>日本書紀『無水造飴』の暗号、1300年の謎を解く</h3>
+            <article class="paper-section">
+                <h3>初代天皇は化学者だった</h3>
+                <p class="summary" style="font-style: italic; color: #666;">日本書紀『無水造飴』の暗号、1300年の謎を解く</p>
                 <p class="summary">
                     日本の建国神話に隠された、驚くべき科学技術の真実。初代天皇・神武が行ったとされる奇妙な儀式「無水造飴」は、神話ではなく、辰砂から戦略物資である水銀を精製する高度な化学プロセスを記述した「暗号化された技術書」であった。鉛同位体比分析や考古科学の物証を駆使し、ヤマト王権が武力ではなく技術覇権によって国家を築いたという、日本の起源を覆す新たな歴史像を提示する。
                 </p>
                 <p class="translation-note">※この論文は英語翻訳を併記しています。</p>
-                <a href="first-emperor-was-a-chemist.html" class="read-more-btn" target="_blank">論文全文を読む →</a>
-            </section>
+                <a href="first-emperor-was-a-chemist.html" 
+                   class="read-more-btn" 
+                   target="_blank"
+                   aria-label="初代天皇は化学者だった：日本書紀『無水造飴』の化学的解読の論文全文を読む（新しいタブで開きます）">
+                   論文全文を読む →
+                </a>
+            </article>
 
-            <!-- カテゴリ：よくある質問 -->
-            <div class="category-title">よくある質問</div>
+            <h2 class="category-title">よくある質問</h2>
 
-            <section class="paper-section">
+            <section class="paper-section" aria-labelledby="faq-heading">
+                <h3 id="faq-heading" style="border-bottom: none; font-size: 1.3em; font-style: normal;">FAQ</h3>
+                
                 <div class="faq-item">
                     <div class="faq-question">Q: 邪馬台国はどこにあったのですか？</div>
                     <div class="faq-answer">A: 本研究では、音韻学的分析により、魏志倭人伝に記された「邪馬壹國」が九州の「山門（ヤマト）」を指すという説を音韻学的に強く支持しています。一方、畿内説の根拠とされる「臺」表記は、3世紀の音韻から見て説明が困難です。</div>
@@ -386,40 +465,57 @@
                 </div>
             </section>
 
-            <!-- カテゴリ：研究ツール -->
-            <div class="category-title">研究ツール</div>
+            <h2 class="category-title">研究ツール</h2>
 
-            <section class="paper-section">
-                <h2>上古中国語 音声プレーヤー</h2>
-                <h3>『魏志倭人伝』の「音」を再現するデジタルツール</h3>
+            <article class="paper-section">
+                <h3>上古中国語 音声プレーヤー</h3>
+                <p class="summary" style="font-style: italic; color: #666;">『魏志倭人伝』の「音」を再現するデジタルツール</p>
                 <p class="summary">
                     論文『邪馬壹國表記の音韻学的分析』の研究過程で開発されたWebツールです。漢字を入力することで、複数の再構体系（Starostin、Baxter、Zhengzhang等）に基づく上古中国語（Old Chinese）の発音を再生・比較できます。「壹」と「臺」の実際の音響的差異を確認し、古代の記述者が耳にしていた「音」の真実を探るための支援ツールとして公開します。
                 </p>
-                <a href="Ancient-Chinese-Player.html" class="read-more-btn tool-btn" target="_blank">ツールを使う →</a>
-            </section>
+                <a href="Ancient-Chinese-Player.html" 
+                   class="read-more-btn tool-btn" 
+                   target="_blank"
+                   aria-label="上古中国語音声プレーヤーを使う（新しいタブで開きます）">
+                   ツールを使う →
+                </a>
+            </article>
 
-            <!-- カテゴリ：関連メディア -->
-            <div class="category-title">関連メディア</div>
+            <h2 class="category-title">関連メディア</h2>
 
-            <section class="paper-section">
-                <h2>筆者公式 Note</h2>
-                <h3>研究ノート・コラム・最新情報</h3>
+            <article class="paper-section">
+                <h3>筆者公式 Note</h3>
+                <p class="summary" style="font-style: italic; color: #666;">研究ノート・コラム・最新情報</p>
                 <p class="summary">
                     古代史研究にまつわるコラムや、論文執筆の舞台裏、まだ論文になっていない最新の考察などを発信しています。
                 </p>
-                <a href="https://note.com/airrium" class="read-more-btn note-btn" target="_blank" rel="noopener noreferrer">Noteを読む →</a>
-            </section>
+                <a href="https://note.com/airrium" 
+                   class="read-more-btn note-btn" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   aria-label="宮崎政宏の公式Noteを読む（新しいタブで開きます）">
+                   Noteを読む →
+                </a>
+            </article>
         </main>
 
         <footer class="footer">
-            <!-- 著者紹介 (E-E-A-T対策) -->
             <div class="author-bio">
                 <strong>About: 宮崎政宏 (Masahiro Miyazaki)</strong><br>
                 独立古代史研究家。大学や研究機関に属さない自由な立場から、100年以上膠着する歴史論争に科学的手法で切り込む。音韻論による『魏志倭人伝』の再分析、化学プロセスとしての古代儀式の解読など、文理融合の独自アプローチで日本の起源に新たな光を当てる。
             </div>
             <p>&copy; 2025 Masahiro Miyazaki. All rights reserved.</p>
-            <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSdVXaY9ixUxivmsbug2KYuKNVc6cRH-LwBuPqZ0ZbJcuYvvhQ/viewform?usp=sharing&ouid=110924460437971683976" target="_blank" rel="noopener noreferrer">お問い合わせ</a></p>
-            <p style="margin-top: 20px; font-size: 0.9em;">最終更新: 2025年12月16日</p>
+            <p>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdVXaY9ixUxivmsbug2KYuKNVc6cRH-LwBuPqZ0ZbJcuYvvhQ/viewform?usp=sharing&ouid=110924460437971683976" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   aria-label="お問い合わせフォーム（新しいタブで開きます）">
+                   お問い合わせ
+                </a>
+            </p>
+            <p style="margin-top: 20px; font-size: 0.9em;">
+                <time datetime="2025-12-16">最終更新: 2025年12月16日</time>
+            </p>
         </footer>
     </div>
 </body>
