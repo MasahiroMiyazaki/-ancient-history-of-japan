@@ -7071,37 +7071,30 @@
 </div>
 
 <p>
-    本稿で論じた「3世紀音韻変化期モデル」に基づき、当時の音韻推移をブラウザ上で疑似的に再現・聴き比べることができる実験的なツールを公開している。本稿の理論的記述を、聴覚的なイメージとして補完するための補助資料として参照されたい。
+    本稿で論じた「3世紀音韻変化期モデル」に基づき、当時の音韻推移をブラウザ上で疑似的に再現・聴き比べることができる実験的なツールを公開している。
+    本稿の厳密な音韻論的記述とは異なり、あくまで<strong>「音の輪郭（詰まるか、伸びるか）」の違いを直感的に把握するための、補助的なシミュレーション</strong>として参照されたい。
 </p>
 
 <div style="text-align: center; margin: 8mm 0;">
-    <a href="https://masahiromiyazaki.github.io/-ancient-history-of-japan/Ancient-Chinese-Player.html" target="_blank" rel="noopener noreferrer" style="display: inline-block; padding: 12px 24px; background-color: #333; color: white; text-decoration: none; font-weight: bold; border-radius: 4px; border: 1px solid #000;">
+    <a href="https://masahiromiyazaki.github.io/-ancient-history-of-japan/Ancient-Chinese-Player.html" target="_blank" rel="noopener noreferrer" style="display: inline-block; padding: 12px 24px; background-color: #555; color: white; text-decoration: none; font-weight: bold; border-radius: 4px; border: 1px solid #333; font-size: 10pt;">
         ▶ 発音プレーヤーを開く (Webブラウザ)
     </a>
-    <p style="font-size: 9pt; color: #666; margin-top: 5px;">https://masahiromiyazaki.github.io/-ancient-history-of-japan/Ancient-Chinese-Player.html</p>
+    <p style="font-size: 9pt; color: #666; margin-top: 5px; margin-bottom: 2px;">https://masahiromiyazaki.github.io/-ancient-history-of-japan/Ancient-Chinese-Player.html</p>
+    <!-- 推奨環境の注記を追加 -->
+    <p style="font-size: 9pt; color: #c00; font-weight: bold; margin-top: 0;">
+        ※動作推奨：Windows 11 + Google Chrome<br>
+        <span style="font-weight: normal; color: #666; font-size: 8.5pt;">（音声合成エンジンの仕様に起因し、推奨環境以外では意図した音韻が正確に再現されない可能性がある）</span>
+    </p>
 </div>
 
-<div class="note" style="padding: 5mm; border-left: 4px solid #c00; background-color: #fff8f8;">
-    <h5 style="margin-top: 0; margin-bottom: 3mm; font-size: 11pt; font-weight: bold; color: #c00;">
-        【重要】ツールの仕様と技術的限界について
+<div class="note" style="padding: 5mm; border-left: 4px solid #999; background-color: #f5f5f5;">
+    <h5 style="margin-top: 0; margin-bottom: 3mm; font-size: 10pt; font-weight: bold; color: #555;">
+        【技術的制約に関する注記】
     </h5>
-    <p>
-        本ツールは、現代のWebブラウザに標準搭載されている「英語の音声合成エンジン（TTS）」を応用して、古代音のIPA（国際音声記号）を近似的に読み上げさせるシミュレーターである。そのため、本稿の厳密な音韻論的結論とは異なる、以下の技術的限界を含んでいることを予めご了承いただきたい。
-    </p>
-    <ul style="margin: 0; padding-left: 20px;">
-        <li style="margin-bottom: 3px;">
-            <strong>音節構造の再現限界：</strong> 英語TTSの仕様上、「閉鎖音節（詰まる音）」と「開放音節（伸びる音）」の対立など、本稿が重視する微細な音節構造の違いが、完全には再現されない場合がある。あくまで「音の雰囲気」を体感するためのツールである。
-        </li>
-        <li style="margin-bottom: 3px;">
-            <strong>「ザマイト」現象について：</strong> 「邪馬壹國」を再生した際、「ヤマト」ではなく「ザマイト」のように聞こえる場合がある。これは以下の技術的理由による。
-            <ul>
-                <li>「邪」(<span class="phonetic">*zja</span>) を英語読みの有声音 [z] で近似しているため、「ザ/ジャ」と発音される。</li>
-                <li>「壹」(<span class="phonetic">*ʔit</span>) の声門閉鎖音を再現できず、英語の "it" のように読むため、二重母音的に聞こえる場合がある。</li>
-            </ul>
-        </li>
-    </ul>
-    <p style="margin-bottom: 0; margin-top: 3px;">
-        これらはシミュレーション上の仕様であり、本稿が結論づける「ヤマト」という音韻学的結論と矛盾するものではない。
+    <p style="font-size: 9.5pt;">
+        本ツールは、現代のWebブラウザ標準の音声合成エンジン（英語TTS）を応用して、古代音のIPAを近似的に読み上げさせる簡易シミュレーターである。
+        そのため、<strong>シュワー（ə）の微妙な音質や、声門閉鎖音（ʔ）の再現には技術的な限界がある。</strong>
+        厳密な音価の評価については、本稿の本文および表中に示したIPA表記（Baxter-Sagart 2014準拠）を正とされたい。
     </p>
 </div>
 
