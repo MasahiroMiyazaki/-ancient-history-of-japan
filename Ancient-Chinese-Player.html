@@ -1,1105 +1,1101 @@
 <!DOCTYPE html>
 <html lang="ja" prefix="og: http://ogp.me/ns#">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N2X0B9FEPB"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-N2X0B9FEPB');
-    </script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N2X0B9FEPB"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-N2X0B9FEPB');
+</script>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- ファビコン (ブラウザタブ用アイコン) -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌏</text></svg>">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- SEO & Metadata -->
-    <title>魏志倭人伝・古代中国語発音プレーヤー | Ancient Japanese & Chinese Pronunciation Player</title>
-    <meta name="description" content="魏志倭人伝に登場する邪馬台国（邪馬壹国）、卑弥呼、官職名などの古代日本語および中国語（上古音・中古音）の再構音声を再生・比較できるWebツール。Baxter-Sagart体系などに基づく発音シミュレーション。">
-    <meta name="keywords" content="魏志倭人伝,邪馬台国,卑弥呼,古代中国語,上古音,中古音,発音,IPA,Baxter-Sagart,歴史言語学">
-    
-    <!-- URL設定 (GitHub Pagesに合わせて最適化) -->
-    <link rel="canonical" href="https://masahiromiyazaki.github.io/-ancient-history-of-japan/Ancient-Chinese-Player.html">
+<!-- ファビコン (ブラウザタブ用アイコン) -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌏</text></svg>">
 
-    <!-- Open Graph Protocol (SNS共有用) -->
-    <meta property="og:title" content="魏志倭人伝・古代発音プレーヤー">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://masahiromiyazaki.github.io/-ancient-history-of-japan/Ancient-Chinese-Player.html">
-    <meta property="og:image" content="https://masahiromiyazaki.github.io/-ancient-history-of-japan/og-image.png"> 
-    <meta property="og:description" content="邪馬台国や卑弥呼はどう発音されたのか？古代中国語（上古音・中古音）の再構音声をブラウザで再生できるツールです。">
-    <meta property="og:site_name" content="古代発音研究ラボ">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://masahiromiyazaki.github.io/-ancient-history-of-japan/og-image.png">
+<!-- SEO & Metadata -->
+<title>魏志倭人伝・古代中国語発音プレーヤー | Ancient Japanese & Chinese Pronunciation Player</title>
+<meta name="description" content="魏志倭人伝に登場する邪馬台国（邪馬壹国）、卑弥呼、官職名などの古代日本語および中国語（上古音・中古音）の再構音声を再生・比較できるWebツール。Baxter-Sagart体系などに基づく発音シミュレーション。">
+<meta name="keywords" content="魏志倭人伝,邪馬台国,卑弥呼,古代中国語,上古音,中古音,発音,IPA,Baxter-Sagart,歴史言語学">
 
-    <!-- 構造化データ (JSON-LD) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "魏志倭人伝・古代発音プレーヤー",
-      "description": "魏志倭人伝の固有名詞を古代中国語の再構音で再生するツール",
-      "url": "https://masahiromiyazaki.github.io/-ancient-history-of-japan/Ancient-Chinese-Player.html",
-      "image": "https://masahiromiyazaki.github.io/-ancient-history-of-japan/og-image.png",
-      "applicationCategory": "EducationalApplication",
-      "operatingSystem": "Browser",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "JPY"
-      },
-      "author": {
-        "@type": "Person",
-        "name": "Masahiro Miyazaki",
-        "url": "https://masahiromiyazaki.github.io/-ancient-history-of-japan/"
-      }
+<!-- URL設定 (GitHub Pagesに合わせて最適化) -->
+<link rel="canonical" href="https://masahiromiyazaki.github.io/-ancient-history-of-japan/Ancient-Chinese-Player.html">
+
+<!-- Open Graph Protocol (SNS共有用) -->
+<meta property="og:title" content="魏志倭人伝・古代発音プレーヤー">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://masahiromiyazaki.github.io/-ancient-history-of-japan/Ancient-Chinese-Player.html">
+<meta property="og:image" content="https://masahiromiyazaki.github.io/-ancient-history-of-japan/og-image.png"> 
+<meta property="og:description" content="邪馬台国や卑弥呼はどう発音されたのか？古代中国語（上古音・中古音）の再構音声をブラウザで再生できるツールです。">
+<meta property="og:site_name" content="古代発音研究ラボ">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://masahiromiyazaki.github.io/-ancient-history-of-japan/og-image.png">
+
+<!-- 構造化データ (JSON-LD) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "魏志倭人伝・古代発音プレーヤー",
+  "description": "魏志倭人伝の固有名詞を古代中国語の再構音で再生するツール",
+  "url": "https://masahiromiyazaki.github.io/-ancient-history-of-japan/Ancient-Chinese-Player.html",
+  "image": "https://masahiromiyazaki.github.io/-ancient-history-of-japan/og-image.png",
+  "applicationCategory": "EducationalApplication",
+  "operatingSystem": "Browser",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "JPY"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Masahiro Miyazaki",
+    "url": "https://masahiromiyazaki.github.io/-ancient-history-of-japan/"
+  }
+}
+</script>
+
+<style>
+    :root {
+        --primary: #4a90e2;
+        --primary-dark: #357abd;
+        --accent: #f5a623;
+        --danger: #e53e3e;
+        --seq-btn: #8e44ad;
+        --bg-grad-start: #f5f7fa;
+        --bg-grad-end: #c3cfe2;
+        --panel-bg: #ffffff;
+        --text-main: #333;
+        --text-sub: #666;
+        --border: #e1e4e8;
     }
-    </script>
 
-    <style>
-        :root {
-            --primary: #4a90e2;
-            --primary-dark: #357abd;
-            --accent: #f5a623;
-            --danger: #e53e3e;
-            --seq-btn: #8e44ad;
-            --bg-grad-start: #f5f7fa;
-            --bg-grad-end: #c3cfe2;
-            --panel-bg: #ffffff;
-            --text-main: #333;
-            --text-sub: #666;
-            --border: #e1e4e8;
-        }
+    * { box-sizing: border-box; }
+    
+    body {
+        font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, var(--bg-grad-start) 0%, var(--bg-grad-end) 100%);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: var(--text-main);
+    }
 
-        * { box-sizing: border-box; }
-        
-        body {
-            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(135deg, var(--bg-grad-start) 0%, var(--bg-grad-end) 100%);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: var(--text-main);
-        }
+    .visually-hidden {
+        position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+        overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+    }
 
-        .visually-hidden {
-            position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
-            overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
-        }
+    .container {
+        background: var(--panel-bg);
+        width: 95%;
+        max-width: 1100px;
+        height: 90vh;
+        max-height: 850px;
+        border-radius: 12px;
+        box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        margin-top: 20px;
+    }
+    
+    header {
+        padding: 1rem 1.5rem;
+        background: #fff;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-shrink: 0;
+    }
+    .header-titles h1 { margin: 0; font-size: 1.25rem; color: #2c3e50; font-weight: 600; }
+    .header-titles .subtitle { color: var(--text-sub); font-size: 0.75rem; margin-top: 4px; display: block; }
 
-        .container {
-            background: var(--panel-bg);
-            width: 95%;
-            max-width: 1100px;
-            height: 90vh;
-            max-height: 850px;
-            border-radius: 12px;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            margin-top: 20px;
-        }
-        
-        header {
-            padding: 1rem 1.5rem;
-            background: #fff;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-shrink: 0;
-        }
-        .header-titles h1 { margin: 0; font-size: 1.25rem; color: #2c3e50; font-weight: 600; }
-        .header-titles .subtitle { color: var(--text-sub); font-size: 0.75rem; margin-top: 4px; display: block; }
+    .main-content {
+        display: flex;
+        flex: 1;
+        overflow: hidden;
+    }
+    
+    .left-panel {
+        width: 320px;
+        background: #f8f9fa;
+        padding: 1.2rem;
+        border-right: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+        flex-shrink: 0;
+        overflow-y: auto;
+    }
 
-        .main-content {
-            display: flex;
-            flex: 1;
-            overflow: hidden;
-        }
-        
-        .left-panel {
-            width: 320px;
-            background: #f8f9fa;
-            padding: 1.2rem;
-            border-right: 1px solid var(--border);
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-            flex-shrink: 0;
-            overflow-y: auto;
-        }
+    .right-panel {
+        flex: 1;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
 
-        .right-panel {
-            flex: 1;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-        }
+    .section-heading {
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: #8898aa;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 0.5rem;
+        display: block;
+        margin-top: 0;
+    }
 
-        .section-heading {
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: #8898aa;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 0.5rem;
-            display: block;
-            margin-top: 0;
-        }
+    .period-selector { display: flex; flex-direction: column; gap: 8px; }
+    .period-card {
+        background: white; border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px;
+        cursor: pointer; transition: all 0.2s; position: relative;
+    }
+    .period-card:hover { border-color: var(--primary); transform: translateY(-1px); }
+    .period-card.active {
+        border-color: var(--primary); background: #ebf4ff; box-shadow: 0 2px 5px rgba(74, 144, 226, 0.2);
+    }
+    .period-card input { display: none; }
+    
+    .p-name { font-weight: 600; font-size: 0.9rem; color: #2c3e50; display: block;}
+    
+    .year-text {
+        color: var(--accent); font-size: 0.85em; font-weight: normal; margin-left: 6px;
+    }
 
-        .period-selector { display: flex; flex-direction: column; gap: 8px; }
-        .period-card {
-            background: white; border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px;
-            cursor: pointer; transition: all 0.2s; position: relative;
-        }
-        .period-card:hover { border-color: var(--primary); transform: translateY(-1px); }
-        .period-card.active {
-            border-color: var(--primary); background: #ebf4ff; box-shadow: 0 2px 5px rgba(74, 144, 226, 0.2);
-        }
-        .period-card input { display: none; }
-        
-        .p-name { font-weight: 600; font-size: 0.9rem; color: #2c3e50; display: block;}
-        
-        .year-text {
-            color: var(--accent); font-size: 0.85em; font-weight: normal; margin-left: 6px;
-        }
+    .p-desc { font-size: 0.7rem; color: var(--text-sub); margin-top: 2px; display: block;}
 
-        .p-desc { font-size: 0.7rem; color: var(--text-sub); margin-top: 2px; display: block;}
+    .check-icon {
+        position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
+        color: var(--primary); opacity: 0; transition: opacity 0.2s;
+    }
+    .period-card.active .check-icon { opacity: 1; }
 
-        .check-icon {
-            position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
-            color: var(--primary); opacity: 0; transition: opacity 0.2s;
-        }
-        .period-card.active .check-icon { opacity: 1; }
+    .reference-box {
+        background: #eef6fc; border: 1px solid #d0e3f5; padding: 12px; border-radius: 8px;
+        font-size: 0.8rem; color: #2c5282; line-height: 1.5;
+    }
+    .reference-box a {
+        color: #3182ce; font-weight: bold; text-decoration: none; display: block; margin-top: 4px;
+    }
 
-        .reference-box {
-            background: #eef6fc; border: 1px solid #d0e3f5; padding: 12px; border-radius: 8px;
-            font-size: 0.8rem; color: #2c5282; line-height: 1.5;
-        }
-        .reference-box a {
-            color: #3182ce; font-weight: bold; text-decoration: none; display: block; margin-top: 4px;
-        }
+    .info-box {
+        padding: 0.8rem; background: #fff8e1; border: 1px solid #ffe082;
+        border-radius: 6px; font-size: 0.75rem; color: #856404; line-height: 1.5;
+    }
+    .info-box h4 { margin: 0 0 6px 0; font-size: 0.8rem; }
+    .info-box ul { margin: 0; padding-left: 1.2rem; }
+    .info-box li { margin-bottom: 4px; }
 
-        .info-box {
-            padding: 0.8rem; background: #fff8e1; border: 1px solid #ffe082;
-            border-radius: 6px; font-size: 0.75rem; color: #856404; line-height: 1.5;
-        }
-        .info-box h4 { margin: 0 0 6px 0; font-size: 0.8rem; }
-        .info-box ul { margin: 0; padding-left: 1.2rem; }
-        .info-box li { margin-bottom: 4px; }
+    .audio-controls {
+        background: white; padding: 12px; border-radius: 8px; border: 1px solid var(--border);
+    }
+    .slider-group { margin-bottom: 12px; }
+    .slider-group:last-child { margin-bottom: 0; }
+    .slider-label {
+        display: flex; justify-content: space-between; font-size: 0.75rem; margin-bottom: 4px; color: var(--text-sub);
+    }
+    input[type=range] {
+        width: 100%; height: 4px; background: #ddd; border-radius: 2px; outline: none; -webkit-appearance: none;
+    }
+    input[type=range]::-webkit-slider-thumb {
+        -webkit-appearance: none; width: 14px; height: 14px; background: var(--primary);
+        border-radius: 50%; cursor: pointer; transition: background 0.2s;
+    }
+    select.voice-select {
+        width: 100%; padding: 6px; border: 1px solid #ddd; border-radius: 4px; font-size: 0.8rem; margin-top: 4px;
+        background: #fdfdfd;
+    }
 
-        .audio-controls {
-            background: white; padding: 12px; border-radius: 8px; border: 1px solid var(--border);
-        }
-        .slider-group { margin-bottom: 12px; }
-        .slider-group:last-child { margin-bottom: 0; }
-        .slider-label {
-            display: flex; justify-content: space-between; font-size: 0.75rem; margin-bottom: 4px; color: var(--text-sub);
-        }
-        input[type=range] {
-            width: 100%; height: 4px; background: #ddd; border-radius: 2px; outline: none; -webkit-appearance: none;
-        }
-        input[type=range]::-webkit-slider-thumb {
-            -webkit-appearance: none; width: 14px; height: 14px; background: var(--primary);
-            border-radius: 50%; cursor: pointer; transition: background 0.2s;
-        }
-        select.voice-select {
-            width: 100%; padding: 6px; border: 1px solid #ddd; border-radius: 4px; font-size: 0.8rem; margin-top: 4px;
-            background: #fdfdfd;
-        }
+    .player-area {
+        padding: 1.2rem; background: white; border-bottom: 1px solid var(--border); flex-shrink: 0;
+        display: flex; flex-direction: column; gap: 10px;
+    }
+    
+    .badge-container {
+        display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 0.5rem;
+    }
+    .selected-word-badge, .selected-period-badge {
+        font-size: 0.75rem; padding: 2px 8px; border-radius: 4px; font-weight: 600; border: 1px solid; display: none;
+    }
+    .selected-word-badge { color: var(--primary-dark); background: #eef6fc; border-color: #d0e3f5; }
+    .selected-period-badge { color: #d97706; background: #fffaf0; border-color: #fbd38d; }
 
-        .player-area {
-            padding: 1.2rem; background: white; border-bottom: 1px solid var(--border); flex-shrink: 0;
-            display: flex; flex-direction: column; gap: 10px;
-        }
-        
-        .badge-container {
-            display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 0.5rem;
-        }
-        .selected-word-badge, .selected-period-badge {
-            font-size: 0.75rem; padding: 2px 8px; border-radius: 4px; font-weight: 600; border: 1px solid; display: none;
-        }
-        .selected-word-badge { color: var(--primary-dark); background: #eef6fc; border-color: #d0e3f5; }
-        .selected-period-badge { color: #d97706; background: #fffaf0; border-color: #fbd38d; }
+    .sm-btn {
+        background: transparent; border: 1px solid #ccc; border-radius: 4px; font-size: 0.75rem;
+        cursor: pointer; padding: 3px 10px; color: #555; display: flex; align-items: center; gap: 5px;
+        transition: all 0.2s; text-decoration: none;
+    }
+    .sm-btn:hover { background: #f0f0f0; color: #333; }
+    .copy-link-btn.copied { border-color: var(--primary); color: var(--primary); background: #f0f8ff; }
+    .x-share-btn:hover { background: #000; color: #fff; border-color: #000; } 
 
-        .sm-btn {
-            background: transparent; border: 1px solid #ccc; border-radius: 4px; font-size: 0.75rem;
-            cursor: pointer; padding: 3px 10px; color: #555; display: flex; align-items: center; gap: 5px;
-            transition: all 0.2s; text-decoration: none;
-        }
-        .sm-btn:hover { background: #f0f0f0; color: #333; }
-        .copy-link-btn.copied { border-color: var(--primary); color: var(--primary); background: #f0f8ff; }
-        .x-share-btn:hover { background: #000; color: #fff; border-color: #000; } 
+    textarea {
+        width: 100%; min-height: 70px; height: 70px; padding: 10px; font-size: 1.1rem;
+        border: 1px solid var(--border); border-radius: 8px; resize: none;
+        font-family: 'Segoe UI', sans-serif; background: #fdfdfd; transition: border-color 0.2s;
+    }
+    textarea:focus { outline: none; border-color: var(--primary); background: white; }
 
-        textarea {
-            width: 100%; min-height: 70px; height: 70px; padding: 10px; font-size: 1.1rem;
-            border: 1px solid var(--border); border-radius: 8px; resize: none;
-            font-family: 'Segoe UI', sans-serif; background: #fdfdfd; transition: border-color 0.2s;
-        }
-        textarea:focus { outline: none; border-color: var(--primary); background: white; }
+    .controls-row { display: flex; align-items: center; gap: 10px; }
+    .status-badge {
+        flex: 1; display: flex; align-items: center; background: #f0f4ff; color: var(--primary-dark);
+        padding: 0 12px; height: 40px; border-radius: 6px; font-size: 0.8rem; font-weight: 600;
+        overflow: hidden; white-space: nowrap;
+    }
+    .sound-bars {
+        display: flex; align-items: flex-end; gap: 3px; height: 16px; margin-left: auto;
+    }
+    .bar { width: 4px; height: 3px; background-color: #cbd5e0; border-radius: 2px; }
+    .playing .bar {
+        background-color: var(--primary); animation: bounce 0.5s infinite ease-in-out;
+    }
+    .playing .bar:nth-child(1) { animation-delay: 0.0s; }
+    .playing .bar:nth-child(2) { animation-delay: 0.1s; }
+    .playing .bar:nth-child(3) { animation-delay: 0.3s; }
+    .playing .bar:nth-child(4) { animation-delay: 0.2s; }
+    .playing .bar:nth-child(5) { animation-delay: 0.4s; }
+    @keyframes bounce { 0%, 100% { height: 3px; } 50% { height: 16px; } }
 
-        .controls-row { display: flex; align-items: center; gap: 10px; }
-        .status-badge {
-            flex: 1; display: flex; align-items: center; background: #f0f4ff; color: var(--primary-dark);
-            padding: 0 12px; height: 40px; border-radius: 6px; font-size: 0.8rem; font-weight: 600;
-            overflow: hidden; white-space: nowrap;
-        }
-        .sound-bars {
-            display: flex; align-items: flex-end; gap: 3px; height: 16px; margin-left: auto;
-        }
-        .bar { width: 4px; height: 3px; background-color: #cbd5e0; border-radius: 2px; }
-        .playing .bar {
-            background-color: var(--primary); animation: bounce 0.5s infinite ease-in-out;
-        }
-        .playing .bar:nth-child(1) { animation-delay: 0.0s; }
-        .playing .bar:nth-child(2) { animation-delay: 0.1s; }
-        .playing .bar:nth-child(3) { animation-delay: 0.3s; }
-        .playing .bar:nth-child(4) { animation-delay: 0.2s; }
-        .playing .bar:nth-child(5) { animation-delay: 0.4s; }
-        @keyframes bounce { 0%, 100% { height: 3px; } 50% { height: 16px; } }
+    .btn-group { display: flex; gap: 8px; }
+    .btn {
+        border: none; padding: 0 16px; height: 40px; border-radius: 6px; font-weight: 500;
+        cursor: pointer; font-size: 0.85rem; transition: all 0.2s;
+        display: flex; align-items: center; justify-content: center;
+    }
+    .btn-play { background: var(--primary); color: white; }
+    .btn-play:hover { background: var(--primary-dark); }
+    .btn-stop { background: #e2e8f0; color: #4a5568; }
+    .btn-stop:hover { background: #cbd5e0; }
+    .btn-seq { background: #f3e5f5; color: var(--seq-btn); border: 1px solid #e1bee7; }
+    .btn-seq:hover { background: #e1bee7; }
+    .btn-seq.active { background: var(--seq-btn); color: white; border-color: var(--seq-btn); }
 
-        .btn-group { display: flex; gap: 8px; }
-        .btn {
-            border: none; padding: 0 16px; height: 40px; border-radius: 6px; font-weight: 500;
-            cursor: pointer; font-size: 0.85rem; transition: all 0.2s;
-            display: flex; align-items: center; justify-content: center;
-        }
-        .btn-play { background: var(--primary); color: white; }
-        .btn-play:hover { background: var(--primary-dark); }
-        .btn-stop { background: #e2e8f0; color: #4a5568; }
-        .btn-stop:hover { background: #cbd5e0; }
-        .btn-seq { background: #f3e5f5; color: var(--seq-btn); border: 1px solid #e1bee7; }
-        .btn-seq:hover { background: #e1bee7; }
-        .btn-seq.active { background: var(--seq-btn); color: white; border-color: var(--seq-btn); }
+    .preview-line {
+        font-size: 0.8rem; color: var(--text-sub); height: 1.2em; 
+        white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
 
-        .preview-line {
-            font-size: 0.8rem; color: var(--text-sub); height: 1.2em; 
-            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-        }
+    .list-area {
+        flex: 1; background: #f8f9fa; overflow-y: auto; padding: 0; position: relative;
+    }
+    
+    .search-container {
+        position: sticky; top: 0; background: #f8f9fa; z-index: 20; padding: 10px 1rem 0 1rem;
+    }
+    .search-box {
+        width: 100%; padding: 10px 12px; border: 1px solid #e1e4e8; border-radius: 6px;
+        font-size: 0.9rem; outline: none; transition: border 0.2s;
+    }
+    .search-box:focus { border-color: var(--primary); background: white; }
 
-        .list-area {
-            flex: 1; background: #f8f9fa; overflow-y: auto; padding: 0; position: relative;
-        }
-        
-        .search-container {
-            position: sticky; top: 0; background: #f8f9fa; z-index: 20; padding: 10px 1rem 0 1rem;
-        }
-        .search-box {
-            width: 100%; padding: 10px 12px; border: 1px solid #e1e4e8; border-radius: 6px;
-            font-size: 0.9rem; outline: none; transition: border 0.2s;
-        }
-        .search-box:focus { border-color: var(--primary); background: white; }
+    .list-container { padding: 1rem; padding-bottom: 2rem; }
+    .category-group { margin-bottom: 1.5rem; }
+    
+    .category-header {
+        position: sticky; top: 0; background: rgba(248, 249, 250, 0.95); backdrop-filter: blur(5px);
+        z-index: 10; padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.05);
+        margin-bottom: 10px; font-size: 0.85rem; font-weight: 600; color: #4a5568;
+        display: flex; align-items: center; margin-top: 0;
+    }
+    .category-header::before {
+        content: ''; display: block; width: 4px; height: 1em; background: var(--accent);
+        margin-right: 8px; border-radius: 2px;
+    }
+    .item-grid {
+        display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 10px;
+    }
+    .word-card {
+        background: white; border: 1px solid #e1e4e8; border-radius: 6px; padding: 10px 12px;
+        cursor: pointer; transition: all 0.15s; display: flex; flex-direction: column;
+    }
+    .word-card:hover {
+        border-color: var(--primary); box-shadow: 0 4px 6px rgba(0,0,0,0.05); transform: translateY(-2px);
+    }
+    .wc-kanji { font-weight: 500; color: #2d3748; font-size: 1rem; margin-bottom: 2px; }
+    .wc-ja { font-size: 0.7rem; color: #718096; margin-bottom: 6px; border-bottom: 1px dashed #eee; padding-bottom: 3px; }
+    .wc-pron { font-size: 0.75rem; color: #555; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-family: 'Segoe UI', monospace; }
+    .text-variant { color: var(--danger); }
+    .wc-note { font-size: 0.65rem; color: var(--danger); margin-top: 4px; }
 
-        .list-container { padding: 1rem; padding-bottom: 2rem; }
-        .category-group { margin-bottom: 1.5rem; }
-        
-        .category-header {
-            position: sticky; top: 0; background: rgba(248, 249, 250, 0.95); backdrop-filter: blur(5px);
-            z-index: 10; padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.05);
-            margin-bottom: 10px; font-size: 0.85rem; font-weight: 600; color: #4a5568;
-            display: flex; align-items: center; margin-top: 0;
-        }
-        .category-header::before {
-            content: ''; display: block; width: 4px; height: 1em; background: var(--accent);
-            margin-right: 8px; border-radius: 2px;
-        }
-        .item-grid {
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 10px;
-        }
-        .word-card {
-            background: white; border: 1px solid #e1e4e8; border-radius: 6px; padding: 10px 12px;
-            cursor: pointer; transition: all 0.15s; display: flex; flex-direction: column;
-        }
-        .word-card:hover {
-            border-color: var(--primary); box-shadow: 0 4px 6px rgba(0,0,0,0.05); transform: translateY(-2px);
-        }
-        .wc-kanji { font-weight: 500; color: #2d3748; font-size: 1rem; margin-bottom: 2px; }
-        .wc-ja { font-size: 0.7rem; color: #718096; margin-bottom: 6px; border-bottom: 1px dashed #eee; padding-bottom: 3px; }
-        .wc-pron { font-size: 0.75rem; color: #555; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-family: 'Segoe UI', monospace; }
-        .text-variant { color: var(--danger); }
-        .wc-note { font-size: 0.65rem; color: var(--danger); margin-top: 4px; }
+    .seo-content {
+        width: 95%; max-width: 1100px; margin: 2rem auto;
+        background: rgba(255,255,255,0.8); padding: 1.5rem; border-radius: 12px;
+        color: #444; font-size: 0.9rem; line-height: 1.6;
+    }
+    .seo-content h2 { font-size: 1.2rem; color: #2c3e50; border-bottom: 2px solid #ddd; padding-bottom: 0.5rem; margin-bottom: 1rem; }
+    .seo-content p { margin-bottom: 1rem; }
 
-        .seo-content {
-            width: 95%; max-width: 1100px; margin: 2rem auto;
-            background: rgba(255,255,255,0.8); padding: 1.5rem; border-radius: 12px;
-            color: #444; font-size: 0.9rem; line-height: 1.6;
-        }
-        .seo-content h2 { font-size: 1.2rem; color: #2c3e50; border-bottom: 2px solid #ddd; padding-bottom: 0.5rem; margin-bottom: 1rem; }
-        .seo-content p { margin-bottom: 1rem; }
-
-        @media (max-width: 768px) {
-            .container { height: auto; max-height: none; width: 100%; border-radius: 0; margin-top: 0; }
-            .main-content { flex-direction: column; }
-            .left-panel { width: 100%; border-right: none; border-bottom: 1px solid var(--border); padding: 1rem;}
-            .item-grid { grid-template-columns: repeat(2, 1fr); }
-            header { padding: 1rem; }
-            .period-selector { flex-direction: row; overflow-x: auto; padding-bottom: 5px; }
-            .period-card { min-width: 200px; flex-shrink: 0; }
-        }
-    </style>
+    @media (max-width: 768px) {
+        .container { height: auto; max-height: none; width: 100%; border-radius: 0; margin-top: 0; }
+        .main-content { flex-direction: column; }
+        .left-panel { width: 100%; border-right: none; border-bottom: 1px solid var(--border); padding: 1rem;}
+        .item-grid { grid-template-columns: repeat(2, 1fr); }
+        header { padding: 1rem; }
+        .period-selector { flex-direction: row; overflow-x: auto; padding-bottom: 5px; }
+        .period-card { min-width: 200px; flex-shrink: 0; }
+    }
+</style>
 </head>
 <body>
-
 <div class="container">
-    <header>
-        <div class="header-titles">
-            <h1>🌏 魏志倭人伝・古代発音プレーヤー</h1>
-            <span class="subtitle">Wei zhi Wajin den: Ancient Pronunciation Player</span>
-        </div>
-    </header>
-
-    <main class="main-content">
-        <nav class="left-panel" aria-label="設定と時代選択">
-            
-            <section>
-                <h2 class="section-heading">時代・再構体系の選択</h2>
-                <div class="period-selector">
-                    <label class="period-card" id="card-old" onclick="selectPeriod(this, 'old')">
-                        <input type="radio" name="period" value="old">
-                        <span class="p-name">晩期上古音 <span class="year-text">~200 BCE</span></span>
-                        <span class="p-desc">Baxter-Sagart体系</span>
-                        <span class="check-icon">✔</span>
-                    </label>
-
-                    <label class="period-card active" id="card-third" onclick="selectPeriod(this, 'third')">
-                        <input type="radio" name="period" value="third" checked>
-                        <span class="p-name">3世紀推定音 <span class="year-text">~280 CE</span></span>
-                        <span class="p-desc">推定モデル</span>
-                        <span class="check-icon">✔</span>
-                    </label>
-
-                    <label class="period-card" id="card-mid" onclick="selectPeriod(this, 'mid')">
-                        <input type="radio" name="period" value="mid">
-                        <span class="p-name">中古音 <span class="year-text">~600 CE</span></span>
-                        <span class="p-desc">切韻体系</span>
-                        <span class="check-icon">✔</span>
-                    </label>
-                </div>
-            </section>
-
-            <div class="reference-box">
-                📚 3世紀推定音の詳細はこちら:
-                <a href="https://masahiromiyazaki.github.io/-ancient-history-of-japan/japanese-phonetics-3rd-century.html" target="_blank" rel="noopener noreferrer">資料ページへ移動 ↗</a>
-            </div>
-
-            <div class="info-box">
-                <h4>⚠️ ご利用上の注意</h4>
-                <ul>
-                    <li><strong>推奨環境:</strong> Windows 11 + Chrome (英語音声エンジン)。</li>
-                    <li><strong>赤字の語句</strong>は後世の史書や訂正説に基づく表記です。</li>
-                    <li>「おまけ」を選択すると、時代ボタンがラテン語用に切り替わります。</li>
-                </ul>
-            </div>
-
-            <section style="margin-top:auto;">
-                <h2 class="section-heading">再生設定</h2>
-                <div class="audio-controls">
-                    <div class="slider-group">
-                        <div class="slider-label"><span>声の種類 (英語推奨)</span></div>
-                        <select id="voiceSelect" class="voice-select" aria-label="音声合成の声を選択">
-                            <option value="">自動選択</option>
-                        </select>
-                    </div>
-                    <div class="slider-group">
-                        <div class="slider-label"><span>速度</span><span id="rateValue">1.0</span></div>
-                        <input type="range" id="rate" min="0.1" max="3" step="0.1" value="1.0" aria-label="再生速度">
-                    </div>
-                    <div class="slider-group">
-                        <div class="slider-label"><span>ピッチ</span><span id="pitchValue">1.0</span></div>
-                        <input type="range" id="pitch" min="0" max="2" step="0.1" value="1.0" aria-label="声の高さ">
-                    </div>
-                    <div class="slider-group">
-                        <div class="slider-label"><span>音量</span><span id="volumeValue">1.0</span></div>
-                        <input type="range" id="volume" min="0" max="1" step="0.1" value="1.0" aria-label="音量">
-                    </div>
-                </div>
-            </section>
-        </nav>
-
-        <div class="right-panel">
-            
-            <section class="player-area" aria-label="発音プレーヤー">
-                <h2 class="visually-hidden">発音再生エリア</h2>
-                <div class="badge-container">
-                    <span class="section-heading" style="margin: 0; margin-right: 5px;">テキスト入力 (IPA記号)</span>
-                    <span id="currentWordDisplay" class="selected-word-badge"></span>
-                    <span id="currentPeriodDisplay" class="selected-period-badge"></span>
-                    
-                    <button id="copyUrlBtn" class="sm-btn copy-link-btn" title="現在のURLをクリップボードにコピー">
-                        🔗 コピー
-                    </button>
-                    <button id="shareXBtn" class="sm-btn x-share-btn" title="X(Twitter)で共有">
-                        𝕏 で共有
-                    </button>
-                </div>
-                
-                <div class="input-wrapper">
-                    <textarea id="textInput" placeholder="下の一覧から語句を選択するか、IPAを入力してください..." aria-label="発音記号(IPA)入力欄"></textarea>
-                </div>
-                
-                <div id="conversionPreview" class="preview-line" aria-live="polite"></div>
-
-                <div class="controls-row">
-                    <div id="playStatus" class="status-badge" role="status">
-                        <span id="statusLabel" style="margin-right: auto;">待機中</span>
-                        <div class="sound-bars">
-                            <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
-                        </div>
-                    </div>
-                    <div class="btn-group">
-                        <button class="btn btn-seq" id="historyBtn" title="上古音→3世紀→中古音の順に連続再生">🔁 変遷再生</button>
-                        <button class="btn btn-stop" id="stopBtn">停止</button>
-                        <button class="btn btn-play" id="speakBtn">▶ 再生</button>
-                    </div>
-                </div>
-            </section>
-
-            <section class="list-area" aria-label="語句一覧">
-                <h2 class="visually-hidden">収録語句リスト</h2>
-                <div class="search-container">
-                    <input type="text" id="searchInput" class="search-box" placeholder="🔍 語句を検索 (例: 卑弥呼, 奴國...)" aria-label="語句検索">
-                </div>
-                
-                <div class="list-container" id="examplesList">
-                    <!-- Javascript will populate this -->
-                </div>
-            </section>
-        </div>
-    </main>
+<header>
+<div class="header-titles">
+<h1>🌏 魏志倭人伝・古代発音プレーヤー</h1>
+<span class="subtitle">Wei zhi Wajin den: Ancient Pronunciation Player</span>
 </div>
+</header>
 
+<main class="main-content">
+    <nav class="left-panel" aria-label="設定と時代選択">
+        
+        <section>
+            <h2 class="section-heading">時代・再構体系の選択</h2>
+            <div class="period-selector">
+                <label class="period-card" id="card-old" onclick="selectPeriod(this, 'old')">
+                    <input type="radio" name="period" value="old">
+                    <span class="p-name">晩期上古音 <span class="year-text">~200 BCE</span></span>
+                    <span class="p-desc">Baxter-Sagart体系</span>
+                    <span class="check-icon">✔</span>
+                </label>
+
+                <label class="period-card active" id="card-third" onclick="selectPeriod(this, 'third')">
+                    <input type="radio" name="period" value="third" checked>
+                    <span class="p-name">3世紀推定音 <span class="year-text">~280 CE</span></span>
+                    <span class="p-desc">推定モデル</span>
+                    <span class="check-icon">✔</span>
+                </label>
+
+                <label class="period-card" id="card-mid" onclick="selectPeriod(this, 'mid')">
+                    <input type="radio" name="period" value="mid">
+                    <span class="p-name">中古音 <span class="year-text">~600 CE</span></span>
+                    <span class="p-desc">切韻体系</span>
+                    <span class="check-icon">✔</span>
+                </label>
+            </div>
+        </section>
+
+        <div class="reference-box">
+            📚 3世紀推定音の詳細はこちら:
+            <a href="https://masahiromiyazaki.github.io/-ancient-history-of-japan/japanese-phonetics-3rd-century.html" target="_blank" rel="noopener noreferrer">資料ページへ移動 ↗</a>
+        </div>
+
+        <div class="info-box">
+            <h4>⚠️ ご利用上の注意</h4>
+            <ul>
+                <li><strong>推奨環境:</strong> Windows 11 + Chrome (英語音声エンジン)。</li>
+                <li><strong>赤字の語句</strong>は後世の史書や訂正説に基づく表記です。</li>
+                <li>「おまけ」を選択すると、時代ボタンがラテン語用に切り替わります。</li>
+            </ul>
+        </div>
+
+        <section style="margin-top:auto;">
+            <h2 class="section-heading">再生設定</h2>
+            <div class="audio-controls">
+                <div class="slider-group">
+                    <div class="slider-label"><span>声の種類 (英語推奨)</span></div>
+                    <select id="voiceSelect" class="voice-select" aria-label="音声合成の声を選択">
+                        <option value="">自動選択</option>
+                    </select>
+                </div>
+                <div class="slider-group">
+                    <div class="slider-label"><span>速度</span><span id="rateValue">1.0</span></div>
+                    <input type="range" id="rate" min="0.1" max="3" step="0.1" value="1.0" aria-label="再生速度">
+                </div>
+                <div class="slider-group">
+                    <div class="slider-label"><span>ピッチ</span><span id="pitchValue">1.0</span></div>
+                    <input type="range" id="pitch" min="0" max="2" step="0.1" value="1.0" aria-label="声の高さ">
+                </div>
+                <div class="slider-group">
+                    <div class="slider-label"><span>音量</span><span id="volumeValue">1.0</span></div>
+                    <input type="range" id="volume" min="0" max="1" step="0.1" value="1.0" aria-label="音量">
+                </div>
+            </div>
+        </section>
+    </nav>
+
+    <div class="right-panel">
+        
+        <section class="player-area" aria-label="発音プレーヤー">
+            <h2 class="visually-hidden">発音再生エリア</h2>
+            <div class="badge-container">
+                <span class="section-heading" style="margin: 0; margin-right: 5px;">テキスト入力 (IPA記号)</span>
+                <span id="currentWordDisplay" class="selected-word-badge"></span>
+                <span id="currentPeriodDisplay" class="selected-period-badge"></span>
+                
+                <button id="copyUrlBtn" class="sm-btn copy-link-btn" title="現在のURLをクリップボードにコピー">
+                    🔗 コピー
+                </button>
+                <button id="shareXBtn" class="sm-btn x-share-btn" title="X(Twitter)で共有">
+                    𝕏 で共有
+                </button>
+            </div>
+            
+            <div class="input-wrapper">
+                <textarea id="textInput" placeholder="下の一覧から語句を選択するか、IPAを入力してください..." aria-label="発音記号(IPA)入力欄"></textarea>
+            </div>
+            
+            <div id="conversionPreview" class="preview-line" aria-live="polite"></div>
+
+            <div class="controls-row">
+                <div id="playStatus" class="status-badge" role="status">
+                    <span id="statusLabel" style="margin-right: auto;">待機中</span>
+                    <div class="sound-bars">
+                        <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+                    </div>
+                </div>
+                <div class="btn-group">
+                    <button class="btn btn-seq" id="historyBtn" title="上古音→3世紀→中古音の順に連続再生">🔁 変遷再生</button>
+                    <button class="btn btn-stop" id="stopBtn">停止</button>
+                    <button class="btn btn-play" id="speakBtn">▶ 再生</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="list-area" aria-label="語句一覧">
+            <h2 class="visually-hidden">収録語句リスト</h2>
+            <div class="search-container">
+                <input type="text" id="searchInput" class="search-box" placeholder="🔍 語句を検索 (例: 卑弥呼, 奴國...)" aria-label="語句検索">
+            </div>
+            
+            <div class="list-container" id="examplesList">
+                <!-- Javascript will populate this -->
+            </div>
+        </section>
+    </div>
+</main>
+</div>
 <article class="seo-content">
-    <h2>このツールについて</h2>
-    <p>
-        「魏志倭人伝・古代発音プレーヤー」は、3世紀の中国の歴史書『魏志倭人伝』に登場する日本の地名（邪馬台国、伊都国など）や人名（卑弥呼、難升米など）が、当時の中国でどのように発音されていたかをシミュレーションできるWebツールです。
-    </p>
-    <p>
-        Baxter-Sagart体系に基づく「上古音」、3世紀当時の推定音、そして後の時代の「中古音」の3つの体系を切り替えて聴き比べることができます。現代の日本語読みとは異なる、古代の響きを体験してください。
-    </p>
-    <h3>主な機能</h3>
-    <ul>
-        <li><strong>3つの時代区分:</strong> 紀元前の上古音、邪馬台国時代の3世紀音、隋唐時代の中古音を比較可能。</li>
-        <li><strong>IPA再生:</strong> 国際音声記号(IPA)を入力して任意の古代音声を合成可能。</li>
-        <li><strong>変遷再生:</strong> ひとつの単語が時代とともにどう変化したかを連続再生。</li>
-    </ul>
+<h2>このツールについて</h2>
+<p>
+「魏志倭人伝・古代発音プレーヤー」は、3世紀の中国の歴史書『魏志倭人伝』に登場する日本の地名（邪馬台国、伊都国など）や人名（卑弥呼、難升米など）が、当時の中国でどのように発音されていたかをシミュレーションできるWebツールです。
+</p>
+<p>
+Baxter-Sagart体系に基づく「上古音」、3世紀当時の推定音、そして後の時代の「中古音」の3つの体系を切り替えて聴き比べることができます。現代の日本語読みとは異なる、古代の響きを体験してください。
+</p>
+<h3>主な機能</h3>
+<ul>
+<li><strong>3つの時代区分:</strong> 紀元前の上古音、邪馬台国時代の3世紀音、隋唐時代の中古音を比較可能。</li>
+<li><strong>IPA再生:</strong> 国際音声記号(IPA)を入力して任意の古代音声を合成可能。</li>
+<li><strong>変遷再生:</strong> ひとつの単語が時代とともにどう変化したかを連続再生。</li>
+</ul>
 </article>
-
 <script>
 // --- Data & Config ---
 var synth = window.speechSynthesis;
 var voices = [];
 var currentAncientPeriod = 'third';
-var selectedWordIndex = null; 
-var isHistoryPlaying = false; 
+var selectedWordIndex = null;
+var isHistoryPlaying = false;
 
 // ラベル管理
 var defaultLabels = {
-    old: { name: '晩期上古音', year: '~200 BCE', desc: 'Baxter-Sagart体系' },
-    third: { name: '3世紀推定音', year: '~280 CE', desc: '推定モデル' },
-    mid: { name: '中古音', year: '~600 CE', desc: '切韻体系' }
+old: { name: '晩期上古音', year: '~200 BCE', desc: 'Baxter-Sagart体系' },
+third: { name: '3世紀推定音', year: '~280 CE', desc: '推定モデル' },
+mid: { name: '中古音', year: '~600 CE', desc: '切韻体系' }
 };
 
 var periodNames = {
-    'old': defaultLabels.old.name,
-    'third': defaultLabels.third.name,
-    'mid': defaultLabels.mid.name
+'old': defaultLabels.old.name,
+'third': defaultLabels.third.name,
+'mid': defaultLabels.mid.name
 };
 
-var periodOrder = ['old', 'third', 'mid']; 
+var periodOrder = ['old', 'third', 'mid'];
 
 var ancientData = [
-    // 主要国名
-    { type: '主要国名', k: '對海國', ja: 'たいかいこく (対馬)', old: '*tˤəj-s-*m̥ˤəʔ', third: '*tuj-mɔʔ', mid: 'twojH-hmojX' },
-    { type: '主要国名', k: '一大國', ja: 'いちだいこく (壱岐)', old: '*ʔit-*lˤat-s', third: '*ʔit-dat', mid: "'jit-dajH" },
-    { type: '主要国名', k: '末盧國', ja: 'まつらこく', old: '*mˤat-*ra', third: '*mat-ra', mid: 'mwat-lu' },
-    { type: '主要国名', k: '伊都國', ja: 'いとこく', old: '*ʔij-*tˤa', third: '*ʔij-tɔ', mid: "'jij-tuo" },
-    { type: '主要国名', k: '奴國', ja: 'なこく', old: '*nˤa', third: '*nɔ', mid: 'nu' },
-    { type: '主要国名', k: '不彌國', ja: 'ふみこく', old: '*pə-*mij', third: '*pə-mij', mid: 'pjuw-mjie' },
-    { type: '主要国名', k: '投馬國', ja: 'とうまこく', old: '*C.do-*mˤraʔ', third: '*do-maʔ', mid: 'duw-mhaeX' },
-    { type: '主要国名', k: '邪馬壹國', ja: 'やまいちこく', old: '*s-la-*mˤraʔ-*ʔit', third: '*zja-maʔ-it', mid: "zjia-mhaeX-'jit" },
-    { type: '主要国名', k: '邪馬臺國', ja: 'やまたいこく', old: '*s-la-*mˤraʔ-*lˤə', third: '*zja-maʔ-lˤə', mid: 'zjia-mhaeX-doj', highlight: true, note: '※魏志原文は「壹」' },
-    { type: '主要国名', k: '狗奴國', ja: 'くなこく', old: '*kˤoʔ-*nˤa', third: '*kɔʔ-nɔ', mid: 'kuwX-nu' },
-    
-    // 傍国
-    { type: '傍国', k: '斯馬國', ja: 'しまこく', old: '*sə-*mˤraʔ', third: '*sə-maʔ', mid: 'sje-mhaeX' },
-    { type: '傍国', k: '已百支國', ja: 'いほきこく', old: '*ɢ(r)əʔ-*pˤrak-*kje', third: '*jiʔ-prak-kje', mid: 'yiX-paek-tsye' },
-    { type: '傍国', k: '伊邪國', ja: 'いやこく', old: '*ʔij-*s-la', third: '*ʔij-zja', mid: "'jij-zjia" },
-    { type: '傍国', k: '都支國', ja: 'ときこく', old: '*tˤa-*kje', third: '*tɔ-kje', mid: 'tuo-tsye' },
-    { type: '傍国', k: '彌奴國', ja: 'みなこく', old: '*mij-*nˤa', third: '*mij-nɔ', mid: 'mjie-nu' },
-    { type: '傍国', k: '好古都國', ja: 'こうことこく', old: '*qʰˤuʔ-*kˤaʔ-*tˤa', third: '*xoʔ-kɔʔ-tɔ', mid: 'huwX-kuX-tuo' },
-    { type: '傍国', k: '不呼國', ja: 'ふここく', old: '*pə-*qʰˤa', third: '*pə-qɔ', mid: 'pjuw-hu' },
-    { type: '傍国', k: '姐奴國', ja: 'しゃなこく', old: '*tsajʔ-*nˤa', third: '*tsjaʔ-nɔ', mid: 'tsjoX-nu' },
-    { type: '傍国', k: '對蘇國', ja: 'ついそこく', old: '*tˤəj-s-*sˤa', third: '*tuj-sɔ', mid: 'twojH-su' },
-    { type: '傍国', k: '蘇奴國', ja: 'そなこく', old: '*sˤa-*nˤa', third: '*sɔ-nɔ', mid: 'su-nu' },
-    { type: '傍国', k: '呼邑國', ja: 'こゆうこく', old: '*qʰˤa-*ʔip', third: '*qɔ-ʔip', mid: "hu-'ip" },
-    { type: '傍国', k: '華奴蘇奴國', ja: 'かなそなこく', old: '*qʷˤra-*nˤa-*sˤa-*nˤa', third: '*qʷaj-nɔ-sɔ-nɔ', mid: 'hwa-nu-su-nu' },
-    { type: '傍国', k: '鬼國', ja: 'きこく', old: '*qʷəjʔ', third: '*kujʔ', mid: 'kjwijX' },
-    { type: '傍国', k: '爲吾國', ja: 'いごこく', old: '*ɢʷaj-*ŋˤa', third: '*wəj-ŋɔ', mid: 'hjwe-ngu' },
-    { type: '傍国', k: '鬼奴國', ja: 'きなこく', old: '*qʷəjʔ-*nˤa', third: '*kujʔ-nɔ', mid: 'kjwijX-nu' },
-    { type: '傍国', k: '邪馬國', ja: 'やまこく', old: '*s-la-*mˤraʔ', third: '*zja-maʔ', mid: 'zjia-mhaeX' },
-    { type: '傍国', k: '躬臣國', ja: 'きゅうしんこく', old: '*kʷəŋ-*[g]in', third: '*kuŋ-gin', mid: 'kjuwng-zyin' },
-    { type: '傍国', k: '巴利國', ja: 'はりこく', old: '*prˤaj-*C.ri[t]-s', third: '*paj-riʔ', mid: 'pae-lijH' },
-    { type: '傍国', k: '支惟國', ja: 'きいこく', old: '*kje-*C.wij', third: '*kje-wij', mid: 'tsye-ywij' },
-    { type: '傍国', k: '烏奴國', ja: 'うなこく', old: '*ʔˤa-*nˤa', third: '*ʔɔ-nɔ', mid: "'u-nu" },
+// 主要国名
+{ type: '主要国名', k: '對海國', ja: 'たいかいこく (対馬)', old: '*tˤəj-s-*m̥ˤəʔ', third: '*tuj-mɔʔ', mid: 'twojH-hmojX' },
+{ type: '主要国名', k: '一大國', ja: 'いちだいこく (壱岐)', old: '*ʔit-*lˤat-s', third: '*ʔit-dat', mid: "'jit-dajH" },
+{ type: '主要国名', k: '末盧國', ja: 'まつらこく', old: '*mˤat-*ra', third: '*mat-ra', mid: 'mwat-lu' },
+{ type: '主要国名', k: '伊都國', ja: 'いとこく', old: '*ʔij-*tˤa', third: '*ʔij-tɔ', mid: "'jij-tuo" },
+{ type: '主要国名', k: '奴國', ja: 'なこく', old: '*nˤa', third: '*nɔ', mid: 'nu' },
+{ type: '主要国名', k: '不彌國', ja: 'ふみこく', old: '*pə-*mij', third: '*pə-mij', mid: 'pjuw-mjie' },
+{ type: '主要国名', k: '投馬國', ja: 'とうまこく', old: '*C.do-*mˤraʔ', third: '*do-maʔ', mid: 'duw-mhaeX' },
+{ type: '主要国名', k: '邪馬壹國', ja: 'やまいちこく', old: '*s-la-*mˤraʔ-*ʔit', third: '*zja-maʔ-it', mid: "zjia-mhaeX-'jit" },
+{ type: '主要国名', k: '邪馬臺國', ja: 'やまたいこく', old: '*s-la-*mˤraʔ-*lˤə', third: '*zja-maʔ-lˤə', mid: 'zjia-mhaeX-doj', highlight: true, note: '※魏志原文は「壹」' },
+{ type: '主要国名', k: '狗奴國', ja: 'くなこく', old: '*kˤoʔ-*nˤa', third: '*kɔʔ-nɔ', mid: 'kuwX-nu' },
 
-    // 人名
-    { type: '人名', k: '卑彌呼', ja: 'ひみこ', old: '*pe-*mij-*qʰˤa', third: '*pij-mij-qɔ', mid: 'pjie-mjie-hu' },
-    { type: '人名', k: '壹與', ja: 'いよ', old: '*ʔit-*laʔ', third: '*ʔit-jo', mid: "'jit-yoX" },
-    { type: '人名', k: '臺與', ja: 'とよ', old: '*lˤə-*laʔ', third: '*da-jo', mid: 'doj-yoX', highlight: true, note: '※魏志原文は「壹」' },
-    { type: '人名', k: '難升米', ja: 'なしめ', old: '*nˤan-*s-təŋ-*mˤejʔ', third: '*nan-s(j)əŋ-məjʔ', mid: 'nan-sying-mejX' },
-    { type: '人名', k: '都市牛利', ja: 'としごり', old: '*tˤa-*d(r)əʔ-*ŋʷa-*C.ri[t]-s', third: '*tɔ-dʑiʔ-ŋo-raj', mid: 'tuo-dzyiX-ngjuw-lijH' },
-    { type: '人名', k: '伊聲耆', ja: 'いせいき', old: '*ʔij-*l̥eŋ-*[g]ij', third: '*ʔij-s(j)eŋ-gij', mid: "'jij-syeng-gij" },
-    { type: '人名', k: '掖邪狗', ja: 'えきやく', old: '*lak-*s-la-*kˤoʔ', third: '*jak-zja-kɔʔ', mid: 'yek-zjia-kuwX' },
-    { type: '人名', k: '載斯烏越', ja: 'さしうえつ', old: '*tsˤəʔ-*sə-*ʔˤa-*ɢʷat', third: '*tsəʔ-se-ʔɔ-ɢʷat', mid: "tsojH-sje-'u-hwat" },
-    { type: '人名', k: '卑彌弓呼', ja: 'ひみくこ', old: '*pe-*mij-*kʷəŋ-*qʰˤa', third: '*pij-mij-k(r)uŋ-qɔ', mid: 'pjie-mjie-kjuwng-hu' },
+// 傍国
+{ type: '傍国', k: '斯馬國', ja: 'しまこく', old: '*sə-*mˤraʔ', third: '*sə-maʔ', mid: 'sje-mhaeX' },
+{ type: '傍国', k: '已百支國', ja: 'いほきこく', old: '*ɢ(r)əʔ-*pˤrak-*kje', third: '*jiʔ-prak-kje', mid: 'yiX-paek-tsye' },
+{ type: '傍国', k: '伊邪國', ja: 'いやこく', old: '*ʔij-*s-la', third: '*ʔij-zja', mid: "'jij-zjia" },
+{ type: '傍国', k: '都支國', ja: 'ときこく', old: '*tˤa-*kje', third: '*tɔ-kje', mid: 'tuo-tsye' },
+{ type: '傍国', k: '彌奴國', ja: 'みなこく', old: '*mij-*nˤa', third: '*mij-nɔ', mid: 'mjie-nu' },
+{ type: '傍国', k: '好古都國', ja: 'こうことこく', old: '*qʰˤuʔ-*kˤaʔ-*tˤa', third: '*xoʔ-kɔʔ-tɔ', mid: 'huwX-kuX-tuo' },
+{ type: '傍国', k: '不呼國', ja: 'ふここく', old: '*pə-*qʰˤa', third: '*pə-qɔ', mid: 'pjuw-hu' },
+{ type: '傍国', k: '姐奴國', ja: 'しゃなこく', old: '*tsajʔ-*nˤa', third: '*tsjaʔ-nɔ', mid: 'tsjoX-nu' },
+{ type: '傍国', k: '對蘇國', ja: 'ついそこく', old: '*tˤəj-s-*sˤa', third: '*tuj-sɔ', mid: 'twojH-su' },
+{ type: '傍国', k: '蘇奴國', ja: 'そなこく', old: '*sˤa-*nˤa', third: '*sɔ-nɔ', mid: 'su-nu' },
+{ type: '傍国', k: '呼邑國', ja: 'こゆうこく', old: '*qʰˤa-*ʔip', third: '*qɔ-ʔip', mid: "hu-'ip" },
+{ type: '傍国', k: '華奴蘇奴國', ja: 'かなそなこく', old: '*qʷˤra-*nˤa-*sˤa-*nˤa', third: '*qʷaj-nɔ-sɔ-nɔ', mid: 'hwa-nu-su-nu' },
+{ type: '傍国', k: '鬼國', ja: 'きこく', old: '*qʷəjʔ', third: '*kujʔ', mid: 'kjwijX' },
+{ type: '傍国', k: '爲吾國', ja: 'いごこく', old: '*ɢʷaj-*ŋˤa', third: '*wəj-ŋɔ', mid: 'hjwe-ngu' },
+{ type: '傍国', k: '鬼奴國', ja: 'きなこく', old: '*qʷəjʔ-*nˤa', third: '*kujʔ-nɔ', mid: 'kjwijX-nu' },
+{ type: '傍国', k: '邪馬國', ja: 'やまこく', old: '*s-la-*mˤraʔ', third: '*zja-maʔ', mid: 'zjia-mhaeX' },
+{ type: '傍国', k: '躬臣國', ja: 'きゅうしんこく', old: '*kʷəŋ-*[g]in', third: '*kuŋ-gin', mid: 'kjuwng-zyin' },
+{ type: '傍国', k: '巴利國', ja: 'はりこく', old: '*prˤaj-*C.ri[t]-s', third: '*paj-riʔ', mid: 'pae-lijH' },
+{ type: '傍国', k: '支惟國', ja: 'きいこく', old: '*kje-*C.wij', third: '*kje-wij', mid: 'tsye-ywij' },
+{ type: '傍国', k: '烏奴國', ja: 'うなこく', old: '*ʔˤa-*nˤa', third: '*ʔɔ-nɔ', mid: "'u-nu" },
 
-    // 官職名
-    { type: '官職名', k: '卑狗', ja: 'ひこ', old: '*pe-*kˤoʔ', third: '*pij-kɔʔ', mid: 'pjie-kuwX' },
-    { type: '官職名', k: '卑奴母離', ja: 'ひなもり', old: '*pe-*nˤa-*mˤəʔ-*C.raj', third: '*pij-nɔ-moʔ-raj', mid: 'pjie-nu-muwX-ljej' },
-    { type: '官職名', k: '爾支', ja: 'にき', old: '*neʔ-*kje', third: '*ne-kje', mid: 'nyeX-tsye' },
-    { type: '官職名', k: '泄謨觚', ja: 'せつもこ', old: '*ljet-*ma-*kˤa', third: '*set-ma-kɔ', mid: 'sjet-mu-ku' },
-    { type: '官職名', k: '柄渠觚', ja: 'へいきょこ', old: '*praŋʔ-*g(r)a-*kˤa', third: '*pjaŋ-gja-kɔ', mid: 'pjaengX-gja-ku' },
-    { type: '官職名', k: '兕馬觚', ja: 'しまこ', old: '*s.ɢijʔ-*mˤraʔ-*kˤa', third: '*ziʔ-maʔ-kɔ', mid: 'zijX-mhaeX-ku' },
-    { type: '官職名', k: '多模', ja: 'たも', old: '*tˤaj-*ma', third: '*tˤaj-mɔ', mid: 'ta-mu' },
-    { type: '官職名', k: '彌彌', ja: 'みみ', old: '*mij-*mij', third: '*mij-mij', mid: 'mjie-mjie' },
-    { type: '官職名', k: '彌彌那利', ja: 'みみなり', old: '*mij-*mij-*nˤaj-*C.ri[t]-s', third: '*mij-mij-nɔ-raj', mid: 'mjie-mjie-na-lijH' },
-    { type: '官職名', k: '伊支馬', ja: 'いきま', old: '*ʔij-*kje-*mˤraʔ', third: '*ʔij-kje-maʔ', mid: "'jij-tsye-mhaeX" },
-    { type: '官職名', k: '彌馬升', ja: 'みましょう', old: '*mij-*mˤraʔ-*s-təŋ', third: '*mij-maʔ-s(j)əŋ', mid: 'mjie-mhaeX-sying' },
-    { type: '官職名', k: '彌馬獲支', ja: 'みまかくき', old: '*mij-*mˤraʔ-*ɢʷˤrek-*kje', third: '*mij-maʔ-ɢʷˤek-kje', mid: 'mjie-mhaeX-hwak-tsye' },
-    { type: '官職名', k: '奴佳鞮', ja: 'なかてい', old: '*nˤa-*kˤre-*tij', third: '*nɔ-kaj-tej', mid: 'nu-kea-tej' },
-    { type: '官職名', k: '狗古智卑狗', ja: 'くこちひこ', old: '*kˤoʔ-*kˤaʔ-*trje-*pe-*kˤoʔ', third: '*kɔʔ-kɔʔ-tij-pij-kɔʔ', mid: 'kuwX-kuX-tsye-pjie-kuwX' },
-    { type: '官職名', k: '大倭', ja: 'だいわ', old: '*lˤat-s-*ʔʷaj', third: '*dat-ʔwaj', mid: "dajH-'uaj" },
+// 人名
+{ type: '人名', k: '卑彌呼', ja: 'ひみこ', old: '*pe-*mij-*qʰˤa', third: '*pij-mij-qɔ', mid: 'pjie-mjie-hu' },
+{ type: '人名', k: '壹與', ja: 'いよ', old: '*ʔit-*laʔ', third: '*ʔit-jo', mid: "'jit-yoX" },
+{ type: '人名', k: '臺與', ja: 'とよ', old: '*lˤə-*laʔ', third: '*da-jo', mid: 'doj-yoX', highlight: true, note: '※魏志原文は「壹」' },
+{ type: '人名', k: '難升米', ja: 'なしめ', old: '*nˤan-*s-təŋ-*mˤejʔ', third: '*nan-s(j)əŋ-məjʔ', mid: 'nan-sying-mejX' },
+{ type: '人名', k: '都市牛利', ja: 'としごり', old: '*tˤa-*d(r)əʔ-*ŋʷa-*C.ri[t]-s', third: '*tɔ-dʑiʔ-ŋo-raj', mid: 'tuo-dzyiX-ngjuw-lijH' },
+{ type: '人名', k: '伊聲耆', ja: 'いせいき', old: '*ʔij-*l̥eŋ-*[g]ij', third: '*ʔij-s(j)eŋ-gij', mid: "'jij-syeng-gij" },
+{ type: '人名', k: '掖邪狗', ja: 'えきやく', old: '*lak-*s-la-*kˤoʔ', third: '*jak-zja-kɔʔ', mid: 'yek-zjia-kuwX' },
+{ type: '人名', k: '載斯', ja: 'さし', old: '*tsˤəʔ-*sə', third: '*tsəʔ-se', mid: 'tsojH-sje' },
+{ type: '人名', k: '烏越', ja: 'おえつ', old: '*ʔˤa-*ɢʷat', third: '*ʔɔ-ɢʷat', mid: "'u-hwat" },
+{ type: '人名', k: '卑彌弓呼', ja: 'ひみくこ', old: '*pe-*mij-*kʷəŋ-*qʰˤa', third: '*pij-mij-k(r)uŋ-qɔ', mid: 'pjie-mjie-kjuwng-hu' },
 
-    // おまけ (ラテン語変遷)
-    { 
-        type: 'おまけ（ラテン語）', 
-        k: '来た、見た、勝った', 
-        ja: 'ウェーニー・ウィーディー...',
-        old: 'weːniː wiːdiː wiːkiː', 
-        third: 'weːniː wiːdiː wiːkiː', 
-        mid: 'veni vidi viʧi', 
-        highlight: true, 
-        note: '羅: Veni, vidi, vici',
-        labels: { 
-            old: { name: '古典ラテン語', year: '~100 BCE', desc: 'Classical Latin' }, 
-            third: { name: '俗ラテン語', year: '~4c CE', desc: 'Vulgar Latin' }, 
-            mid: { name: '教会ラテン語', year: 'Medieval', desc: 'Ecclesiastical' } 
-        }
-    },
-    { 
-        type: 'おまけ（ラテン語）', 
-        k: 'ユリウス・カエサル', 
-        ja: 'ジュリアス・シーザー', 
-        old: 'juːliʊs kaesar', 
-        third: 'juːliʊs kesar', 
-        mid: 'juːliʊs tʃesar', 
-        highlight: true, 
-        note: '変遷: カエサル(古)→ケサル(俗)→チェサル(教)',
-        labels: { 
-            old: { name: '古典ラテン語', year: '~100 BCE', desc: 'Classical Latin' }, 
-            third: { name: '俗ラテン語', year: '~4c CE', desc: 'Vulgar Latin' }, 
-            mid: { name: '教会ラテン語', year: 'Medieval', desc: 'Ecclesiastical' } 
-        }
-    }
+// 官職名
+{ type: '官職名', k: '卑狗', ja: 'ひこ', old: '*pe-*kˤoʔ', third: '*pij-kɔʔ', mid: 'pjie-kuwX' },
+{ type: '官職名', k: '卑奴母離', ja: 'ひなもり', old: '*pe-*nˤa-*mˤəʔ-*C.raj', third: '*pij-nɔ-moʔ-raj', mid: 'pjie-nu-muwX-ljej' },
+{ type: '官職名', k: '爾支', ja: 'にき', old: '*neʔ-*kje', third: '*ne-kje', mid: 'nyeX-tsye' },
+{ type: '官職名', k: '泄謨觚', ja: 'せつもこ', old: '*ljet-*ma-*kˤa', third: '*set-ma-kɔ', mid: 'sjet-mu-ku' },
+{ type: '官職名', k: '柄渠觚', ja: 'へいきょこ', old: '*praŋʔ-*g(r)a-*kˤa', third: '*pjaŋ-gja-kɔ', mid: 'pjaengX-gja-ku' },
+{ type: '官職名', k: '兕馬觚', ja: 'しまこ', old: '*s.ɢijʔ-*mˤraʔ-*kˤa', third: '*ziʔ-maʔ-kɔ', mid: 'zijX-mhaeX-ku' },
+{ type: '官職名', k: '多模', ja: 'たも', old: '*tˤaj-*ma', third: '*tˤaj-mɔ', mid: 'ta-mu' },
+{ type: '官職名', k: '彌彌', ja: 'みみ', old: '*mij-*mij', third: '*mij-mij', mid: 'mjie-mjie' },
+{ type: '官職名', k: '彌彌那利', ja: 'みみなり', old: '*mij-*mij-*nˤaj-*C.ri[t]-s', third: '*mij-mij-nɔ-raj', mid: 'mjie-mjie-na-lijH' },
+{ type: '官職名', k: '伊支馬', ja: 'いきま', old: '*ʔij-*kje-*mˤraʔ', third: '*ʔij-kje-maʔ', mid: "'jij-tsye-mhaeX" },
+{ type: '官職名', k: '彌馬升', ja: 'みましょう', old: '*mij-*mˤraʔ-*s-təŋ', third: '*mij-maʔ-s(j)əŋ', mid: 'mjie-mhaeX-sying' },
+{ type: '官職名', k: '彌馬獲支', ja: 'みまかくき', old: '*mij-*mˤraʔ-*ɢʷˤrek-*kje', third: '*mij-maʔ-ɢʷˤek-kje', mid: 'mjie-mhaeX-hwak-tsye' },
+{ type: '官職名', k: '奴佳鞮', ja: 'なかてい', old: '*nˤa-*kˤre-*tij', third: '*nɔ-kaj-tej', mid: 'nu-kea-tej' },
+{ type: '官職名', k: '狗古智卑狗', ja: 'くこちひこ', old: '*kˤoʔ-*kˤaʔ-*trje-*pe-*kˤoʔ', third: '*kɔʔ-kɔʔ-tij-pij-kɔʔ', mid: 'kuwX-kuX-tsye-pjie-kuwX' },
+{ type: '官職名', k: '大倭', ja: 'だいわ', old: '*lˤat-s-*ʔʷaj', third: '*dat-ʔwaj', mid: "dajH-'uaj" },
+
+// おまけ (ラテン語変遷)
+{
+type: 'おまけ（ラテン語）',
+k: '来た、見た、勝った',
+ja: 'ウェーニー・ウィーディー...',
+old: 'weːniː wiːdiː wiːkiː',
+third: 'weːniː wiːdiː wiːkiː',
+mid: 'veni vidi viʧi',
+highlight: true,
+note: '羅: Veni, vidi, vici',
+labels: {
+old: { name: '古典ラテン語', year: '~100 BCE', desc: 'Classical Latin' },
+third: { name: '俗ラテン語', year: '~4c CE', desc: 'Vulgar Latin' },
+mid: { name: '教会ラテン語', year: 'Medieval', desc: 'Ecclesiastical' }
+}
+},
+{
+type: 'おまけ（ラテン語）',
+k: 'ユリウス・カエサル',
+ja: 'ジュリアス・シーザー',
+old: 'juːliʊs kaesar',
+third: 'juːliʊs kesar',
+mid: 'juːliʊs tʃesar',
+highlight: true,
+note: '変遷: カエサル(古)→ケサル(俗)→チェサル(教)',
+labels: {
+old: { name: '古典ラテン語', year: '~100 BCE', desc: 'Classical Latin' },
+third: { name: '俗ラテン語', year: '~4c CE', desc: 'Vulgar Latin' },
+mid: { name: '教会ラテン語', year: 'Medieval', desc: 'Ecclesiastical' }
+}
+}
 ];
 
 var ipaToSpeech = {
-    // 母音設定
-    'ɑ': 'a', 'æ': 'a', 'ʌ': 'u', 'ɒ': 'o', 'ɔ': 'o', 
-    'ə': 'u', 'ɛ': 'e', 'œ': 'u', 'ɪ': 'i',
-    'ɨ': 'i', 'ɯ': 'u', 'ʊ': 'u', 'ø': 'eu', 
-    'u': 'oo', 'i': 'ee', 'e': 'e', 'o': 'o', 'a': 'a',
-    'jij': 'yee', 'tuo': 'to',
-    'ja': 'ya', 'ju': 'yu', 'jo': 'yo', 'je': 'ie', 'ji': 'yee', 
-    'jə': 'yu', 'əj': 'ui', 'j': 'i', 'y': 'y', 
-    's.': 'su', 'm̥': 'hm', 'n̥': 'hn', 'l̥': 'hl',
-    'ʃ': 'sh', 'ʒ': 'zh', 'θ': 'th', 'ð': 'dh', 'ŋ': 'ng', 
-    'ʔ': '', 'ɡ': 'g', 'ç': 'hy', 'x': 'kh', 'ɣ': 'gh',
-    'χ': 'kh', 'ʁ': 'r', 'β': 'v', 'ɸ': 'f', 
-    'ʎ': 'li', 'ɲ': 'ny', 'ʧ': 'ch', 'ʤ': 'j', 
-    'ts': 'z', 'dz': 'dz', 'ʑ': 'zh', 'ɢ': 'g', 'mw': 'mu',
-    'ʷ': 'u', 'hw': 'hu', 'w': 'w', 'kw': 'ku', 'gw': 'gu',
-    'ˤ': '', 'ʰ': 'h', 'ʲ': 'y', 'ː': '', 'ˈ': '', 'ˌ': '', '.': '', 
-    '[': '', ']': '', '/': '', '*': '', '~': '', 'q': 'k', 
-    '-': '', 'C.': '', 'X': '', 'H': '', "'": '', ' ': ' ', '(': '', ')': ''
+// 母音設定
+'ɑ': 'a', 'æ': 'a', 'ʌ': 'u', 'ɒ': 'o', 'ɔ': 'o',
+'ə': 'u', 'ɛ': 'e', 'œ': 'u', 'ɪ': 'i',
+'ɨ': 'i', 'ɯ': 'u', 'ʊ': 'u', 'ø': 'eu',
+'u': 'oo', 'i': 'ee', 'e': 'e', 'o': 'o', 'a': 'a',
+'jij': 'yee', 'tuo': 'to',
+'ja': 'ya', 'ju': 'yu', 'jo': 'yo', 'je': 'ie', 'ji': 'yee',
+'jə': 'yu', 'əj': 'ui', 'j': 'i', 'y': 'y',
+'s.': 'su', 'm̥': 'hm', 'n̥': 'hn', 'l̥': 'hl',
+'ʃ': 'sh', 'ʒ': 'zh', 'θ': 'th', 'ð': 'dh', 'ŋ': 'ng',
+'ʔ': '', 'ɡ': 'g', 'ç': 'hy', 'x': 'kh', 'ɣ': 'gh',
+'χ': 'kh', 'ʁ': 'r', 'β': 'v', 'ɸ': 'f',
+'ʎ': 'li', 'ɲ': 'ny', 'ʧ': 'ch', 'ʤ': 'j',
+'ts': 'z', 'dz': 'dz', 'ʑ': 'zh', 'ɢ': 'g', 'mw': 'mu',
+'ʷ': 'u', 'hw': 'hu', 'w': 'w', 'kw': 'ku', 'gw': 'gu',
+'ˤ': '', 'ʰ': 'h', 'ʲ': 'y', 'ː': '', 'ˈ': '', 'ˌ': '', '.': '',
+'[': '', ']': '', '/': '', '*': '', '~': '', 'q': 'k',
+'-': '', 'C.': '', 'X': '', 'H': '', "'": '', ' ': ' ', '(': '', ')': ''
 };
 
 // --- UI Logic ---
 
 function updatePeriodLabels(customLabels) {
-    var map = customLabels || defaultLabels;
-    
-    var dOld = map.old;
-    document.querySelector('#card-old .p-name').innerHTML = `${dOld.name} <span class="year-text">${dOld.year}</span>`;
-    document.querySelector('#card-old .p-desc').textContent = dOld.desc;
-    
-    var dThird = map.third;
-    document.querySelector('#card-third .p-name').innerHTML = `${dThird.name} <span class="year-text">${dThird.year}</span>`;
-    document.querySelector('#card-third .p-desc').textContent = dThird.desc;
+var map = customLabels || defaultLabels;
 
-    var dMid = map.mid;
-    document.querySelector('#card-mid .p-name').innerHTML = `${dMid.name} <span class="year-text">${dMid.year}</span>`;
-    document.querySelector('#card-mid .p-desc').textContent = dMid.desc;
+var dOld = map.old;
+document.querySelector('#card-old .p-name').innerHTML = `${dOld.name} <span class="year-text">${dOld.year}</span>`;
+document.querySelector('#card-old .p-desc').textContent = dOld.desc;
 
-    periodNames['old'] = dOld.name;
-    periodNames['third'] = dThird.name;
-    periodNames['mid'] = dMid.name;
+var dThird = map.third;
+document.querySelector('#card-third .p-name').innerHTML = `${dThird.name} <span class="year-text">${dThird.year}</span>`;
+document.querySelector('#card-third .p-desc').textContent = dThird.desc;
+
+var dMid = map.mid;
+document.querySelector('#card-mid .p-name').innerHTML = `${dMid.name} <span class="year-text">${dMid.year}</span>`;
+document.querySelector('#card-mid .p-desc').textContent = dMid.desc;
+
+periodNames['old'] = dOld.name;
+periodNames['third'] = dThird.name;
+periodNames['mid'] = dMid.name;
 }
 
 function updateUrlState() {
-    var url = new URL(window.location);
-    url.searchParams.set('period', currentAncientPeriod);
-    
-    var currentText = document.getElementById('textInput').value.trim();
+var url = new URL(window.location);
+url.searchParams.set('period', currentAncientPeriod);
 
-    if (selectedWordIndex !== null) {
-        url.searchParams.set('word', ancientData[selectedWordIndex].k);
-        url.searchParams.delete('text');
-    } else if (currentText !== "") {
-        url.searchParams.delete('word');
-        url.searchParams.set('text', currentText);
-    } else {
-        url.searchParams.delete('word');
-        url.searchParams.delete('text');
-    }
-    
-    window.history.replaceState(null, '', url);
+var currentText = document.getElementById('textInput').value.trim();
+
+if (selectedWordIndex !== null) {
+url.searchParams.set('word', ancientData[selectedWordIndex].k);
+url.searchParams.delete('text');
+} else if (currentText !== "") {
+url.searchParams.delete('word');
+url.searchParams.set('text', currentText);
+} else {
+url.searchParams.delete('word');
+url.searchParams.delete('text');
+}
+
+window.history.replaceState(null, '', url);
 }
 
 function copyCurrentUrl() {
-    updateUrlState();
-    var url = window.location.href;
-    navigator.clipboard.writeText(url).then(function() {
-        var btn = document.getElementById('copyUrlBtn');
-        var originalText = btn.textContent;
-        btn.textContent = "✅";
-        btn.classList.add('copied');
-        setTimeout(function() {
-            btn.textContent = originalText;
-            btn.classList.remove('copied');
-        }, 2000);
-    });
+updateUrlState();
+var url = window.location.href;
+navigator.clipboard.writeText(url).then(function() {
+var btn = document.getElementById('copyUrlBtn');
+var originalText = btn.textContent;
+btn.textContent = "✅";
+btn.classList.add('copied');
+setTimeout(function() {
+btn.textContent = originalText;
+btn.classList.remove('copied');
+}, 2000);
+});
 }
 
 function shareOnX() {
-    updateUrlState();
-    var url = window.location.href;
-    var text = "魏志倭人伝・古代発音プレーヤー";
-    var hashtags = "古代日本語,邪馬台国";
+updateUrlState();
+var url = window.location.href;
+var text = "魏志倭人伝・古代発音プレーヤー";
+var hashtags = "古代日本語,邪馬台国";
 
-    if (selectedWordIndex !== null) {
-        var data = ancientData[selectedWordIndex];
-        var pron = document.getElementById('textInput').value;
-        text = `「${data.k}」の${periodNames[currentAncientPeriod]}：${pron} を再生中🔊`;
-    } else {
-        var manualText = document.getElementById('textInput').value.trim();
-        if (manualText) {
-            text = `IPA「${manualText}」の${periodNames[currentAncientPeriod]}発音を再生中🔊`;
-        }
-    }
-    
-    var shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}&hashtags=${encodeURIComponent(hashtags)}`;
-    window.open(shareUrl, '_blank');
+if (selectedWordIndex !== null) {
+var data = ancientData[selectedWordIndex];
+var pron = document.getElementById('textInput').value;
+text = `「${data.k}」の${periodNames[currentAncientPeriod]}：${pron} を再生中🔊`;
+} else {
+var manualText = document.getElementById('textInput').value.trim();
+if (manualText) {
+text = `IPA「${manualText}」の${periodNames[currentAncientPeriod]}発音を再生中🔊`;
+}
+}
+
+var shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}&hashtags=${encodeURIComponent(hashtags)}`;
+window.open(shareUrl, '_blank');
 }
 
 function populateVoiceList() {
-    voices = synth.getVoices();
-    var voiceSelect = document.getElementById('voiceSelect');
-    voiceSelect.innerHTML = '<option value="">自動選択 (推奨)</option>';
-    
-    voices.forEach(function(voice, index) {
-        if (voice.lang.indexOf('en') === 0) { 
-            var option = document.createElement('option');
-            option.textContent = `${voice.name} (${voice.lang})`;
-            option.value = index;
-            voiceSelect.appendChild(option);
-        }
-    });
+voices = synth.getVoices();
+var voiceSelect = document.getElementById('voiceSelect');
+voiceSelect.innerHTML = '<option value="">自動選択 (推奨)</option>';
+
+voices.forEach(function(voice, index) {
+if (voice.lang.indexOf('en') === 0) {
+var option = document.createElement('option');
+option.textContent = `${voice.name} (${voice.lang})`;
+option.value = index;
+voiceSelect.appendChild(option);
+}
+});
 }
 
 function updateBadges(wordText, isHighlight) {
-    var wordBadge = document.getElementById('currentWordDisplay');
-    var periodBadge = document.getElementById('currentPeriodDisplay');
+var wordBadge = document.getElementById('currentWordDisplay');
+var periodBadge = document.getElementById('currentPeriodDisplay');
 
-    if (!wordText && selectedWordIndex === null) {
-        wordBadge.style.display = 'none';
-        periodBadge.style.display = 'none';
-    } else {
-        wordBadge.textContent = '語句: ' + wordText;
-        wordBadge.style.display = 'inline-block';
-        wordBadge.style.color = isHighlight ? 'var(--danger)' : 'var(--primary-dark)';
-        periodBadge.textContent = '体系: ' + periodNames[currentAncientPeriod];
-        periodBadge.style.display = 'inline-block';
-    }
+if (!wordText && selectedWordIndex === null) {
+wordBadge.style.display = 'none';
+periodBadge.style.display = 'none';
+} else {
+wordBadge.textContent = '語句: ' + wordText;
+wordBadge.style.display = 'inline-block';
+wordBadge.style.color = isHighlight ? 'var(--danger)' : 'var(--primary-dark)';
+periodBadge.textContent = '体系: ' + periodNames[currentAncientPeriod];
+periodBadge.style.display = 'inline-block';
+}
 }
 
 function selectPeriod(cardElementOrId, period) {
-    var card;
-    if (typeof cardElementOrId === 'string') {
-        card = document.getElementById(cardElementOrId);
-    } else {
-        card = cardElementOrId;
-    }
+var card;
+if (typeof cardElementOrId === 'string') {
+card = document.getElementById(cardElementOrId);
+} else {
+card = cardElementOrId;
+}
 
-    document.querySelectorAll('.period-card').forEach(el => el.classList.remove('active'));
-    if (card) card.classList.add('active');
-    
-    if (card) {
-        var radio = card.querySelector('input');
-        if (radio) radio.checked = true;
-    }
-    
-    currentAncientPeriod = period;
-    
-    if (selectedWordIndex !== null) {
-        var data = ancientData[selectedWordIndex];
-        var newPron = data[currentAncientPeriod];
-        
-        updateBadges(data.k, data.highlight);
-        
-        if (newPron && newPron !== "(データなし)") {
-            document.getElementById('textInput').value = newPron;
-            updatePreview();
-            if (!isHistoryPlaying) {
-                setTimeout(speak, 50); 
-            }
-        }
-    }
-    
-    updateUrlState();
-    
-    var searchTerm = document.getElementById('searchInput').value;
-    updateAncientExamples(searchTerm);
-    updatePreview();
+document.querySelectorAll('.period-card').forEach(el => el.classList.remove('active'));
+if (card) card.classList.add('active');
+
+if (card) {
+var radio = card.querySelector('input');
+if (radio) radio.checked = true;
+}
+
+currentAncientPeriod = period;
+
+if (selectedWordIndex !== null) {
+var data = ancientData[selectedWordIndex];
+var newPron = data[currentAncientPeriod];
+
+updateBadges(data.k, data.highlight);
+
+if (newPron && newPron !== "(データなし)") {
+document.getElementById('textInput').value = newPron;
+updatePreview();
+if (!isHistoryPlaying) {
+setTimeout(speak, 50);
+}
+}
+}
+
+updateUrlState();
+
+var searchTerm = document.getElementById('searchInput').value;
+updateAncientExamples(searchTerm);
+updatePreview();
 }
 
 function updateAncientExamples(filterTerm) {
-    var container = document.getElementById('examplesList');
-    container.innerHTML = '';
-    
-    var types = ['主要国名', '傍国', '人名', '官職名', 'おまけ（ラテン語）']; 
-    
-    types.forEach(function(type) {
-        var filteredItems = ancientData.filter(function(d) {
-            if (d.type !== type) return false;
-            if (!filterTerm) return true;
-            return d.k.includes(filterTerm) || 
-                   (d.ja && d.ja.includes(filterTerm));
-        });
+var container = document.getElementById('examplesList');
+container.innerHTML = '';
 
-        if (filteredItems.length === 0) return;
+var types = ['主要国名', '傍国', '人名', '官職名', 'おまけ（ラテン語）'];
 
-        var group = document.createElement('div');
-        group.className = 'category-group';
-        
-        // Changed to h3
-        var header = document.createElement('h3');
-        header.className = 'category-header';
-        header.textContent = type;
-        group.appendChild(header);
-        
-        var grid = document.createElement('div');
-        grid.className = 'item-grid';
-        
-        filteredItems.forEach(function(data) {
-            var originalIndex = ancientData.indexOf(data);
-            var pron = data[currentAncientPeriod] || "(データなし)";
-            var kanjiClass = data.highlight ? 'wc-kanji text-variant' : 'wc-kanji';
-            var noteHtml = data.highlight ? `<div class="wc-note">${data.note}</div>` : '';
-            var jaText = data.ja ? data.ja : '';
-            
-            var card = document.createElement('div');
-            card.className = 'word-card';
-            card.innerHTML = `
-                <div class="${kanjiClass}">${data.k}</div>
-                <div class="wc-ja">${jaText}</div>
-                <div class="wc-pron">${pron}</div>
-                ${noteHtml}
-            `;
-            
-            card.onclick = function() {
-                if (isHistoryPlaying) stopHistory();
-                if (pron && pron !== "(データなし)") {
-                    selectedWordIndex = originalIndex;
-                    
-                    if (data.labels) {
-                        updatePeriodLabels(data.labels);
-                    } else {
-                        updatePeriodLabels(null); 
-                    }
+types.forEach(function(type) {
+var filteredItems = ancientData.filter(function(d) {
+if (d.type !== type) return false;
+if (!filterTerm) return true;
+return d.k.includes(filterTerm) ||
+(d.ja && d.ja.includes(filterTerm));
+});
 
-                    updateBadges(data.k, data.highlight);
-                    
-                    document.getElementById('textInput').value = pron;
-                    updatePreview();
-                    updateUrlState(); 
-                    speak(); 
-                }
-            };
-            grid.appendChild(card);
-        });
-        
-        group.appendChild(grid);
-        container.appendChild(group);
-    });
+if (filteredItems.length === 0) return;
+
+var group = document.createElement('div');
+group.className = 'category-group';
+
+// Changed to h3
+var header = document.createElement('h3');
+header.className = 'category-header';
+header.textContent = type;
+group.appendChild(header);
+
+var grid = document.createElement('div');
+grid.className = 'item-grid';
+
+filteredItems.forEach(function(data) {
+var originalIndex = ancientData.indexOf(data);
+var pron = data[currentAncientPeriod] || "(データなし)";
+var kanjiClass = data.highlight ? 'wc-kanji text-variant' : 'wc-kanji';
+var noteHtml = data.highlight ? `<div class="wc-note">${data.note}</div>` : '';
+var jaText = data.ja ? data.ja : '';
+
+var card = document.createElement('div');
+card.className = 'word-card';
+card.innerHTML = `
+<div class="${kanjiClass}">${data.k}</div>
+<div class="wc-ja">${jaText}</div>
+<div class="wc-pron">${pron}</div>
+${noteHtml}
+`;
+
+card.onclick = function() {
+if (isHistoryPlaying) stopHistory();
+if (pron && pron !== "(データなし)") {
+selectedWordIndex = originalIndex;
+
+if (data.labels) {
+updatePeriodLabels(data.labels);
+} else {
+updatePeriodLabels(null);
+}
+
+updateBadges(data.k, data.highlight);
+
+document.getElementById('textInput').value = pron;
+updatePreview();
+updateUrlState();
+speak();
+}
+};
+grid.appendChild(card);
+});
+
+group.appendChild(grid);
+container.appendChild(group);
+});
 }
 
 function convertIPAToSpeech(text) {
-    var result = text;
-    var keys = Object.keys(ipaToSpeech);
-    keys.sort(function(a, b) { return b.length - a.length; });
-    for (var i = 0; i < keys.length; i++) {
-        var ipa = keys[i];
-        var replacement = ipaToSpeech[ipa];
-        if (replacement !== undefined) {
-            var escaped = ipa.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-            var reg = new RegExp(escaped, 'g');
-            result = result.replace(reg, replacement);
-        }
-    }
-    return result.toLowerCase();
+var result = text;
+var keys = Object.keys(ipaToSpeech);
+keys.sort(function(a, b) { return b.length - a.length; });
+for (var i = 0; i < keys.length; i++) {
+var ipa = keys[i];
+var replacement = ipaToSpeech[ipa];
+if (replacement !== undefined) {
+var escaped = ipa.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+var reg = new RegExp(escaped, 'g');
+result = result.replace(reg, replacement);
+}
+}
+return result.toLowerCase();
 }
 
 function updatePreview() {
-    var text = document.getElementById('textInput').value;
-    var previewDiv = document.getElementById('conversionPreview');
-    previewDiv.textContent = text.trim() ? '読上げ用変換: ' + convertIPAToSpeech(text) : '';
+var text = document.getElementById('textInput').value;
+var previewDiv = document.getElementById('conversionPreview');
+previewDiv.textContent = text.trim() ? '読上げ用変換: ' + convertIPAToSpeech(text) : '';
 }
 
 function updateValue(id) {
-    document.getElementById(id + 'Value').textContent = document.getElementById(id).value;
+document.getElementById(id + 'Value').textContent = document.getElementById(id).value;
 }
 
 function setStatus(isPlaying) {
-    var statusContainer = document.getElementById('playStatus');
-    var statusLabel = document.getElementById('statusLabel');
-    if (isPlaying) {
-        statusContainer.classList.add('playing');
-        statusLabel.textContent = "再生中...";
-    } else {
-        statusContainer.classList.remove('playing');
-        statusLabel.textContent = "待機中";
-    }
+var statusContainer = document.getElementById('playStatus');
+var statusLabel = document.getElementById('statusLabel');
+if (isPlaying) {
+statusContainer.classList.add('playing');
+statusLabel.textContent = "再生中...";
+} else {
+statusContainer.classList.remove('playing');
+statusLabel.textContent = "待機中";
+}
 }
 
 function speak(onEndCallback) {
-    if (synth.speaking) synth.cancel();
-    setStatus(false);
+if (synth.speaking) synth.cancel();
+setStatus(false);
 
-    var text = document.getElementById('textInput').value;
-    if (!text.trim()) {
-        if (onEndCallback) onEndCallback();
-        return;
-    }
-    
-    var textToSpeak = convertIPAToSpeech(text);
-    var utterance = new SpeechSynthesisUtterance(textToSpeak);
-    utterance.rate = parseFloat(document.getElementById('rate').value);
-    utterance.pitch = parseFloat(document.getElementById('pitch').value);
-    utterance.volume = parseFloat(document.getElementById('volume').value);
-    
-    var voiceSelect = document.getElementById('voiceSelect');
-    var selectedVoiceIndex = voiceSelect.value;
-    
-    if (selectedVoiceIndex !== "") {
-        utterance.voice = voices[selectedVoiceIndex];
-    } else {
-        var enVoice = null;
-        if (voices.length > 0) {
-            for (var i = 0; i < voices.length; i++) {
-                if (voices[i].lang === 'en-US') { enVoice = voices[i]; break; }
-            }
-            if (!enVoice) {
-                for (var i = 0; i < voices.length; i++) {
-                    if (voices[i].lang.indexOf('en') === 0) { enVoice = voices[i]; break; }
-                }
-            }
-            if (enVoice) utterance.voice = enVoice;
-        }
-    }
-
-    utterance.onstart = function() { setStatus(true); };
-    utterance.onend = function() { 
-        setStatus(false);
-        if (onEndCallback) onEndCallback();
-    };
-    utterance.onerror = function(e) {
-        console.error("Speech Error:", e);
-        setStatus(false);
-        if (onEndCallback) onEndCallback();
-    };
-
-    synth.speak(utterance);
+var text = document.getElementById('textInput').value;
+if (!text.trim()) {
+if (onEndCallback) onEndCallback();
+return;
 }
 
-function stopSpeech() { 
-    synth.cancel(); 
-    setStatus(false);
-    stopHistory();
+var textToSpeak = convertIPAToSpeech(text);
+var utterance = new SpeechSynthesisUtterance(textToSpeak);
+utterance.rate = parseFloat(document.getElementById('rate').value);
+utterance.pitch = parseFloat(document.getElementById('pitch').value);
+utterance.volume = parseFloat(document.getElementById('volume').value);
+
+var voiceSelect = document.getElementById('voiceSelect');
+var selectedVoiceIndex = voiceSelect.value;
+
+if (selectedVoiceIndex !== "") {
+utterance.voice = voices[selectedVoiceIndex];
+} else {
+var enVoice = null;
+if (voices.length > 0) {
+for (var i = 0; i < voices.length; i++) {
+if (voices[i].lang === 'en-US') { enVoice = voices[i]; break; }
+}
+if (!enVoice) {
+for (var i = 0; i < voices.length; i++) {
+if (voices[i].lang.indexOf('en') === 0) { enVoice = voices[i]; break; }
+}
+}
+if (enVoice) utterance.voice = enVoice;
+}
+}
+
+utterance.onstart = function() { setStatus(true); };
+utterance.onend = function() {
+setStatus(false);
+if (onEndCallback) onEndCallback();
+};
+utterance.onerror = function(e) {
+console.error("Speech Error:", e);
+setStatus(false);
+if (onEndCallback) onEndCallback();
+};
+
+synth.speak(utterance);
+}
+
+function stopSpeech() {
+synth.cancel();
+setStatus(false);
+stopHistory();
 }
 
 function playHistory() {
-    if (selectedWordIndex === null) {
-        alert("先に一覧から語句を選択してください。");
-        return;
-    }
-    if (isHistoryPlaying) return; 
+if (selectedWordIndex === null) {
+alert("先に一覧から語句を選択してください。");
+return;
+}
+if (isHistoryPlaying) return;
 
-    isHistoryPlaying = true;
-    document.getElementById('historyBtn').classList.add('active');
-    document.getElementById('historyBtn').textContent = "⬛ 停止";
+isHistoryPlaying = true;
+document.getElementById('historyBtn').classList.add('active');
+document.getElementById('historyBtn').textContent = "⬛ 停止";
 
-    var sequence = ['old', 'third', 'mid'];
-    var seqIndex = 0;
+var sequence = ['old', 'third', 'mid'];
+var seqIndex = 0;
 
-    function playNextStep() {
-        if (!isHistoryPlaying) return;
-        if (seqIndex >= sequence.length) {
-            stopHistory(); 
-            return;
-        }
+function playNextStep() {
+if (!isHistoryPlaying) return;
+if (seqIndex >= sequence.length) {
+stopHistory();
+return;
+}
 
-        var p = sequence[seqIndex];
-        selectPeriod('card-' + p, p);
-        
-        setTimeout(function() {
-            if (!isHistoryPlaying) return;
-            speak(function() {
-                seqIndex++;
-                setTimeout(playNextStep, 800); 
-            });
-        }, 500);
-    }
-    playNextStep();
+var p = sequence[seqIndex];
+selectPeriod('card-' + p, p);
+
+setTimeout(function() {
+if (!isHistoryPlaying) return;
+speak(function() {
+seqIndex++;
+setTimeout(playNextStep, 800);
+});
+}, 500);
+}
+playNextStep();
 }
 
 function stopHistory() {
-    isHistoryPlaying = false;
-    document.getElementById('historyBtn').classList.remove('active');
-    document.getElementById('historyBtn').textContent = "🔁 変遷再生";
+isHistoryPlaying = false;
+document.getElementById('historyBtn').classList.remove('active');
+document.getElementById('historyBtn').textContent = "🔁 変遷再生";
 }
 
 function toggleHistory() {
-    if (isHistoryPlaying) {
-        stopSpeech(); 
-    } else {
-        playHistory();
-    }
+if (isHistoryPlaying) {
+stopSpeech();
+} else {
+playHistory();
+}
 }
 
 function checkUrlParams() {
-    var params = new URLSearchParams(window.location.search);
-    var word = params.get('word');
-    var period = params.get('period');
-    var textParam = params.get('text');
+var params = new URLSearchParams(window.location.search);
+var word = params.get('word');
+var period = params.get('period');
+var textParam = params.get('text');
 
-    if (period && ['old', 'third', 'mid'].includes(period)) {
-        selectPeriod('card-' + period, period);
-    }
+if (period && ['old', 'third', 'mid'].includes(period)) {
+selectPeriod('card-' + period, period);
+}
 
-    if (word) {
-        var index = ancientData.findIndex(function(d) {
-            return d.k === word;
-        });
-        
-        if (index !== -1) {
-            selectedWordIndex = index;
-            var data = ancientData[index];
-            var pron = data[currentAncientPeriod];
-            
-            if (data.labels) {
-                updatePeriodLabels(data.labels);
-            } else {
-                updatePeriodLabels(null);
-            }
+if (word) {
+var index = ancientData.findIndex(function(d) {
+return d.k === word;
+});
 
-            updateBadges(data.k, data.highlight);
-            if (pron) {
-                document.getElementById('textInput').value = pron;
-                updatePreview();
-            }
-            document.getElementById('searchInput').value = word;
-            updateAncientExamples(word);
-        }
-    } else if (textParam) {
-        document.getElementById('textInput').value = textParam;
-        updatePreview();
-        updatePeriodLabels(null); 
-    }
+if (index !== -1) {
+selectedWordIndex = index;
+var data = ancientData[index];
+var pron = data[currentAncientPeriod];
+
+if (data.labels) {
+updatePeriodLabels(data.labels);
+} else {
+updatePeriodLabels(null);
+}
+
+updateBadges(data.k, data.highlight);
+if (pron) {
+document.getElementById('textInput').value = pron;
+updatePreview();
+}
+document.getElementById('searchInput').value = word;
+updateAncientExamples(word);
+}
+} else if (textParam) {
+document.getElementById('textInput').value = textParam;
+updatePreview();
+updatePeriodLabels(null);
+}
 }
 
 function init() {
-    document.getElementById('speakBtn').onclick = function() { speak(); };
-    document.getElementById('stopBtn').onclick = stopSpeech;
-    document.getElementById('historyBtn').onclick = toggleHistory;
-    document.getElementById('copyUrlBtn').onclick = copyCurrentUrl;
-    document.getElementById('shareXBtn').onclick = shareOnX;
-    
-    document.getElementById('searchInput').addEventListener('input', function(e) {
-        updateAncientExamples(e.target.value);
-    });
-    
-    document.getElementById('textInput').oninput = function() {
-        selectedWordIndex = null;
-        updatePeriodLabels(null); 
-        updateBadges(null);
-        updatePreview();
-        updateUrlState();
-        if (isHistoryPlaying) stopHistory();
-    };
-    
-    ['rate', 'pitch', 'volume'].forEach(id => {
-        document.getElementById(id).oninput = function() { updateValue(id); };
-    });
-    
-    document.addEventListener('keydown', function(e) {
-        if (e.target.tagName !== 'TEXTAREA' && e.target.tagName !== 'INPUT') {
-            if (e.code === 'Space') {
-                e.preventDefault();
-                if (synth.speaking) stopSpeech();
-                else speak();
-            }
-        }
-    });
+document.getElementById('speakBtn').onclick = function() { speak(); };
+document.getElementById('stopBtn').onclick = stopSpeech;
+document.getElementById('historyBtn').onclick = toggleHistory;
+document.getElementById('copyUrlBtn').onclick = copyCurrentUrl;
+document.getElementById('shareXBtn').onclick = shareOnX;
 
-    populateVoiceList();
-    if (speechSynthesis.onvoiceschanged !== undefined) {
-        speechSynthesis.onvoiceschanged = populateVoiceList;
-    }
-    
-    updateAncientExamples();
-    checkUrlParams(); 
+document.getElementById('searchInput').addEventListener('input', function(e) {
+updateAncientExamples(e.target.value);
+});
+
+document.getElementById('textInput').oninput = function() {
+selectedWordIndex = null;
+updatePeriodLabels(null);
+updateBadges(null);
+updatePreview();
+updateUrlState();
+if (isHistoryPlaying) stopHistory();
+};
+
+['rate', 'pitch', 'volume'].forEach(id => {
+document.getElementById(id).oninput = function() { updateValue(id); };
+});
+
+document.addEventListener('keydown', function(e) {
+if (e.target.tagName !== 'TEXTAREA' && e.target.tagName !== 'INPUT') {
+if (e.code === 'Space') {
+e.preventDefault();
+if (synth.speaking) stopSpeech();
+else speak();
+}
+}
+});
+
+populateVoiceList();
+if (speechSynthesis.onvoiceschanged !== undefined) {
+speechSynthesis.onvoiceschanged = populateVoiceList;
+}
+
+updateAncientExamples();
+checkUrlParams();
 }
 
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
+document.addEventListener('DOMContentLoaded', init);
 } else {
-    init();
+init();
 }
 </script>
-
 <div style="
-    position: fixed; 
-    bottom: 20px; 
-    right: 20px; 
-    font-size: 0.8rem; 
-    color: #333; 
-    background: rgba(255, 255, 255, 0.9); 
-    padding: 5px 10px; 
-    border-radius: 5px; 
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
-    z-index: 9999;
+position: fixed;
+bottom: 20px;
+right: 20px;
+font-size: 0.8rem;
+color: #333;
+background: rgba(255, 255, 255, 0.9);
+padding: 5px 10px;
+border-radius: 5px;
+box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+z-index: 9999;
 ">
-    License: <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" style="color: #0066cc; text-decoration: underline;">CC BY-NC-SA 4.0</a>
+License: <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" style="color: #0066cc; text-decoration: underline;">CC BY-NC-SA 4.0</a>
 </div>
-
 </body>
 </html>
