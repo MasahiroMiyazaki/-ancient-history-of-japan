@@ -56,8 +56,8 @@ AIやアルゴリズムを用いた歴史音韻シミュレーターを開発・
 Please check the [GitHub Issues](https://github.com/masahiromiyazaki/-ancient-history-of-japan/issues) page.
 
 *   **Author:** 宮崎 政宏 (Masahiro Miyazaki)
-*   **Profile:** [Note (Main Blog)](https://note.com/masahiromiyazaki)
-*   **Affiliation:** Independent Researcher / 全国邪馬台国連絡協議会 (Zen-Yamaren)
+*   **Profile:** [Note (Main Blog)](https://note.com/airrium)
+*   **Affiliation:** Independent Researcher / [全国邪馬台国連絡協議会 (Zen-Yamaren)](https://zenyamaren.net)
 
 ---
 
