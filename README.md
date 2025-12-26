@@ -1,96 +1,65 @@
-# 日本古代史に関する学際的研究 (Interdisciplinary Studies on Ancient Japanese History)
+# 日本古代史に関する学際的研究
+# Interdisciplinary Studies on Ancient Japanese History
 
-Welcome to the repository for a collection of interdisciplinary research papers on the ancient history of Japan. This project applies modern scientific and linguistic methods to historical and textual questions.
+**Bridging History, Chemistry, and Linguistics through Digital Humanities.**  
+歴史学・化学・言語学、そしてデジタル技術の統合による、古代日本史の再構築。
 
-このリポジトリは、日本の古代史および古典籍に関する学際的な研究論文を公開するものです。歴史的・文献的な疑問に対し、現代の科学的・言語学的な手法を用いてアプローチします。
-
----
-
-## 公開論文 (Published Papers)
-
-This repository contains the following papers. Click the link to read the full text on GitHub Pages.
-
-*   **1. [The First Emperor Was a Chemist: Deciphering the 1300-Year-Old "Musui-zōame" Cipher in the Nihon Shoki](https://masahiromiyazaki.github.io/-ancient-history-of-japan/first-emperor-was-a-chemist.html)**
-    *   *初代天皇は化学者だった ―日本書紀「無水造飴」の暗号、1300年の謎を解く―*
-
-*   **2. [A Phonological Analysis of the 'Yama-ichi-koku' Notation in the 'Wajinden'](https://masahiromiyazaki.github.io/-ancient-history-of-japan/japanese-phonetics-3rd-century.html)**
-    *   *『魏志倭人伝』「邪馬壹國」表記の音韻学的分析 ―「3世紀音韻変化期モデル」の構築と音韻認識の階層性原理―*
+> **🌐 [Project Website (Webサイトを表示)](https://masahiromiyazaki.github.io/-ancient-history-of-japan/)**  
+> (論文やツールをブラウザ上で閲覧・実行できます / View papers and tools in your browser)
 
 ---
 
-## 論文概要 (Abstracts)
+## 👨‍🔬 About the Author
+**宮崎 政宏 (Masahiro Miyazaki)**  
+*Independent Researcher / Digital Humanist / Historical System Architect*
 
-### 1. 初代天皇は化学者だった
-
-**English Abstract:**
-> This paper re-examines the legend of Japan's first emperor, Jimmu, by proposing that the mythological narrative of his "anhydrous candy-making" in the Nihon Shoki is a coded account of advanced chemical technology: the smelting of mercury from cinnabar. Integrating textual analysis with recent archaeoscientific evidence, this study argues that the story is not a supernatural miracle but a detailed description of a dry smelting process, including a strikingly accurate depiction of the toxic effects of its byproducts on the environment. Lead isotope analysis of vermilion from Kofun-period tombs indicates a dramatic shift from imported to domestically sourced cinnabar in the late 3rd century, coinciding with the rise of the Yamato court. This suggests that Emperor Jimmu's eastern expedition was fundamentally a "resource war" to seize control of Japan's primary cinnabar deposits. By monopolizing the production of mercury—a strategic material essential for wealth creation (e.g., via amalgamation) and a symbol of sacred power—the Yamato clan established not just military but technological and economic hegemony. This paper concludes that the myth of the first emperor immortalizes a pivotal moment in Japanese history where chemical knowledge surpassed military might, recasting the nation's founder as not merely a warrior, but as a "chemist" who mastered the elements to forge a new state.
-
-**日本語要旨:**
-> 本稿は、初代神武天皇の建国神話に記された「無水造飴」という奇跡の記述を、単なる神話ではなく、辰砂から水銀を精製する古代の先端化学技術の記録として再解釈することを目的とする。『日本書紀』の描写は、乾式製錬のプロセスと、その副産物がもたらす水銀中毒の症状を驚くほど正確に描写している。近年の鉛同位体比分析は、3世紀後半にヤマト王権が台頭する時期と、古墳で使われる朱（辰砂）が大陸からの輸入品から国産品へ一斉に切り替わる時期が一致することを示している。この事実は、神武東征が単なる軍事行動ではなく、富の生産と宗教的権威の源泉である水銀資源の掌握を目的とした「資源戦争」であったことを強く示唆する。本稿は、文献史学の成果と最新の考古科学の知見を統合することで、初代天皇が武力だけでなく、古代の化学知識という技術的優位性によって国家を統一したという新たな歴史像を提示する。
-
-### 2. 『魏志倭人伝』「邪馬壹國」表記の音韻学的分析
-
-**English Abstract:**
-> This paper attempts to reconstruct the phonetic system of the Japanese language spoken during the Yamatai period (c. 3rd century CE), a pre-literate stage of the language for which no native written records exist. The sole available data for this reconstruction are the personal names, official titles, and place names transcribed in Chinese characters within the Gishi Wajinden (Records of Wei: Account of the Wa). The methodology involves a comparative analysis, contrasting the presumed Middle Chinese phonetic values of the selected sinograms with the established phonology of 8th-century Old Japanese. This study addresses the inherent challenges of sinographic transcription, where characters were chosen to approximate foreign sounds within the constraints of the Chinese syllabic structure. By identifying consistent patterns in the choice of characters, we propose a hypothetical inventory of vowels and consonants for 3rd-century Japanese. The findings suggest a system potentially simpler than that of Old Japanese in some respects (e.g., vowel distinctions) but possibly possessing phonetic features that were later lost. This reconstruction offers a crucial glimpse into the phonological state of Japanese nearly 500 years before its first extensive documentation, providing an essential foundation for tracing the diachronic evolution of the language from Proto-Japonic.
-
-**日本語要旨:**
-> 本稿は、日本最古の文献である記紀（8世紀）以前の日本語、特に3世紀頃のいわゆる「邪馬台国の言語」の音韻体系を復元することを試みる。当時の日本語を記録した文字資料は存在しないため、唯一の手がかりは中国の史書『魏志倭人伝』に記された倭人の人名、官名、地名などの漢字表記となる。本研究では、これらの写音に用いられた漢字の推定中古音（後漢末から三国時代）と、後代の上代日本語の音韻体系とを、比較言語学の手法を用いて体系的に対照分析する。これにより、外国語である日本語の音を、中国語の音節構造の枠内でいかに捉え、写し取ろうとしたかの原則を探る。その分析に基づき、3世紀日本語の母音体系や子音体系に関する仮説を提示し、上代日本語との異同を考察する。本稿による音韻体系の復元は、文字記録以前の日本語の姿を具体的に描き出し、原日本語から上代日本語への歴史的変化を解明するための一つの基礎的考察となる。
+本プロジェクトは、文献史学の枠組みだけでは解明できない古代史の謎に対し、**「物質科学（化学分析）」「歴史言語学（音韻再構）」「計算機科学（シミュレーション）」**という複数の証拠線を統合（Triangulation）することで、新たな史的モデルを提示する試みです。
 
 ---
 
-## キーワード (Keywords)
+## 🛠️ 公開ツール (Developed Tools)
+AIやアルゴリズムを用いた歴史音韻シミュレーターを開発・公開しています。
 
-`ancient-history`, `japan`, `Nihon-Shoki`, `Wajinden`, `Yama-ichi-koku`, `cipher`, `Musui-zoame`, `mercury`, `lead-isotope`, `linguistics`, `phonology`, `phonetics`, `interdisciplinary-research`
+### 🎵 [魏志倭人伝・発音プレーヤー (Gishi Wajinden Pronunciation Player)](https://masahiromiyazaki.github.io/-ancient-history-of-japan/Ancient-Chinese-Player.html)
+**[Launch App (ツールを起動)](https://masahiromiyazaki.github.io/-ancient-history-of-japan/Ancient-Chinese-Player.html)**
 
----
-
-## フィードバック歓迎 (Feedback Welcome!)
-
-学術的なコメント、誤字・脱字の指摘、技術的な質問、その他全般的なご意見は、本リポジトリの **Issues** 機能をご利用ください。建設的な議論を歓迎します。
-
-Please use the [GitHub Issues page](https://github.com/masahiromiyazaki/-ancient-history-of-japan/issues) for any academic comments, suggestions for corrections, technical questions, or general feedback. Constructive discussion is highly encouraged.
-
----
-
-## 引用について (How to Cite)
-
-このリポジトリ全体（論文集として）を引用する場合は、右サイドバーにある「Cite this repository」の機能をご利用ください。
-
-個別の論文を引用される場合は、以下の情報をご利用ください。
-
-To cite this project as a whole, please use the "Cite this repository" button on the right sidebar. To cite individual papers, please use the BibTeX entries provided below.
-
-### 1. The First Emperor Was a Chemist
-
-```bibtex
-@article{miyazaki2025chemist,
-  title   = {The First Emperor Was a Chemist: Deciphering the 1300-Year-Old "Musui-zōame" Cipher in the Nihon Shoki},
-  author  = {Miyazaki, Masahiro},
-  year    = {2025},
-  journal = {Self-published research},
-  url     = {https://masahiromiyazaki.github.io/-ancient-history-of-japan/first-emperor-was-a-chemist.html}
-}
-```
-
-### 2. A Phonological Analysis of the 'Yama-ichi-koku' Notation in the 'Wajinden'
-
-```bibtex
-@article{miyazaki2025phonology,
-  title   = {A Phonological Analysis of the 'Yama-ichi-koku' Notation in the 'Wajinden': Constructing a "3rd-Century Phonological Transition Model" and the Principle of Hierarchical Phonological Perception},
-  author  = {Miyazaki, Masahiro},
-  year    = {2025},
-  journal = {Self-published research},
-  url     = {https://masahiromiyazaki.github.io/-ancient-history-of-japan/japanese-phonetics-3rd-century.html}
-}
-```
+古代中国語（上古音・中古音）の音韻再構データに基づき、3世紀当時の人々が『魏志倭人伝』をどのように発音していたかをブラウザ上で再現するWebシミュレーターです。
+*   **機能:** バクスター・サガート体系(Baxter-Sagart)等に基づく音韻合成
+*   **技術:** HTML5 / JavaScript / Web Audio API
+*   **目的:** 「文字」ではなく「音」としての倭人伝を体感し、音写の謎に迫る。
 
 ---
 
-## ライセンス (License)
+## 📄 公開論文 (Research Papers)
 
-このリポジトリで公開される著作物は、[クリエイティブ・コモンズ 表示 - 非営利 4.0 国際 ライセンス](http.creativecommons.org/licenses/by-nc/4.0/)の下に提供されています。
-クレジットを表示し、非営利目的である限り、自由に共有・翻案していただけます。
+### 1. [初代天皇は化学者だった ―日本書紀「無水造飴」の暗号―](https://masahiromiyazaki.github.io/-ancient-history-of-japan/first-emperor-was-a-chemist.html)
+**The First Emperor Was a Chemist: Deciphering the 1300-Year-Old "Musui-zōame" Cipher**
+*   **概要:** 神武東征神話における「飴作り」の伝承を、辰砂（水銀）製錬の化学プロセスとして再解釈。考古学的な水銀朱の産地分析と照合し、建国の実態が「資源（ハイテク素材）の掌握」にあったことを論証する。
+*   **キーワード:** *Chemical Archaeology, Mercury Smelting, Nihon Shoki, Cinnabar*
 
-The works in this repository are licensed under a [Creative Commons Attribution-NonCommercial 4.0 International License](http.creativecommons.org/licenses/by-nc/4.0/).
+### 2. [『魏志倭人伝』「邪馬壹國」表記の音韻学的分析](https://masahiromiyazaki.github.io/-ancient-history-of-japan/japanese-phonetics-3rd-century.html)
+**A Phonological Analysis of the 'Yama-ichi-koku' Notation in the 'Wajinden'**
+*   **概要:** 「邪馬台国」か「邪馬壱国」かという長年の論争に対し、3世紀の音韻変化（Phonological Shift）のモデルを用いてアプローチ。当時の音韻認識の階層性原理から、表記の妥当性を検証する。
+*   **キーワード:** *Historical Phonology, Middle Chinese, Old Japanese, Gishi Wajinden*
 
-![CC BY-NC 4.0](https://i.creativecommons.org/l/by-nc/4.0/88x31.png)
+---
+
+## 🏗️ Work in Progress (現在進行中の研究)
+*   **Kamiのルーツ：ユーラシア古層における聖性概念の比較類型論**
+    *   *The Roots of "Kami": A Comparative Typology of Sacred Concepts*
+    *   (Coming Soon / 執筆中)
+
+---
+
+## 📢 Feedback & Contact
+学術的なコメント、技術的な指摘、共同研究の提案などを歓迎します。
+Please check the [GitHub Issues](https://github.com/masahiromiyazaki/-ancient-history-of-japan/issues) page.
+
+*   **Author:** 宮崎 政宏 (Masahiro Miyazaki)
+*   **Profile:** [Note (Main Blog)](https://note.com/masahiromiyazaki)
+*   **Affiliation:** Independent Researcher / 全国邪馬台国連絡協議会 (Zen-Yamaren)
+
+---
+
+## 📜 License
+本リポジトリのコンテンツは [CC BY-NC 4.0 (クリエイティブ・コモンズ 表示 - 非営利 4.0 国際)](http://creativecommons.org/licenses/by-nc/4.0/) の下に提供されています。
