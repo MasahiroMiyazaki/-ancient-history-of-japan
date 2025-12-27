@@ -1,6 +1,8 @@
 # 日本古代史に関する学際的研究
 # Interdisciplinary Studies on Ancient Japanese History
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18065799.svg)](https://doi.org/10.5281/zenodo.18065799)
+
 **Bridging History, Chemistry, and Linguistics through Digital Humanities.**  
 歴史学・化学・言語学、そしてデジタル技術の統合による、古代日本史の再構築。
 
@@ -41,6 +43,20 @@ AIやアルゴリズムを用いた歴史音韻シミュレーターを開発・
 **A Phonological Analysis of the 'Yama-ichi-koku' Notation in the 'Wajinden'**
 *   **概要:** 「邪馬台国」か「邪馬壱国」かという長年の論争に対し、3世紀の音韻変化（Phonological Shift）のモデルを用いてアプローチ。当時の音韻認識の階層性原理から、表記の妥当性を検証する。
 *   **キーワード:** *Historical Phonology, Middle Chinese, Old Japanese, Gishi Wajinden*
+
+---
+
+## 📑 Publications (発表論文)
+
+This repository contains the source code and data for the following research articles.
+（本リポジトリは、以下の研究論文のソースコードおよびデータを管理しています。）
+
+### Preprints
+*   **Reconstruction of 3rd-Century Japanese Phonetics Based on the Wei Zhi Woren Zhuan**
+    *   (魏志倭人伝に基づく3世紀日本語音韻の再構)
+    *   **DOI:** [10.5281/zenodo.18065799](https://doi.org/10.5281/zenodo.18065799)
+    *   **Author:** Masahiro Miyazaki
+    *   [View Article (HTML)](https://masahiromiyazaki.github.io/-ancient-history-of-japan/japanese-phonetics-3rd-century.html)
 
 ---
 
