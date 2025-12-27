@@ -1,7 +1,10 @@
 # 日本古代史に関する学際的研究
 # Interdisciplinary Studies on Ancient Japanese History
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18065799.svg)](https://doi.org/10.5281/zenodo.18065799)
+<!-- 論文のバッジ -->
+[![Paper DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18065799.svg)](https://doi.org/10.5281/zenodo.18065799)
+<!-- ツールのバッジ -->
+[![Tool DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18066256.svg)](https://doi.org/10.5281/zenodo.18066256)
 
 **Bridging History, Chemistry, and Linguistics through Digital Humanities.**  
 歴史学・化学・言語学、そしてデジタル技術の統合による、古代日本史の再構築。
@@ -58,6 +61,12 @@ This repository contains the source code and data for the following research art
     *   **DOI:** [10.5281/zenodo.18065799](https://doi.org/10.5281/zenodo.18065799)
     *   **Author:** Masahiro Miyazaki
     *   [View Article (HTML)](https://masahiromiyazaki.github.io/-ancient-history-of-japan/japanese-phonetics-3rd-century.html)
+
+### Research Tools
+*   **Ancient Chinese Phonology Player**
+    *   (古代中国語音韻プレイヤー)
+    *   **DOI:** [10.5281/zenodo.18066256](https://doi.org/10.5281/zenodo.18066256)
+    *   [Launch Tool](https://masahiromiyazaki.github.io/-ancient-history-of-japan/Ancient-Chinese-Player.html)
 
 ---
 
