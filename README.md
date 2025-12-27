@@ -14,6 +14,7 @@
 ## 👨‍🔬 About the Author
 **宮崎 政宏 (Masahiro Miyazaki)**  
 *Independent Researcher / Digital Humanist / Historical System Architect*
+**Author:** Masahiro Miyazaki [![ORCID](https://img.shields.io/badge/ORCID-0009--0006--6005--1995-A6CE39?logo=orcid&logoColor=white)](https://orcid.org/0009-0006-6005-1995)
 
 本プロジェクトは、文献史学の枠組みだけでは解明できない古代史の謎に対し、**「物質科学（化学分析）」「歴史言語学（音韻再構）」「計算機科学（シミュレーション）」**という複数の証拠線を統合（Triangulation）することで、新たな史的モデルを提示する試みです。
 
