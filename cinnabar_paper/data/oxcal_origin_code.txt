@@ -1,0 +1,141 @@
+Plot()
+{
+  /* 較正曲線の指定：最新の国際標準 IntCal20 */
+  Curve("IntCal20","IntCal20.14c");
+
+  /* 春成モデルが想定する土器型式・遺構の変遷順序 */
+  Sequence("Harunari_Model_Sequence")
+  {
+    Boundary("Start");
+
+    Phase("1_Yamato_VI_4") /* 大和VI-4様式（大福28次） */
+    /* ※坂本（2022）は唐古・鍵遺跡（①〜③、NRTK系サンプル）を「参考資料」として */
+    /* 検討から除外しており、本モデルもこれに従いNRTK-32,-34,-35を含まない。 */
+    {
+      R_Date("NRSK-65", 1910, 20);
+      R_Date("NRSK-66", 1920, 15);
+      R_Date("NRSK-C63", 1925, 20);
+    };
+
+    Boundary("Trans_1_2");
+
+    Phase("2_Shonai_0") /* 庄内0式期 */
+    {
+      R_Date("NRSK-21", 1920, 25);
+      R_Date("NRSK-22_b", 1910, 25);
+      R_Date("NRSK-23_b", 1915, 25);
+      R_Date("NRSK-33_a", 1920, 25);
+      R_Date("NRSK-33_b", 1965, 25);
+      R_Date("NRSK-34_b", 1905, 25);
+    };
+
+    Boundary("Trans_2_3");
+
+    Phase("3_Shonai_1") /* 庄内1式期 */
+    {
+      R_Date("NRSK-24", 1930, 25);
+      R_Date("NRSK-25_a", 1925, 25);
+      R_Date("NRSK-25_b", 1910, 25);
+      R_Date("NRSK-26", 1910, 25);
+    };
+
+    Boundary("Trans_3_4");
+
+    Phase("4_Shonai_3") /* 庄内3式期 */
+    {
+      R_Date("NRSK-27", 1890, 25);
+      R_Date("NRSK-29_b", 1865, 25);
+    };
+
+    Boundary("Trans_4_5");
+
+    Phase("5_Makimuku_Ishizuka") /* ⑦ 纏向石塚墳丘墓期 */
+    /* ※坂本（2022）図7に基づく。NRSK-6（矢塚）は本文「除外」とあるが図7に[A:92]で */
+    /* 掲載されているため、図7の実装に準拠して採用。 */
+    {
+      R_Date("NRSK-C14", 1830, 30);
+      R_Date("NRSK-C16", 1910, 30);
+      R_Date("NRSK-C17", 1890, 30);
+      R_Date("NRSK-C18", 1880, 30);
+      R_Date("NRSK-6",   1820, 30);
+    };
+
+    Boundary("Trans_5_6");
+
+    /* ⑧ 坂本図7に従い築造前・築造中・箸墓築造前の3サブフェーズに分割 */
+    Sequence("Phase_8_Sub")
+    {
+      Phase("6a_Higashida_Before") /* ⑧-1 東田大塚墳丘墓築造前 */
+      {
+        R_Date("NRSK-2",   1860, 30);
+        R_Date("NRSK-3_a", 1820, 30);
+        R_Date("NRSK-3_b", 1780, 30);
+        R_Date("NRSK-C1",  1850, 30);
+        R_Date("NRSK-C2",  1730, 30);
+      };
+
+      Boundary("Trans_6a_6b");
+
+      Phase("6b_Higashida_During") /* ⑧-2 東田大塚築造中 */
+      {
+        R_Date("NRSK-C7", 1760, 30);
+        R_Date("NRSK-C8", 1730, 30);
+      };
+
+      Boundary("Trans_6b_6c");
+
+      Phase("6c_Hashihaka_Before") /* ⑧-3 箸墓古墳築造前 */
+      {
+        R_Date("NRSK-02", 1840, 30);
+        R_Date("NRSK-03", 1780, 30);
+        R_Date("NRSK-04", 1820, 30);
+        R_Date("NRSK-06", 1830, 40);
+        R_Date("NRSK-09", 1910, 40);
+        R_Date("NRSK-10", 1840, 40);
+        R_Date("NRSK-11", 1740, 40);
+        R_Date("NRSK-13", 1870, 40);
+      };
+    };
+
+    Boundary("Trans_6_7");
+
+    Phase("7_Furu_0_New") /* ⑨ 東田大塚壕埋没後・箸墓築造後 */
+    {
+      R_Date("NRSK-1",   1710, 30);
+      R_Date("NRSK-4_a", 1840, 30);
+      R_Date("NRSK-4_b", 1750, 30);
+      R_Date("NRSK-C4",  1650, 30);
+      R_Date("NRSK-C5",  1670, 30);
+      R_Date("NRSK-C6",  1760, 30);
+      R_Date("NRSK-7",   1790, 30);
+      R_Date("NRSK-C21", 1820, 30);
+      R_Date("NRSK-C23", 1800, 30);
+      R_Date("NRSK-C24", 1720, 30);
+      R_Date("NRSK-C25", 1800, 30);
+    };
+
+    Boundary("Trans_7_8");
+
+    Phase("8_Furu_1") /* ⑩ 布留1式期 */
+    {
+      R_Date("NRSK-46",   1710, 20);
+      R_Date("NRSK-C49",  1680, 20);
+      R_Date("NRSK-C50_a", 1740, 20);
+      R_Date("NRSK-C50_b", 1730, 20);
+      R_Date("NRSK-C50_c", 1710, 20);
+      R_Date("NRSK-55_a", 1750, 20);
+      R_Date("NRSK-55_b", 1800, 15);
+    };
+
+    Boundary("Trans_8_9");
+
+    Phase("9_Furu_2") /* ⑪ 布留2式期 */
+    {
+      R_Date("NRSK-59_a", 1770, 20);
+      R_Date("NRSK-59_b", 1775, 15);
+      R_Date("NRSK-C60",  1710, 15);
+    };
+
+    Boundary("End");
+  };
+};
