@@ -11,21 +11,23 @@ Ancient History of Japan: Cinnabar Resource and State Formation
 引用・利用・改変を問わず、適切に出典を明記することで自由に利用可能です。
 
 【フォルダ構成】
-1. dataset.csv
-   - 統計分析用データセット（神社・鉱山座標・距離データ）
+1. ソースデータ (CSVファイル)
+   - mines_ancient_honshu.csv    : 古代鉱山27箇所の座標データ
+   - mononobe_shrines_honshu.csv : 物部系神社17社の座標データ
+   - hyakumeizan_shrines.csv     : 百名山神社18社の座標データ
+   - ichinomiya_shrines_full.csv : 一之宮51社の座標データ
 
-2. analyze_ancient_japan.py
-   - 本論文の主要な統計分析（Mann-Whitney U検定、効果量算出、図表生成）
-     および統計値の算出を行うPythonコード。
+2. 解析スクリプト
+   - analyze_ancient_japan.py
+     上記4つのCSVファイルを読み込み、Haversine式による距離算出、
+     Mann-Whitney U検定、効果量計算、および図表生成を一括して行うPythonコード。
 
-3. oxcal_origin_code.txt
-   - 既存の「春成モデル(2011)」を最新国際標準(IntCal20)で追試するためのOxCalコード。
-     統計的不整合（Amodel < 60%）の確認用。
-
-4. oxcal_modify_code.txt
-   - 本論文の「代替ベイズモデル」用OxCalコード。
-     信頼性の高い試料を優先・適正な層位順序を設定することで、
-     Amodel=64.9%（基準クリア）を達成し、年代の客観的収束を証明する。
+3. 年代論検証用コード
+   - oxcal_origin_code.txt
+     既存の「春成モデル(2011)」を最新国際標準(IntCal20)で追試するためのOxCal実行コード。
+   - oxcal_modify_code.txt
+     信頼性の高い試料を優先的に採用した「代替ベイズモデル」用OxCal実行コード。
+     Amodel=64.9%（国際基準クリア）を達成し、年代の客観的収束を証明する。
 
 【再現手順】
 
@@ -46,14 +48,12 @@ Web版 OxCal (https://c14.arch.ox.ac.uk/oxcal.html) を使用します。
 
 手順:
     1. OxCal を開き、[File] > [New] で新規プロジェクトを作成。
-    2. [View] > [Text] を選択し、空のテキストエリアを表示。
-    3. oxcal_origin_code.txt または oxcal_modify_code.txt の内容を貼り付け。
-    4. [Run] を実行。
-    5. 解析結果（[A=XX.X%] と表示される Amodel）を確認。
+    2. [View] > [Text] を選択し、コードを貼り付け。
+    3. [Run] を実行。
+    4. 解析結果（[A=XX.X%] と表示される Amodel）を確認。
 
 【論理的意図】
-本公開は、論文の主張に対する第三者による独立した検証・反証を促進するためにあります。
-春成モデルの統計的不整合は、科学的再検証の必要性を示す客観的事実です。
+本公開の目的は、春成モデルの統計的不整合を隠蔽することではなく、検証可能な形で明示し、科学的基準を満たす新たな年代論を提示することにあります。
 コードとデータは全て公開されているため、著者への問い合わせなしに再現・反証可能です。
 
 ========================================================================
