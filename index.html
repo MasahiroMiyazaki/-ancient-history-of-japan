@@ -3,88 +3,394 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Ancient History Research | Masahiro Miyazaki</title>
-
-<meta name="description" content="Independent scholarly research by Masahiro Miyazaki, integrating phonology, resource strategy, and ancient state formation in early Japan.">
+<title>宮崎政宏 — 古代史研究</title>
+<meta name="description" content="宮崎政宏による独立研究。化学分析・空間統計・音韻論を統合した日本古代史研究。">
 <meta name="author" content="Masahiro Miyazaki">
-
-<!-- Open Graph -->
 <meta property="og:type" content="article">
-<meta property="og:title" content="Masahiro Miyazaki – Ancient History Research">
+<meta property="og:title" content="宮崎政宏 — 古代史研究">
 <meta property="og:url" content="https://masahiromiyazaki.github.io/-ancient-history-of-japan/">
-<meta property="og:site_name" content="Masahiro Miyazaki Ancient History Research">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
 
 <style>
-body { font-family: 'Hiragino Mincho ProN', 'Yu Mincho', serif; background:#f9f9f9; color:#333; margin:0; line-height: 1.6; }
-.container { max-width:900px; margin:20px auto; padding:20px; }
-.paper-section { background:#fff; padding:25px; border-radius:8px; margin-bottom:30px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-.read-more-btn { display:inline-block; margin-top:15px; padding:10px 20px; background:#2c3e50; color:#fff; text-decoration:none; border-radius:5px; font-size: 0.9em; }
-.read-more-btn:hover { background: #34495e; }
-.zenodo { background:#eef6ff; padding:12px; border-left:4px solid #1f6feb; margin-top:15px; font-size: 0.9em; }
-footer { text-align:center; margin-top:60px; font-size:0.9em; color:#666; }
-h1 { color: #16213e; }
+:root {
+  --ink:     #1a1814;
+  --gold:    #8c6d20;
+  --gold-lt: #c9a84c;
+  --cream:   #faf8f3;
+  --warm:    #f5f0e8;
+  --rule:    #d8cfc0;
+  --muted:   #7a7060;
+  --accent:  #2c4a7c;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Noto Serif JP', 'Hiragino Mincho ProN', serif;
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.8;
+}
+
+/* ── HERO ── */
+.hero {
+  background: var(--ink);
+  color: #f0ece0;
+  padding: 64px 24px 52px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    repeating-linear-gradient(90deg, transparent, transparent 79px, rgba(255,255,255,.03) 80px),
+    repeating-linear-gradient(0deg,  transparent, transparent 79px, rgba(255,255,255,.03) 80px);
+  pointer-events: none;
+}
+.hero-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  font-weight: 300;
+  letter-spacing: .12em;
+  line-height: 1.2;
+  position: relative;
+}
+.hero-name em {
+  display: block;
+  font-style: normal;
+  font-size: .38em;
+  letter-spacing: .32em;
+  color: var(--gold-lt);
+  margin-top: .4em;
+  font-weight: 300;
+  font-family: 'Noto Serif JP', serif;
+}
+.hero-divider {
+  width: 48px; height: 1px;
+  background: var(--gold);
+  margin: 24px auto 20px;
+}
+.hero-tagline {
+  font-size: .88rem;
+  color: #b8b0a0;
+  letter-spacing: .06em;
+  max-width: 480px;
+  margin: 0 auto 28px;
+  line-height: 1.9;
+  position: relative;
+}
+.profile-links {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+}
+.profile-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 16px;
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 2px;
+  color: #d8d0c0;
+  text-decoration: none;
+  font-size: .8rem;
+  letter-spacing: .06em;
+  transition: border-color .2s, color .2s, background .2s;
+  font-family: 'Cormorant Garamond', serif;
+}
+.profile-link:hover {
+  border-color: var(--gold);
+  color: var(--gold-lt);
+  background: rgba(140,109,32,.08);
+}
+.profile-link svg { width: 14px; height: 14px; fill: currentColor; flex-shrink: 0; }
+
+/* ── MAIN ── */
+.container { max-width: 860px; margin: 0 auto; padding: 48px 24px 80px; }
+
+.section-label {
+  font-size: .7rem;
+  letter-spacing: .22em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Cormorant Garamond', serif;
+}
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+
+/* ── PAPER CARD ── */
+.paper-card {
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-top: 3px solid var(--gold);
+  padding: 32px 36px;
+  margin-bottom: 24px;
+  transition: box-shadow .2s;
+}
+.paper-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,.07); }
+
+.paper-tag {
+  display: inline-block;
+  font-size: .68rem;
+  letter-spacing: .14em;
+  color: var(--muted);
+  border: 1px solid var(--rule);
+  padding: 3px 10px;
+  margin-bottom: 14px;
+  font-family: 'Cormorant Garamond', serif;
+}
+.paper-card h2 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.55;
+  margin-bottom: 5px;
+}
+.paper-card .subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: var(--muted);
+  font-size: .95rem;
+  margin-bottom: 14px;
+}
+.paper-card p {
+  font-size: .88rem;
+  color: #4a4538;
+  line-height: 1.9;
+  margin-bottom: 22px;
+}
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
+
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 9px 22px;
+  background: var(--ink);
+  color: #f0ece0;
+  text-decoration: none;
+  font-size: .82rem;
+  letter-spacing: .07em;
+  transition: background .2s;
+  font-family: 'Cormorant Garamond', serif;
+}
+.btn-primary:hover { background: #2c2820; }
+
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 9px 22px;
+  background: transparent;
+  color: var(--ink);
+  text-decoration: none;
+  font-size: .82rem;
+  letter-spacing: .07em;
+  transition: background .2s, border-color .2s;
+  font-family: 'Cormorant Garamond', serif;
+  border: 1px solid var(--rule);
+}
+.btn-secondary:hover { background: var(--warm); border-color: var(--gold); }
+
+.meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 16px;
+  border-top: 1px solid var(--rule);
+}
+.meta-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 4px 11px;
+  font-size: .75rem;
+  letter-spacing: .04em;
+  text-decoration: none;
+  border-radius: 2px;
+  font-family: 'Cormorant Garamond', serif;
+  transition: filter .15s;
+}
+.meta-badge:hover { filter: brightness(.94); }
+.meta-badge.doi  { background: #fffaf0; color: var(--gold);   border: 1px solid #e8d8a0; }
+.meta-badge.data { background: #f0f6ff; color: var(--accent); border: 1px solid #c0d4f0; }
+.meta-badge.note { background: #f0f8f0; color: #2a7040;       border: 1px solid #b0d8b8; }
+
+/* ── SUB CARDS ── */
+.sub-card {
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--gold-lt);
+  padding: 22px 28px;
+  margin-bottom: 16px;
+  transition: box-shadow .2s;
+  background: var(--warm);
+}
+.sub-card:hover { box-shadow: 0 3px 12px rgba(0,0,0,.06); }
+.sub-card h3 { font-size: .98rem; font-weight: 600; margin-bottom: 6px; }
+.sub-card p  { font-size: .85rem; color: #5a5040; margin-bottom: 12px; line-height: 1.85; }
+
+.tool-card {
+  border: 1px solid #d0c8f0;
+  border-left: 3px solid var(--accent);
+  padding: 22px 28px;
+  margin-bottom: 16px;
+  background: #f8f6ff;
+  transition: box-shadow .2s;
+}
+.tool-card:hover { box-shadow: 0 3px 12px rgba(0,0,0,.06); }
+.tool-card h3 { font-size: .98rem; font-weight: 600; margin-bottom: 6px; color: var(--accent); }
+.tool-card p  { font-size: .85rem; color: #4a4568; margin-bottom: 12px; line-height: 1.85; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink);
+  color: #9a9080;
+  text-align: center;
+  padding: 36px 24px;
+  font-size: .78rem;
+  letter-spacing: .08em;
+  line-height: 2.4;
+  font-family: 'Cormorant Garamond', serif;
+}
+footer a { color: var(--gold-lt); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+
+@media (max-width: 600px) {
+  .paper-card { padding: 22px 18px; }
+  .hero { padding: 44px 18px 36px; }
+  .btn-row { flex-direction: column; }
+}
 </style>
 </head>
-
 <body>
-<div class="container">
 
-<header>
-<h1>Masahiro Miyazaki – Ancient History Research</h1>
-<p>Independent scholarly research integrating chemical analysis, spatial statistics, and historical sources.</p>
+<header class="hero">
+  <div class="hero-name">
+    Masahiro Miyazaki
+    <em>宮崎 政宏</em>
+  </div>
+  <div class="hero-divider"></div>
+  <p class="hero-tagline">
+    Independent Researcher in Ancient Japanese History<br>
+    <span style="font-size:.85em; color:#8a8070;">Chemical Analysis · Spatial Statistics · Historical Phonology</span>
+  </p>
+  <nav class="profile-links">
+    <a class="profile-link" href="https://orcid.org/0009-0006-6005-1995" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm-1.374 4.338a1.3 1.3 0 1 1 0 2.6 1.3 1.3 0 0 1 0-2.6zm-1.03 4.152h2.06v11.207h-2.06V8.49zm4.497 0h3.564c3.385 0 5.215 2.017 5.215 5.604 0 3.586-1.83 5.603-5.215 5.603h-3.564V8.49zm2.06 1.8v7.607h1.396c2.06 0 3.217-1.253 3.217-3.803 0-2.55-1.157-3.804-3.217-3.804H16.153z"/></svg>
+      ORCID
+    </a>
+    <a class="profile-link" href="https://note.com/airrium" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M3.75 0A3.75 3.75 0 0 0 0 3.75v16.5A3.75 3.75 0 0 0 3.75 24h16.5A3.75 3.75 0 0 0 24 20.25V3.75A3.75 3.75 0 0 0 20.25 0zm2.5 6a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm-.25 5.5h12v1.5h-12zm0 3.5h12v1.5h-12zm0 3.5h7v1.5h-7z"/></svg>
+      note
+    </a>
+    <a class="profile-link" href="https://github.com/MasahiroMiyazaki/-ancient-history-of-japan" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 17.07 3.633 16.7 3.633 16.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/></svg>
+      GitHub
+    </a>
+  </nav>
 </header>
 
-<main>
+<div class="container">
 
-<!-- 新規論文：辰砂資源 -->
-<article class="paper-section">
-  <h2>辰砂資源の調達構造と古代国家形成モデルの再構築</h2>
-  <p><em>「無水造飴」の化学的解釈および物部神社配置の空間統計分析</em></p>
-  <p>
-    初期ヤマト王権の成立過程を、物理法則・化学反応・空間統計学を外部基準として再構築。
-    水銀製錬技術を触媒とし、物部氏の資源管理網を基盤とする「資源管理型政体」を論じる。
-  </p>
+  <div class="section-label">論文・研究</div>
 
-  <a class="read-more-btn" href="cinnabar_paper/index.html">論文全文を読む →</a>
+  <article class="paper-card">
+    <span class="paper-tag">WORKING PAPER · 2026</span>
+    <h2>辰砂資源の調達構造と古代国家形成モデルの再構築</h2>
+    <p class="subtitle">「無水造飴」の化学的解釈・物部神社の空間統計・年代論の再検証</p>
+    <p>
+      初期ヤマト王権の成立過程を、物理法則・化学反応・空間統計学を外部基準として再構築。
+      水銀製錬技術（HgS＋O₂→Hg＋SO₂↑）を触媒とし、物部氏の資源管理網を基盤とする
+      「資源管理型政体」を化学・統計・年代論・音韻論の四経路から論じる。
+      全データ・コード公開、完全再現可能。
+    </p>
+    <div class="btn-row">
+      <a class="btn-primary" href="cinnabar_paper/index.html">論文全文（HTML版）→</a>
+      <a class="btn-secondary" href="https://doi.org/10.5281/zenodo.19121916" target="_blank" rel="noopener">Zenodo PDF →</a>
+    </div>
+    <div class="meta-row">
+      <a class="meta-badge doi" href="https://doi.org/10.5281/zenodo.19121916" target="_blank" rel="noopener">
+        📦 DOI: 10.5281/zenodo.19121916 · v1.2.0
+      </a>
+      <a class="meta-badge data" href="https://github.com/MasahiroMiyazaki/-ancient-history-of-japan/tree/main/cinnabar_paper/data" target="_blank" rel="noopener">
+        💾 全データ・コード（GitHub）
+      </a>
+      <a class="meta-badge note" href="https://note.com/airrium/n/n482bcfe2ce2c" target="_blank" rel="noopener">
+        📝 note 解説記事
+      </a>
+      <a class="meta-badge" href="https://peatix.com/event/4776296/view" target="_blank" rel="noopener" style="background:#fff0f5; color:#8c2050; border:1px solid #e0a0b8;">
+        🎤 講演「初代天皇は化学者だった」2026-02-19
+      </a>
+    </div>
+  </article>
 
-  <div class="zenodo" style="background:#fffaf0; border-left-color:#8c6d20;">
-    <strong>オープンデータ・再現性</strong><br>
-    全分析データ・Pythonコード・OxCalコード公開中：
-    <a href="https://github.com/MasahiroMiyazaki/-ancient-history-of-japan/tree/main/cinnabar_paper/data" target="_blank">GitHub (data/)</a>
+  <article class="paper-card">
+    <span class="paper-tag">WORKING PAPER · 2025</span>
+    <h2>Reconstruction of 3rd-Century Japanese Phonetics</h2>
+    <p class="subtitle">Based on the Wei Zhi Woren Zhuan（魏志倭人伝に基づく3世紀日本語音韻の再構）</p>
+    <p>
+      Baxter-Sagart（2014）上古漢語再構体系を用い、邪馬壹國の音韻を再検討。
+      「臺」（*l̥ˤə）と「壹」（*ʔit）の音価比較から、畿内説の音韻論的根拠を排除する。
+    </p>
+    <div class="btn-row">
+      <a class="btn-primary" href="japanese-phonetics-3rd-century.html">論文解説ページ →</a>
+      <a class="btn-secondary" href="https://doi.org/10.5281/zenodo.18065799" target="_blank" rel="noopener">Zenodo →</a>
+    </div>
+    <div class="meta-row">
+      <a class="meta-badge doi" href="https://doi.org/10.5281/zenodo.18065799" target="_blank" rel="noopener">
+        📦 DOI: 10.5281/zenodo.18065799
+      </a>
+      <a class="meta-badge data" href="https://doi.org/10.5281/zenodo.18066256" target="_blank" rel="noopener"
+         style="background:#f0f6ff; color:#2c4a7c; border:1px solid #c0d4f0;">
+        📦 関連データ: zenodo.18066256
+      </a>
+      <a class="meta-badge note" href="https://note.com/airrium/n/nb992fdd73b6a" target="_blank" rel="noopener">
+        📝 「邪馬台国」ってどう発音するの？
+      </a>
+    </div>
+  </article>
+
+  <div class="section-label" style="margin-top:44px;">随筆・読み物</div>
+
+  <div class="sub-card">
+    <h3>初代天皇は化学者だった——資源論文のプロトタイプ随筆</h3>
+    <p>「無水造飴＝水銀製錬」という着想の原型となった随筆。論文のエッセンスを物語として読める。</p>
+    <a class="btn-secondary" href="https://masahiromiyazaki.github.io/-ancient-history-of-japan/first-emperor-was-a-chemist.html">読む →</a>
   </div>
-</article>
 
-<!-- Phonetics 論文 -->
-<article class="paper-section">
-  <h2>Reconstruction of 3rd-Century Japanese Phonetics</h2>
-  <p><em>Based on the Wei Zhi Woren Zhuan (魏志倭人伝に基づく3世紀日本語音韻の再構)</em></p>
-  <p>
-    Baxter-Sagart体系を用い、邪馬壹國の音韻を再検討。言語学的観点から従来の畿内説の音韻論的根拠を再評価する。
-  </p>
-  <a class="read-more-btn" href="japanese-phonetics-3rd-century.html">論文解説ページ →</a>
-
-  <div class="zenodo">
-    <strong>正式アーカイブ（Zenodo DOI）</strong><br>
-    <a href="https://zenodo.org/records/18065799" target="_blank">10.5281/zenodo.18065799</a>
+  <div class="sub-card">
+    <h3>note — 宮崎政宏</h3>
+    <p>論文になる前の着想・史料読み直し・仮説の断片、そして日常の記録。研究がどのように形成されるかを、過程ごと公開している。</p>
+    <a class="btn-secondary" href="https://note.com/airrium" target="_blank" rel="noopener">note を読む →</a>
   </div>
-</article>
 
-<!-- ツール -->
-<article class="paper-section">
-  <h2>Ancient Chinese Phonology Player</h2>
-  <p><em>A Web-based Reconstruction Tool</em></p>
-  <p>再構音韻をインタラクティブに試聴可能な研究ツール。</p>
-  <a class="read-more-btn" href="Ancient-Chinese-Player.html">ツールを開く →</a>
-</article>
+  <div class="section-label" style="margin-top:44px;">研究ツール</div>
 
-</main>
-
-<footer>
-<p>Official academic archive powered by Zenodo &amp; GitHub Pages</p>
-<p>© 2026 Masahiro Miyazaki</p>
-</footer>
+  <div class="tool-card">
+    <h3>Ancient Chinese Phonology Player</h3>
+    <p>上古漢語・中古漢語の再構音韻をインタラクティブに試聴できるWebツール。</p>
+    <a class="btn-secondary" href="Ancient-Chinese-Player.html">ツールを開く →</a>
+  </div>
 
 </div>
+
+<footer>
+  <p>
+    <a href="https://orcid.org/0009-0006-6005-1995" target="_blank" rel="noopener">ORCID 0009-0006-6005-1995</a>
+    　·　
+    <a href="https://note.com/airrium" target="_blank" rel="noopener">note</a>
+    　·　
+    <a href="https://github.com/MasahiroMiyazaki/-ancient-history-of-japan" target="_blank" rel="noopener">GitHub</a>
+  </p>
+  <p>Powered by Zenodo &amp; GitHub Pages　·　© 2026 Masahiro Miyazaki　·　CC BY 4.0</p>
+</footer>
+
 </body>
 </html>
