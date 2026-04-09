@@ -25,14 +25,7 @@
     <priority>0.9</priority>
   </url>
 
-  <!-- 随筆: 初代天皇は化学者だった（辰砂論文のプロトタイプ） -->
-  <url>
-    <loc>https://masahiromiyazaki.github.io/-ancient-history-of-japan/first-emperor-was-a-chemist.html</loc>
-    <lastmod>2026-03-20</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
+ 
   <!-- 研究ツール: 上古中国語音声プレーヤー -->
   <url>
     <loc>https://masahiromiyazaki.github.io/-ancient-history-of-japan/Ancient-Chinese-Player.html</loc>

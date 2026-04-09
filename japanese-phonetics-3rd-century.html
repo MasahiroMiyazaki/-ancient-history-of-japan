@@ -1,5 +1,4 @@
 <head>
-<link rel="canonical" href="https://masahiromiyazaki.github.io/-ancient-history-of-japan/japanese-phonetics-3rd-century.html">
     <!-- ============== 誤解防止・SEO HEAD ============== -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -79,6 +78,21 @@
 
     <!-- ★★★ スタイルシート（維持） ★★★ -->
     <style>
+
+/* リンクの色を「黒（または濃いグレー）」にして、下線を消す */
+/* ※クリックはできますが、見た目は普通の文字になります */
+a {
+    color: #000;          /* 真っ黒にする */
+    text-decoration: none; /* 下線を消す */
+}
+
+/* もし「リンクだとわかるようにしたい」なら、下線だけ残す */
+/* 
+a {
+    color: #000;
+    text-decoration: underline;
+} 
+*/
         /* --- ページ全体の基本設定 --- */
         @page {
             size: A4;
@@ -365,55 +379,211 @@
 
 
 <body>
-
-<h1>『魏志倭人伝』「邪馬壹國」表記の音韻学的分析<br>
-―「3世紀音韻変化期モデル」の構築と音韻認識の階層性原理―</h1>
-
-<!-- ▼▼▼ DOI Citation Box ▼▼▼ -->
+<!-- ▼▼▼ 論文表紙（Title Page）ここから ▼▼▼ -->
 <style>
-    .citation-box {
-        background-color: #f0f7ff; /* 薄い青色（学術的な清潔感） */
-        border: 1px solid #cce5ff;
-        border-left: 5px solid #0056b3; /* 左側にアクセントライン */
-        padding: 15px;
-        margin: 20px 0;
-        border-radius: 4px;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-        font-size: 0.95rem;
+    /* ===== 表紙専用スタイル ===== */
+    .title-page {
+        font-family: "游明朝", "Yu Mincho", "Hiragino Mincho Pro", "Times New Roman", serif;
+        background-color: white;
+        height: 297mm;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 50px 60px;
+        box-sizing: border-box;
+        margin: -18mm -20mm 18mm -20mm;
+        page-break-after: always;
+        color: #2c2c2c;
+        overflow: hidden;
+    }
+
+    @media print {
+        .title-page {
+            height: calc(297mm - 18mm - 25mm);
+            margin: -18mm -20mm 0 -20mm;
+            page-break-after: always;
+            background-color: white !important;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+    }
+
+    .tp-working-badge {
+        display: inline-block;
+        border: 1.5px solid #8b7340;
+        color: #8b7340;
+        font-size: 9pt;
+        font-family: "Gill Sans", "Optima", "Yu Gothic", sans-serif;
+        letter-spacing: 0.25em;
+        padding: 6px 22px;
+        margin-bottom: 60px;
+        font-weight: 500;
+        text-transform: uppercase;
+    }
+
+    .tp-main-title {
+        font-size: 22pt;
+        font-weight: bold;
         line-height: 1.5;
-        color: #333;
+        margin-bottom: 18px;
+        letter-spacing: 0.05em;
+        color: #1a1a1a;
     }
 
-    .citation-label {
+    .tp-subtitle-ja {
+        font-size: 11pt;
+        color: #555;
+        margin-bottom: 28px;
+        line-height: 1.7;
+        letter-spacing: 0.03em;
+    }
+
+    .tp-title-en {
+        font-size: 10.5pt;
+        font-style: italic;
+        color: #444;
+        line-height: 1.7;
+        margin-bottom: 48px;
+        max-width: 520px;
+    }
+
+    .tp-divider {
+        width: 280px;
+        height: 1px;
+        background-color: #b0a080;
+        margin: 0 auto 48px auto;
+    }
+
+    .tp-author-name {
+        font-size: 16pt;
         font-weight: bold;
-        color: #0056b3;
-        margin-right: 5px;
+        letter-spacing: 0.1em;
+        margin-bottom: 14px;
+        color: #1a1a1a;
     }
 
-    .doi-link {
-        color: #0056b3;
-        text-decoration: underline;
-        font-weight: bold;
+    .tp-affiliation {
+        font-size: 9.5pt;
+        color: #555;
+        margin-bottom: 18px;
+        letter-spacing: 0.02em;
     }
 
-    .doi-link:hover {
-        color: #003d80;
+    .tp-badges {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        margin-bottom: 52px;
+    }
+
+    .tp-orcid-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 9pt;
+        color: #2c2c2c;
         text-decoration: none;
+        border-bottom: none !important;
     }
-    
-    /* 印刷時（PDF化時）には、このボックス自体を隠すかどうか */
-    /* 今回は「実績」として見せたいので、隠さずに表示する設定にしています */
+
+    .tp-orcid-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background-color: #a6ce39;
+        color: white;
+        font-weight: bold;
+        font-size: 11pt;
+        font-style: italic;
+        font-family: "Times New Roman", serif;
+        line-height: 1;
+        flex-shrink: 0;
+    }
+
+    .tp-badge-sep {
+        color: #999;
+        font-size: 10pt;
+    }
+
+    .tp-doi-badge {
+        display: inline-flex;
+        align-items: center;
+        border-radius: 2px;
+        overflow: hidden;
+        font-size: 8.5pt;
+        font-family: "Arial", sans-serif;
+        font-weight: bold;
+        letter-spacing: 0.04em;
+        text-decoration: none;
+        border-bottom: none !important;
+    }
+
+    .tp-doi-label {
+        background-color: #1a1a5e;
+        color: white;
+        padding: 3px 7px;
+    }
+
+    .tp-doi-value {
+        background-color: #2563a8;
+        color: white;
+        padding: 3px 9px;
+    }
+
+    .tp-date-line {
+        font-size: 9pt;
+        color: #666;
+        line-height: 2;
+        letter-spacing: 0.03em;
+    }
 </style>
 
-<div class="citation-box">
-    <span class="citation-label">[Citation]</span>
-    This article has been published as a Working paper.<br>
-    <strong>DOI:</strong> <a href="https://doi.org/10.5281/zenodo.18065799" class="doi-link" target="_blank" rel="noopener noreferrer">10.5281/zenodo.18065799</a>
-</div>
-<div class="author-info">
-<p>宮崎 政宏</p>
-</div>
+<div class="title-page">
+    <div class="tp-working-badge">Working Paper &#8212; Independent Research</div>
 
+    <div class="tp-main-title">
+        『魏志倭人伝』「邪馬壹國」表記の音韻学的分析<br>
+        ―「3世紀音韻変化期モデル」の構築と音韻認識の階層性原理―
+    </div>
+
+    <div class="tp-title-en">
+        <em>Phonological Analysis of "Yamaichi-koku" in the Wei Zhi Woren Zhuan:<br>
+        Construction of the 3rd-Century Phonological Transition Model<br>
+        and Hierarchical Principles of Phonological Recognition</em>
+    </div>
+
+    <div class="tp-divider"></div>
+
+    <div class="tp-author-name">宮崎&nbsp;&nbsp;&nbsp;政宏（Miyazaki, Masahiro）</div>
+
+    <div class="tp-affiliation">
+        MS in Biomolecular Science &nbsp;|&nbsp; Independent Researcher &nbsp;|&nbsp; 独立研究者
+    </div>
+
+    <div class="tp-badges">
+        <a class="tp-orcid-badge" href="https://orcid.org/0009-0006-6005-1995" target="_blank">
+            <span class="tp-orcid-icon">i</span>
+            <span>0009-0006-6005-1995</span>
+        </a>
+        <span class="tp-badge-sep">|</span>
+        <a class="tp-doi-badge" href="https://doi.org/10.5281/zenodo.18065799" target="_blank">
+            <span class="tp-doi-label">DOI</span>
+            <span class="tp-doi-value">10.5281/zenodo.18065799</span>
+        </a>
+    </div>
+
+    <div class="tp-date-line">
+        初版：2025年12月27日<br>
+        License: CC BY 4.0
+    </div>
+</div>
+<!-- ▲▲▲ 論文表紙 ここまで ▲▲▲ -->
 
 <div class="abstract">
     <h2 id="sec-abstract">要旨</h2>
@@ -7512,7 +7682,7 @@ Bentley氏が「邪馬臺」を <span class="phonetic">*yama-tə</span>（乙類
 
     <div style="margin-top: 10px; padding: 10px; background-color: #e3f2fd; border: 1px solid #90caf9; text-align: center; font-size: 11pt;">
       <strong>連絡先：</strong> 
-      <a href="mailto:ancienthra@gmail.com" style="color: #0d47a1; font-weight: bold; text-decoration: none;">ancienthra@gmail.com</a>
+      <a href="/cdn-cgi/l/email-protection#3e5f505d575b504a564c5f7e59535f5752105d5153" style="color: #0d47a1; font-weight: bold; text-decoration: none;"><span class="__cf_email__" data-cfemail="3d5c535e54585349554f5c7d5a505c5451135e5250">[email&#160;protected]</span></a>
       <br>
       <span style="font-size: 9.5pt;">（または、批評が掲載された媒体の情報を上記アドレスまでご教示ください）</span>
     </div>
@@ -7573,17 +7743,4 @@ Bentley氏が「邪馬臺」を <span class="phonetic">*yama-tə</span>（乙類
 上記を許諾するにあたり、一つお願いがございます。もし本論文を元に動画、ブログ記事、解説などを制作・公開された際には、事後で構いませんので、著者連絡先までご一報いただけますと幸いです。皆様の独創的な作品を拝見することは、筆者にとって何よりの喜びであり、今後の研究の大きな励みとなります。
     </p>
     <p style="margin: 10px 0 0 0;">
-        この許諾は、本研究に関する健全な議論を促進するためのものです。なお、<strong>本論文を主たるコンテンツとした書籍の出版や、外国語への全文翻訳とその出版</strong>など、上記以外の商業利用をご検討の場合は、別途著者までご相談ください。
-    </p>
-  </div>
-</div>
-
-    <footer>
-        <a href="https://masahiromiyazaki.github.io/-ancient-history-of-japan/" class="return-button">
-<span lang="ja">ホームへ戻る</span>
-<span lang="en">Return to Main Page</span>
-        </a>
-    </footer>
-
-</body>
-</html>
+        この許諾は、本研究に関する健全な議論を促進するためのものです。なお、<strong>本論文を主たるコンテンツとした書籍の出版や、外国語への全文翻訳とその出版</strong>など、上記以
