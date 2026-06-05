@@ -2,6 +2,8 @@
 # Interdisciplinary Studies on Ancient Japanese History
 
 <!-- 論文のバッジ -->
+[![Paper DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20528524.svg)](https://doi.org/10.5281/zenodo.20528524)
+[![Paper DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19121916.svg)](https://doi.org/10.5281/zenodo.19121916)
 [![Paper DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18065799.svg)](https://doi.org/10.5281/zenodo.18065799)
 <!-- ツールのバッジ -->
 [![Tool DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18066256.svg)](https://doi.org/10.5281/zenodo.18066256)
@@ -38,15 +40,26 @@ AIやアルゴリズムを用いた歴史音韻シミュレーターを開発・
 
 ## 📄 公開論文 (Research Papers)
 
-### 1. [初代天皇は化学者だった ―日本書紀「無水造飴」の暗号―](https://masahiromiyazaki.github.io/-ancient-history-of-japan/first-emperor-was-a-chemist.html)
-**The First Emperor Was a Chemist: Deciphering the 1300-Year-Old "Musui-zōame" Cipher**
-*   **概要:** 神武東征神話における「飴作り」の伝承を、辰砂（水銀）製錬の化学プロセスとして再解釈。考古学的な水銀朱の産地分析と照合し、建国の実態が「資源（ハイテク素材）の掌握」にあったことを論証する。
-*   **キーワード:** *Chemical Archaeology, Mercury Smelting, Nihon Shoki, Cinnabar*
+### 1. [まぼろしの邪馬台国——その虚像と実像——](https://masahiromiyazaki.github.io/-ancient-history-of-japan/phantom-yamatai.html)
+**The Phantom Yamatai: Myth and Reality — Dismantling the Yamatai Hegemonic-State Theory**
+*   **概要:** 音韻論論文（DOI: 10.5281/zenodo.18065799）と辰砂論文（DOI: 10.5281/zenodo.19121916）を基盤として、邪馬壹国の所在地を正面から論じた集成論文。魏志倭人伝を官僚的フィールドレポートとして精読し「大国家論」を解体。一大率の文官職再解釈・狗古智卑狗＝「菊池征討将軍」説を展開し、邪馬壹国を菊池川流域に比定する。
+*   **DOI:** [10.5281/zenodo.20528524](https://doi.org/10.5281/zenodo.20528524)
+*   **キーワード:** *Yamatai, Wei Zhi Woren Zhuan, Bayesian Radiocarbon Dating, Kikuchi River Basin, Kinai Hypothesis*
 
-### 2. [『魏志倭人伝』「邪馬壹國」表記の音韻学的分析](https://masahiromiyazaki.github.io/-ancient-history-of-japan/japanese-phonetics-3rd-century.html)
+### 2. [辰砂資源の調達構造と古代国家形成モデルの再構築](https://masahiromiyazaki.github.io/-ancient-history-of-japan/cinnabar_paper/index.html)
+**Reconstructing the Procurement Structure of Cinnabar Resources and the Ancient State Formation Model**
+*   **概要:** 神武東征神話における「無水造飴」を水銀製錬（HgS＋O₂→Hg＋SO₂↑）として再解釈。物部神社の空間統計・ベイズ放射性炭素年代論・音韻論の四経路から「資源管理型政体」としての初期ヤマト王権を論証。全データ・コード公開、完全再現可能。
+*   **DOI:** [10.5281/zenodo.19121916](https://doi.org/10.5281/zenodo.19121916)
+*   **キーワード:** *Chemical Archaeology, Mercury Smelting, Nihon Shoki, Cinnabar, Mononobe*
+
+### 3. [『魏志倭人伝』「邪馬壹國」表記の音韻学的分析](https://masahiromiyazaki.github.io/-ancient-history-of-japan/japanese-phonetics-3rd-century.html)
 **A Phonological Analysis of the 'Yama-ichi-koku' Notation in the 'Wajinden'**
 *   **概要:** 「邪馬台国」か「邪馬壱国」かという長年の論争に対し、3世紀の音韻変化（Phonological Shift）のモデルを用いてアプローチ。当時の音韻認識の階層性原理から、表記の妥当性を検証する。
+*   **DOI:** [10.5281/zenodo.18065799](https://doi.org/10.5281/zenodo.18065799)
 *   **キーワード:** *Historical Phonology, Middle Chinese, Old Japanese, Gishi Wajinden*
+
+### 随筆
+*   [初代天皇は化学者だった ―日本書紀「無水造飴」の暗号―](https://masahiromiyazaki.github.io/-ancient-history-of-japan/first-emperor-was-a-chemist.html) — 辰砂論文の原型となった随筆。論文のエッセンスを物語として読める。
 
 ---
 
@@ -56,6 +69,18 @@ This repository contains the source code and data for the following research art
 （本リポジトリは、以下の研究論文のソースコードおよびデータを管理しています。）
 
 ### Preprints
+*   **The Phantom Yamatai: Myth and Reality — Dismantling the Yamatai Hegemonic-State Theory**
+    *   (まぼろしの邪馬台国——その虚像と実像——)
+    *   **DOI:** [10.5281/zenodo.20528524](https://doi.org/10.5281/zenodo.20528524)
+    *   **Author:** Masahiro Miyazaki
+    *   [View Article (HTML)](https://masahiromiyazaki.github.io/-ancient-history-of-japan/phantom-yamatai.html)
+
+*   **Reconstructing the Procurement Structure of Cinnabar Resources and the Ancient State Formation Model**
+    *   (辰砂資源の調達構造と古代国家形成モデルの再構築)
+    *   **DOI:** [10.5281/zenodo.19121916](https://doi.org/10.5281/zenodo.19121916)
+    *   **Author:** Masahiro Miyazaki
+    *   [View Article (HTML)](https://masahiromiyazaki.github.io/-ancient-history-of-japan/cinnabar_paper/index.html)
+
 *   **Reconstruction of 3rd-Century Japanese Phonetics Based on the Wei Zhi Woren Zhuan**
     *   (魏志倭人伝に基づく3世紀日本語音韻の再構)
     *   **DOI:** [10.5281/zenodo.18065799](https://doi.org/10.5281/zenodo.18065799)
@@ -88,4 +113,4 @@ Please check the [GitHub Issues](https://github.com/masahiromiyazaki/-ancient-hi
 ---
 
 ## 📜 License
-本リポジトリのコンテンツは [CC BY-NC 4.0 (クリエイティブ・コモンズ 表示 - 非営利 4.0 国際)](http://creativecommons.org/licenses/by-nc/4.0/) の下に提供されています。
+本リポジトリのコンテンツは [CC BY 4.0 (クリエイティブ・コモンズ 表示 4.0 国際)](https://creativecommons.org/licenses/by/4.0/) の下に提供されています。

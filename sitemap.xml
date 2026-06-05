@@ -1,31 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- トップページ -->
+  <!-- トップページ (日本語) -->
   <url>
     <loc>https://masahiromiyazaki.github.io/-ancient-history-of-japan/</loc>
-    <lastmod>2026-03-20</lastmod>
+    <lastmod>2026-06-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
 
-  <!-- 論文1: 辰砂資源の調達構造と古代国家形成モデルの再構築（主論文） -->
+  <!-- トップページ (English) -->
   <url>
-    <loc>https://masahiromiyazaki.github.io/-ancient-history-of-japan/cinnabar_paper/index.html</loc>
-    <lastmod>2026-03-20</lastmod>
+    <loc>https://masahiromiyazaki.github.io/-ancient-history-of-japan/index-en.html</loc>
+    <lastmod>2026-06-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- 論文1: まぼろしの邪馬台国——その虚像と実像——（集成論文・最新） -->
+  <url>
+    <loc>https://masahiromiyazaki.github.io/-ancient-history-of-japan/phantom-yamatai.html</loc>
+    <lastmod>2026-06-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
   </url>
 
-  <!-- 論文2: 邪馬壹國の音韻学的分析 -->
+  <!-- 論文2: 辰砂資源の調達構造と古代国家形成モデルの再構築 -->
   <url>
-    <loc>https://masahiromiyazaki.github.io/-ancient-history-of-japan/japanese-phonetics-3rd-century.html</loc>
+    <loc>https://masahiromiyazaki.github.io/-ancient-history-of-japan/cinnabar_paper/index.html</loc>
     <lastmod>2026-03-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
- 
+  <!-- 論文3: 邪馬壹國の音韻学的分析 -->
+  <url>
+    <loc>https://masahiromiyazaki.github.io/-ancient-history-of-japan/japanese-phonetics-3rd-century.html</loc>
+    <lastmod>2026-03-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
   <!-- 研究ツール: 上古中国語音声プレーヤー -->
   <url>
     <loc>https://masahiromiyazaki.github.io/-ancient-history-of-japan/Ancient-Chinese-Player.html</loc>
