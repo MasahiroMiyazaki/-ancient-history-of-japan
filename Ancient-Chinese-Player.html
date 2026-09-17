@@ -394,16 +394,12 @@ gtag('config', 'G-N2X0B9FEPB');
         <div class="info-box">
             <h4>⚠️ ご利用上の注意</h4>
             <ul>
-                <li><strong>推奨環境:</strong> 「ブラウザ標準」エンジンはWindows 11 + Chrome (英語音声エンジン搭載)を推奨。「eSpeak-NG」エンジンはOS非依存で、WebAssemblyに対応した最新ブラウザ(Chrome/Edge/Firefox/Safari)であれば動作します。</li>
+                <li><strong>推奨環境:</strong> Windows 11 + Chrome (英語音声エンジン)。</li>
                 <!-- 修正点: 学術的厳密性に関する注記と元記事へのリンクを追加 -->
                 <li style="margin-top:5px; border-top: 1px dashed #e6c880; padding-top:4px;">
                     <strong>※音声の精度について:</strong><br>
-                    「ブラウザ標準」は現代英語のTTS機能を用いてIPAを近似的に再現したものです。「eSpeak-NG」は音素レベルで直接合成するためやや近い響きになりますが、<strong>いずれも学術的な厳密性はありません</strong>。<br>
+                    本ツールは現代英語のTTS機能を用いてIPAを近似的に再現したものであり、<strong>学術的な厳密性はありません</strong>。<br>
                     (<a href="https://note.com/airrium/n/nb992fdd73b6a" target="_blank" rel="noopener noreferrer">参考: 開発の経緯/note</a>)
-                </li>
-                <li style="margin-top:5px; border-top: 1px dashed #e6c880; padding-top:4px;">
-                    <strong>eSpeak-NGエンジンについて:</strong><br>
-                    初回選択時にCDNから音声合成モジュール(約18MB)を読み込みます。通信環境によっては数秒〜数十秒かかります。
                 </li>
                 <li><strong>赤字の語句</strong>は後世の史書や訂正説に基づく表記です。</li>
                 <li>「おまけ」を選択すると、時代ボタンがラテン語用に切り替わります。</li>
@@ -414,15 +410,7 @@ gtag('config', 'G-N2X0B9FEPB');
             <h2 class="section-heading">再生設定</h2>
             <div class="audio-controls">
                 <div class="slider-group">
-                    <div class="slider-label"><span>音声エンジン</span></div>
-                    <select id="engineSelect" class="voice-select" aria-label="音声合成エンジンの選択">
-                        <option value="browser">ブラウザ標準 (デフォルト)</option>
-                        <option value="espeak">eSpeak-NG (実験的・音素合成)</option>
-                    </select>
-                    <div id="espeakStatus" style="font-size:0.7rem; color:var(--seq-btn); margin-top:4px; min-height:1.2em;"></div>
-                </div>
-                <div class="slider-group">
-                    <div class="slider-label"><span>声の種類 (英語推奨・ブラウザ標準時のみ)</span></div>
+                    <div class="slider-label"><span>声の種類 (英語推奨)</span></div>
                     <select id="voiceSelect" class="voice-select" aria-label="音声合成の声を選択">
                         <option value="">自動選択</option>
                     </select>
@@ -650,7 +638,55 @@ var ancientData = [
     }
 ];
 
-// --- 読込み用変換マッピング (IPA -> English TTS 近似／ブラウザ標準エンジン用) ---
+// --- 読込み用変換マッピング (IPA -> English TTS 近似) ---
+var ipaToSpeech = {
+    // 【最優先】綴り読み（エス・エル・エー等）を防止するための phonetic mapping
+    // 末尾にドット . をつけることで、エンジンに「単語」として認識させます
+    's-la': 'slah.',       // 邪: スラ (slah)
+    'mˤraʔ': 'm-rah.',     // 馬: ム・ラ (m-rah)
+    'ʔit': 'it.',          // 壹: イット
+    'srut': 's-root.',     // 帥: スルット
+    
+    // 3世紀音
+    'zja': 'zhah.',        // 邪: ジャ
+    'maʔ': 'mah.',         // 馬: マ
+    'it': 'it.', 
+    
+    // 帥升・中古音補正
+    'stəŋ': 'stuhn.',      // 升: ストン
+    'daj': 'dye.',         // 大: ダイ
+    'uaj': 'why.',         // 倭: ワイ
+    'srw': 'swah.', 
+    'sy': 'shuh.', 
+
+    // 特殊セット
+    'ʔij': 'ee.',
+    'l̥eŋ': 'seng.',
+    '[g]ij': 'gee.',
+    'qʰˤ': 'kah.',
+    'qʰ': 'kah.',
+
+    // 基本母音
+    'ɑ': 'a', 'æ': 'a', 'ʌ': 'u', 'ɒ': 'o', 'ɔ': 'o',
+    'ə': 'u', 'ɛ': 'e', 'œ': 'u', 'ɪ': 'i',
+    'ɨ': 'i', 'ɯ': 'u', 'ʊ': 'u', 'ø': 'eu',
+    'u': 'oo', 'i': 'ee', 'e': 'e', 'o': 'o', 'a': 'a',
+
+    // 不要な記号を除去（※通常の h は消さないように設定変更）
+    'ˤ': '', 'ʰ': '', 'ʲ': 'y', 'ː': '', 'ˈ': '', 'ˌ': '',
+    '[': '', ']': '', '/': '', '*': '', '~': '', 'q': 'k', 
+    'C.': '', 'X': '', 'H': '', "'": '', '(': '', ')': ''
+    // '-' はあえて残すか、スペースにします
+
+英語音声エンジンが「S-L-A」や「M-R-A-H（エイチ）」と綴りを読んでしまうのは、エンジンがそれらを「単語」ではなく「略称（アルファベットの羅列）」と判断しているためです。
+これを回避して「スラ」「ムラ」と発音させる最も確実な方法は、英語エンジンが「単語」として認識しやすい綴り（slah. / m-rah.）に変更し、さらに末尾にドット（.）を付けて「略語ではない」と認識させることです。
+また、以前のコードで h を空文字に置換していたルールが、せっかく付けた slah の h を消してしまっていたため、それも修正しました。
+修正された ipaToSpeech
+このコードを現在のものと差し替えてください。綴り読み（アルファベット読み）を強力に防止します。
+
+
+
+// --- 読込み用変換マッピング (IPA -> English TTS 近似) ---
 var ipaToSpeech = {
     // 【最優先】特定単語の綴り読み（エス・エル・エー等）防止用
     's-la': 'slah.',
@@ -684,141 +720,6 @@ var ipaToSpeech = {
     '[': '', ']': '', '/': '', '*': '', '~': '', 'q': 'k',
     'C.': '', 'X': '', 'H': '', "'": '', '(': '', ')': ''
 };
-
-// --- 読込み用変換マッピング (IPA -> eSpeak-NG 音素記法／高精度エンジン用) ---
-// eSpeak-NG の [[ ]] 音素入力（Kirshenbaum系ASCII記法）へ変換する。
-// 本データセットで実際に使われている記号のみを対象にした実用的な近似表。
-var ipaToEspeak = [
-    // 長母音（単母音より先に判定）
-    ['aː', 'a:'], ['eː', 'e:'], ['iː', 'i:'], ['oː', 'o:'], ['uː', 'u:'], ['əː', '@:'],
-    // 円唇化子音 Cʷ -> Cw
-    ['kʷ', 'kw'], ['gʷ', 'gw'], ['ɢʷ', 'gw'], ['qʷ', 'kw'], ['ŋʷ', 'Nw'], ['xʷ', 'kw'],
-    // 破擦音・子音クラスタ
-    ['tsʰ', 'ts'], ['tʃʰ', 'tS'], ['ʧʰ', 'tS'], ['dʒ', 'dZ'], ['ʧ', 'tS'], ['ʑ', 'Z'],
-    ['dz', 'dz'], ['ts', 'ts'],
-    // 有気音 -> 無気音で近似（英語の語頭閉鎖音は元々有気音のため）
-    ['pʰ', 'p'], ['tʰ', 't'], ['kʰ', 'k'], ['qʰ', 'k'],
-    // 咽頭化・無声化の付加記号 -> 除去して近似
-    ['kˤ', 'k'], ['tˤ', 't'], ['pˤ', 'p'], ['qˤ', 'k'], ['xˤ', 'k'], ['l̥', 'l'], ['r̥', 'r'],
-    // 口蓋垂音 -> 最も近い軟口蓋音で近似
-    ['ɢ', 'g'], ['q', 'k'], ['χ', 'k'], ['x', 'k'],
-    // 摩擦音・鼻音・声門音
-    ['ʃ', 'S'], ['ŋ', 'N'], ['ʔ', ','],
-    // 母音
-    ['ɔ', 'O:'], ['ə', '@'], ['ʊ', 'U'], ['ɛ', 'e'], ['ɪ', 'I'], ['ʌ', 'V'], ['ɑ', 'A:'],
-    ['a', 'a'], ['e', 'e'], ['i', 'i:'], ['o', 'o'], ['u', 'u:'],
-    // 残りの補助記号
-    ['ʷ', 'w'], ['ʰ', ''], ['ˤ', ''], ['̥', ''], ['ː', ':']
-];
-
-// eSpeak-NG WASMモジュール（jsdelivr CDNから初回使用時に遅延読み込み）
-var espeakModuleFactory = null;   // import した ESpeakNg ファクトリ関数のキャッシュ
-var espeakLoadingPromise = null;
-var EPEAK_CDN_URL = 'https://cdn.jsdelivr.net/npm/espeak-ng@1.0.2/dist/espeak-ng.js';
-
-function loadEspeakModule() {
-    if (espeakModuleFactory) return Promise.resolve(espeakModuleFactory);
-    if (espeakLoadingPromise) return espeakLoadingPromise;
-    espeakLoadingPromise = import(/* webpackIgnore: true */ EPEAK_CDN_URL)
-        .then(function (mod) {
-            espeakModuleFactory = mod.default;
-            return espeakModuleFactory;
-        })
-        .catch(function (err) {
-            espeakLoadingPromise = null;
-            throw err;
-        });
-    return espeakLoadingPromise;
-}
-
-// テキスト(IPA風表記) -> eSpeak-NG 音素記法へ変換
-function convertIPAToEspeakPhonemes(text) {
-    var s = text;
-    s = s.replace(/[\*\[\]~]/g, '');      // 再構音マーカー等
-    s = s.replace(/C\./g, '');            // Baxter-Sagart の C. 記法
-    s = s.replace(/[HX](?=[-\s]|$)/g, ''); // 中古音の声調記号(H/X)を語末で除去
-    s = s.replace(/(^|-)'/g, '$1ʔ');      // 語頭アポストロフィ=声門閉鎖音(ʔ)として正規化
-    s = s.toLowerCase();
-
-    var out = '';
-    outer:
-    for (var i = 0; i < s.length; ) {
-        if (s[i] === '-') { out += ','; i++; continue; } // 音節境界->短いポーズ
-        for (var k = 0; k < ipaToEspeak.length; k++) {
-            var ipa = ipaToEspeak[k][0], esp = ipaToEspeak[k][1];
-            if (s.startsWith(ipa, i)) { out += esp; i += ipa.length; continue outer; }
-        }
-        out += s[i]; // 未定義の記号(英字等)はそのまま通す
-        i++;
-    }
-    return out;
-}
-
-// eSpeak-NG で音声合成し、再生する。Web Speech APIのspeak()と対になる非同期版。
-function speakWithEspeak(rawText, onEndCallback) {
-    setStatus(false);
-    updateEspeakStatus('読込中(初回は約18MB)...');
-    loadEspeakModule().then(function (ESpeakNg) {
-        var phonemes = convertIPAToEspeakPhonemes(rawText);
-        document.getElementById('conversionPreview').textContent =
-            'eSpeak-NG音素変換: [[' + phonemes + ']]';
-        var rate = parseFloat(document.getElementById('rate').value);
-        var pitch = parseFloat(document.getElementById('pitch').value);
-        var volume = parseFloat(document.getElementById('volume').value);
-        var wpm = Math.max(80, Math.min(450, Math.round(150 * rate)));
-        var pArg = Math.max(0, Math.min(99, Math.round(50 * pitch)));
-        var aArg = Math.max(0, Math.min(200, Math.round(150 * volume)));
-        var outFile = 'out.wav';
-        updateEspeakStatus('合成中...');
-        return ESpeakNg({
-            arguments: ['-w', outFile, '-v', 'en-us', '-s', String(wpm), '-p', String(pArg), '-a', String(aArg), '[[' + phonemes + ']]']
-        }).then(function (mod) {
-            var wav = mod.FS.readFile(outFile);
-            var blob = new Blob([wav], { type: 'audio/wav' });
-            var url = URL.createObjectURL(blob);
-            var audio = new Audio(url);
-            currentEspeakAudio = audio;
-            audio.onplay = function () { setStatus(true); };
-            audio.onended = function () {
-                setStatus(false);
-                updateEspeakStatus('');
-                URL.revokeObjectURL(url);
-                if (onEndCallback) onEndCallback();
-            };
-            audio.onerror = function () {
-                setStatus(false);
-                updateEspeakStatus('再生エラー');
-                if (onEndCallback) onEndCallback();
-            };
-            return audio.play();
-        });
-    }).catch(function (err) {
-        console.error(err);
-        setStatus(false);
-        updateEspeakStatus('eSpeak-NGの読込/合成に失敗しました(ネットワーク環境をご確認ください)');
-        if (onEndCallback) onEndCallback();
-    });
-}
-
-var currentEspeakAudio = null;
-
-function updateEspeakStatus(msg) {
-    var el = document.getElementById('espeakStatus');
-    if (el) el.textContent = msg;
-}
-
-function stopEspeak() {
-    if (currentEspeakAudio) {
-        currentEspeakAudio.pause();
-        currentEspeakAudio = null;
-    }
-    updateEspeakStatus('');
-}
-
-function getSelectedEngine() {
-    var el = document.getElementById('engineSelect');
-    return el ? el.value : 'browser';
-}
 
 // --- UI Logic ----
 
@@ -997,12 +898,7 @@ function convertIPAToSpeech(text) {
 function updatePreview() {
     var text = document.getElementById('textInput').value;
     var previewDiv = document.getElementById('conversionPreview');
-    if (!text.trim()) { previewDiv.textContent = ''; return; }
-    if (getSelectedEngine() === 'espeak') {
-        previewDiv.textContent = 'eSpeak-NG音素変換: [[' + convertIPAToEspeakPhonemes(text) + ']]';
-    } else {
-        previewDiv.textContent = '読上げ用変換: ' + convertIPAToSpeech(text);
-    }
+    previewDiv.textContent = text.trim() ? '読上げ用変換: ' + convertIPAToSpeech(text) : '';
 }
 
 function updateValue(id) {
@@ -1022,21 +918,11 @@ function setStatus(isPlaying) {
 }
 
 function speak(onEndCallback) {
+    if (synth.speaking) synth.cancel();
+    setStatus(false);
     var text = document.getElementById('textInput').value;
     if (!text.trim()) { if (onEndCallback) onEndCallback(); return; }
-
-    if (getSelectedEngine() === 'espeak') {
-        if (synth.speaking) synth.cancel();
-        stopEspeak();
-        speakWithEspeak(text, onEndCallback);
-        return;
-    }
-
-    if (synth.speaking) synth.cancel();
-    stopEspeak();
-    setStatus(false);
     var textToSpeak = convertIPAToSpeech(text);
-    document.getElementById('conversionPreview').textContent = text.trim() ? '読上げ用変換: ' + textToSpeak : '';
     var utterance = new SpeechSynthesisUtterance(textToSpeak);
     utterance.rate = parseFloat(document.getElementById('rate').value);
     utterance.pitch = parseFloat(document.getElementById('pitch').value);
@@ -1050,7 +936,6 @@ function speak(onEndCallback) {
 
 function stopSpeech() {
     synth.cancel();
-    stopEspeak();
     setStatus(false);
     stopHistory();
 }
@@ -1125,10 +1010,6 @@ function init() {
     ['rate', 'pitch', 'volume'].forEach(id => {
         document.getElementById(id).oninput = () => updateValue(id);
     });
-    document.getElementById('engineSelect').onchange = function () {
-        stopSpeech();
-        updatePreview();
-    };
     populateVoiceList();
     if (speechSynthesis.onvoiceschanged !== undefined) speechSynthesis.onvoiceschanged = populateVoiceList;
     updateAncientExamples();
@@ -1139,7 +1020,6 @@ if (document.readyState === 'loading') document.addEventListener('DOMContentLoad
 </script>
 <div style="position: fixed; bottom: 20px; right: 20px; font-size: 0.8rem; color: #333; background: rgba(255, 255, 255, 0.9); padding: 5px 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
 License: <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" style="color: #0066cc; text-decoration: underline;">CC BY-NC-SA 4.0</a>
-/ 音声合成に<a href="https://github.com/espeak-ng/espeak-ng" target="_blank" style="color: #0066cc; text-decoration: underline;">eSpeak-NG</a>(<a href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank" style="color: #0066cc; text-decoration: underline;">GPL-3.0</a>, jsDelivr CDN経由)を使用
 </div>
 </body>
 </html>
