@@ -372,7 +372,7 @@ gtag('config', 'G-N2X0B9FEPB');
 
                 <label class="period-card active" id="card-third" onclick="selectPeriod(this, 'third')">
                     <input type="radio" name="period" value="third" checked>
-                    <span class="p-name">3世紀推定音 <span class="year-text">~280 CE</span></span>
+                    <span class="p-name">3世紀推定音 <span class="year-text">3世紀前後</span></span>
                     <span class="p-desc">推定モデル</span>
                     <span class="check-icon">✔</span>
                 </label>
@@ -394,12 +394,16 @@ gtag('config', 'G-N2X0B9FEPB');
         <div class="info-box">
             <h4>⚠️ ご利用上の注意</h4>
             <ul>
-                <li><strong>推奨環境:</strong> Windows 11 + Chrome (英語音声エンジン)。</li>
+                <li><strong>推奨環境:</strong> 「ブラウザ標準」エンジンはWindows 11 + Chrome (英語音声エンジン搭載)を推奨。「eSpeak-NG」エンジンはOS非依存で、WebAssemblyに対応した最新ブラウザ(Chrome/Edge/Firefox/Safari)であれば動作します。</li>
                 <!-- 修正点: 学術的厳密性に関する注記と元記事へのリンクを追加 -->
                 <li style="margin-top:5px; border-top: 1px dashed #e6c880; padding-top:4px;">
                     <strong>※音声の精度について:</strong><br>
-                    本ツールは現代英語のTTS機能を用いてIPAを近似的に再現したものであり、<strong>学術的な厳密性はありません</strong>。<br>
+                    「ブラウザ標準」は現代英語のTTS機能を用いてIPAを近似的に再現したものです。「eSpeak-NG」は音素レベルで直接合成するためやや近い響きになりますが、<strong>いずれも学術的な厳密性はありません</strong>。<br>
                     (<a href="https://note.com/airrium/n/nb992fdd73b6a" target="_blank" rel="noopener noreferrer">参考: 開発の経緯/note</a>)
+                </li>
+                <li style="margin-top:5px; border-top: 1px dashed #e6c880; padding-top:4px;">
+                    <strong>eSpeak-NGエンジンについて:</strong><br>
+                    初回選択時にCDNから音声合成モジュール(約18MB)を読み込みます。通信環境によっては数秒〜数十秒かかります。
                 </li>
                 <li><strong>赤字の語句</strong>は後世の史書や訂正説に基づく表記です。</li>
                 <li>「おまけ」を選択すると、時代ボタンがラテン語用に切り替わります。</li>
@@ -410,7 +414,15 @@ gtag('config', 'G-N2X0B9FEPB');
             <h2 class="section-heading">再生設定</h2>
             <div class="audio-controls">
                 <div class="slider-group">
-                    <div class="slider-label"><span>声の種類 (英語推奨)</span></div>
+                    <div class="slider-label"><span>音声エンジン</span></div>
+                    <select id="engineSelect" class="voice-select" aria-label="音声合成エンジンの選択">
+                        <option value="browser">ブラウザ標準 (デフォルト)</option>
+                        <option value="espeak">eSpeak-NG (実験的・音素合成)</option>
+                    </select>
+                    <div id="espeakStatus" style="font-size:0.7rem; color:var(--seq-btn); margin-top:4px; min-height:1.2em;"></div>
+                </div>
+                <div class="slider-group">
+                    <div class="slider-label"><span>声の種類 (英語推奨・ブラウザ標準時のみ)</span></div>
                     <select id="voiceSelect" class="voice-select" aria-label="音声合成の声を選択">
                         <option value="">自動選択</option>
                     </select>
@@ -498,6 +510,10 @@ Baxter-Sagart体系に基づく「上古音」、3世紀当時の推定音、そ
 </ul>
 </article>
 <script>
+
+
+
+
 // --- Data & Config ---
 var synth = window.speechSynthesis;
 var voices = [];
@@ -507,603 +523,623 @@ var isHistoryPlaying = false;
 
 // ラベル管理
 var defaultLabels = {
-old: { name: '晩期上古音', year: '~200 BCE', desc: 'Baxter-Sagart体系' },
-third: { name: '3世紀推定音', year: '~280 CE', desc: '推定モデル' },
-mid: { name: '中古音', year: '~600 CE', desc: '切韻体系' }
+    old: { name: '晩期上古音', year: '~200 BCE', desc: 'Baxter-Sagart体系' },
+    third: { name: '3世紀推定音', year: '~280 CE', desc: '推定モデル' },
+    mid: { name: '中古音', year: '~600 CE', desc: '切韻体系' }
 };
 
 var periodNames = {
-'old': defaultLabels.old.name,
-'third': defaultLabels.third.name,
-'mid': defaultLabels.mid.name
+    'old': defaultLabels.old.name,
+    'third': defaultLabels.third.name,
+    'mid': defaultLabels.mid.name
 };
 
 var periodOrder = ['old', 'third', 'mid'];
 
 var ancientData = [
-// 主要国名
-{ type: '主要国名', k: '對海國', ja: 'たいかいこく (対馬)', old: '*tˤəj-s-*m̥ˤəʔ', third: '*tuj-mɔʔ', mid: 'twojH-hmojX' },
-{ type: '主要国名', k: '一大國', ja: 'いちだいこく (壱岐)', old: '*ʔit-*lˤat-s', third: '*ʔit-dat', mid: "'jit-dajH" },
-{ type: '主要国名', k: '末盧國', ja: 'まつらこく', old: '*mˤat-*ra', third: '*mat-ra', mid: 'mwat-lu' },
-{ type: '主要国名', k: '伊都國', ja: 'いとこく', old: '*ʔij-*tˤa', third: '*ʔij-tɔ', mid: "'jij-tuo" },
-{ type: '主要国名', k: '奴國', ja: 'なこく', old: '*nˤa', third: '*nɔ', mid: 'nu' },
-{ type: '主要国名', k: '不彌國', ja: 'ふみこく', old: '*pə-*mij', third: '*pə-mij', mid: 'pjuw-mjie' },
-{ type: '主要国名', k: '投馬國', ja: 'とうまこく', old: '*C.do-*mˤraʔ', third: '*do-maʔ', mid: 'duw-mhaeX' },
-{ type: '主要国名', k: '邪馬壹國', ja: 'やまいちこく', old: '*s-la-*mˤraʔ-*ʔit', third: '*zja-maʔ-it', mid: "zjia-mhaeX-'jit" },
-{ type: '主要国名', k: '邪馬臺國', ja: 'やまたいこく', old: '*s-la-*mˤraʔ-*lˤə', third: '*zja-maʔ-lˤə', mid: 'zjia-mhaeX-doj', highlight: true, note: '※魏志原文は「壹」' },
-{ type: '主要国名', k: '狗奴國', ja: 'くなこく', old: '*kˤoʔ-*nˤa', third: '*kɔʔ-nɔ', mid: 'kuwX-nu' },
+    // 主要国名
+    { type: '主要国名', k: '對海國', ja: 'たいかいこく (対馬)', old: '*tˤəj-s-*m̥ˤəʔ', third: '*tuj-mɔʔ', mid: 'twojH-hmojX' },
+    { type: '主要国名', k: '一大國', ja: 'いちだいこく (壱岐)', old: '*ʔit-*lˤat-s', third: '*ʔit-dat', mid: "'jit-dajH" },
+    { type: '主要国名', k: '末盧國', ja: 'まつらこく', old: '*mˤat-*ra', third: '*mat-ra', mid: 'mwat-lu' },
+    { type: '主要国名', k: '伊都國', ja: 'いとこく', old: '*ʔij-*tˤa', third: '*ʔij-tɔ', mid: "'jij-tuo" },
+    { type: '主要国名', k: '奴國', ja: 'なこく', old: '*nˤa', third: '*nɔ', mid: 'nu' },
+    { type: '主要国名', k: '不彌國', ja: 'ふみこく', old: '*pə-*mij', third: '*pə-mij', mid: 'pjuw-mjie' },
+    { type: '主要国名', k: '投馬國', ja: 'とうまこく', old: '*C.do-*mˤraʔ', third: '*do-maʔ', mid: 'duw-mhaeX' },
+    { type: '主要国名', k: '邪馬壹國', ja: 'やまいちこく', old: '*s-la-*mˤraʔ-*ʔit', third: '*zja-maʔ-it', mid: "zjia-mhaeX-'jit" },
+    { type: '主要国名', k: '邪馬臺國', ja: 'やまたいこく', old: '*s-la-*mˤraʔ-*lˤə', third: '*zja-maʔ-lˤə', mid: 'zjia-mhaeX-doj', highlight: true, note: '※魏志原文は「壹」' },
+    { type: '主要国名', k: '狗奴國', ja: 'くなこく', old: '*kˤoʔ-*nˤa', third: '*kɔʔ-nɔ', mid: 'kuwX-nu' },
 
-// 傍国
-{ type: '傍国', k: '斯馬國', ja: 'しまこく', old: '*sə-*mˤraʔ', third: '*sə-maʔ', mid: 'sje-mhaeX' },
-{ type: '傍国', k: '已百支國', ja: 'いほきこく', old: '*ɢ(r)əʔ-*pˤrak-*kje', third: '*jiʔ-prak-kje', mid: 'yiX-paek-tsye' },
-{ type: '傍国', k: '伊邪國', ja: 'いやこく', old: '*ʔij-*s-la', third: '*ʔij-zja', mid: "'jij-zjia" },
-{ type: '傍国', k: '都支國', ja: 'ときこく', old: '*tˤa-*kje', third: '*tɔ-kje', mid: 'tuo-tsye' },
-{ type: '傍国', k: '彌奴國', ja: 'みなこく', old: '*mij-*nˤa', third: '*mij-nɔ', mid: 'mjie-nu' },
-{ type: '傍国', k: '好古都國', ja: 'こうことこく', old: '*qʰˤuʔ-*kˤaʔ-*tˤa', third: '*xoʔ-kɔʔ-tɔ', mid: 'huwX-kuX-tuo' },
-{ type: '傍国', k: '不呼國', ja: 'ふここく', old: '*pə-*qʰˤa', third: '*pə-qɔ', mid: 'pjuw-hu' },
-{ type: '傍国', k: '姐奴國', ja: 'しゃなこく', old: '*tsajʔ-*nˤa', third: '*tsjaʔ-nɔ', mid: 'tsjoX-nu' },
-{ type: '傍国', k: '對蘇國', ja: 'ついそこく', old: '*tˤəj-s-*sˤa', third: '*tuj-sɔ', mid: 'twojH-su' },
-{ type: '傍国', k: '蘇奴國', ja: 'そなこく', old: '*sˤa-*nˤa', third: '*sɔ-nɔ', mid: 'su-nu' },
-{ type: '傍国', k: '呼邑國', ja: 'こゆうこく', old: '*qʰˤa-*ʔip', third: '*qɔ-ʔip', mid: "hu-'ip" },
-{ type: '傍国', k: '華奴蘇奴國', ja: 'かなそなこく', old: '*qʷˤra-*nˤa-*sˤa-*nˤa', third: '*qʷaj-nɔ-sɔ-nɔ', mid: 'hwa-nu-su-nu' },
-{ type: '傍国', k: '鬼國', ja: 'きこく', old: '*qʷəjʔ', third: '*kujʔ', mid: 'kjwijX' },
-{ type: '傍国', k: '爲吾國', ja: 'いごこく', old: '*ɢʷaj-*ŋˤa', third: '*wəj-ŋɔ', mid: 'hjwe-ngu' },
-{ type: '傍国', k: '鬼奴國', ja: 'きなこく', old: '*qʷəjʔ-*nˤa', third: '*kujʔ-nɔ', mid: 'kjwijX-nu' },
-{ type: '傍国', k: '邪馬國', ja: 'やまこく', old: '*s-la-*mˤraʔ', third: '*zja-maʔ', mid: 'zjia-mhaeX' },
-{ type: '傍国', k: '躬臣國', ja: 'きゅうしんこく', old: '*kʷəŋ-*[g]in', third: '*kuŋ-gin', mid: 'kjuwng-zyin' },
-{ type: '傍国', k: '巴利國', ja: 'はりこく', old: '*prˤaj-*C.ri[t]-s', third: '*paj-riʔ', mid: 'pae-lijH' },
-{ type: '傍国', k: '支惟國', ja: 'きいこく', old: '*kje-*C.wij', third: '*kje-wij', mid: 'tsye-ywij' },
-{ type: '傍国', k: '烏奴國', ja: 'うなこく', old: '*ʔˤa-*nˤa', third: '*ʔɔ-nɔ', mid: "'u-nu" },
+    // 傍国
+    { type: '傍国', k: '斯馬國', ja: 'しまこく', old: '*sə-*mˤraʔ', third: '*sə-maʔ', mid: 'sje-mhaeX' },
+    { type: '傍国', k: '已百支國', ja: 'いほきこく', old: '*ɢ(r)əʔ-*pˤrak-*kje', third: '*jiʔ-prak-kje', mid: 'yiX-paek-tsye' },
+    { type: '傍国', k: '伊邪國', ja: 'いやこく', old: '*ʔij-*s-la', third: '*ʔij-zja', mid: "'jij-zjia" },
+    { type: '傍国', k: '都支國', ja: 'ときこく', old: '*tˤa-*kje', third: '*tɔ-kje', mid: 'tuo-tsye' },
+    { type: '傍国', k: '彌奴國', ja: 'みなこく', old: '*mij-*nˤa', third: '*mij-nɔ', mid: 'mjie-nu' },
+    { type: '傍国', k: '好古都國', ja: 'こうことこく', old: '*qʰˤuʔ-*kˤaʔ-*tˤa', third: '*xoʔ-kɔʔ-tɔ', mid: 'huwX-kuX-tuo' },
+    { type: '傍国', k: '不呼國', ja: 'ふここく', old: '*pə-*qʰˤa', third: '*pə-qɔ', mid: 'pjuw-hu' },
+    { type: '傍国', k: '姐奴國', ja: 'しゃなこく', old: '*tsajʔ-*nˤa', third: '*tsjaʔ-nɔ', mid: 'tsjoX-nu' },
+    { type: '傍国', k: '對蘇國', ja: 'ついそこく', old: '*tˤəj-s-*sˤa', third: '*tuj-sɔ', mid: 'twojH-su' },
+    { type: '傍国', k: '蘇奴國', ja: 'そなこく', old: '*sˤa-*nˤa', third: '*sɔ-nɔ', mid: 'su-nu' },
+    { type: '傍国', k: '呼邑國', ja: 'こゆうこく', old: '*qʰˤa-*ʔip', third: '*qɔ-ʔip', mid: "hu-'ip" },
+    { type: '傍国', k: '華奴蘇奴國', ja: 'かなそなこく', old: '*qʷˤra-*nˤa-*sˤa-*nˤa', third: '*qʷaj-nɔ-sɔ-nɔ', mid: 'hwa-nu-su-nu' },
+    { type: '傍国', k: '鬼國', ja: 'きこく', old: '*qʷəjʔ', third: '*kujʔ', mid: 'kjwijX' },
+    { type: '傍国', k: '爲吾國', ja: 'いごこく', old: '*ɢʷaj-*ŋˤa', third: '*wəj-ŋɔ', mid: 'hjwe-ngu' },
+    { type: '傍国', k: '鬼奴國', ja: 'きなこく', old: '*qʷəjʔ-*nˤa', third: '*kujʔ-nɔ', mid: 'kjwijX-nu' },
+    { type: '傍国', k: '邪馬國', ja: 'やまこく', old: '*s-la-*mˤraʔ', third: '*zja-maʔ', mid: 'zjia-mhaeX' },
+    { type: '傍国', k: '躬臣國', ja: 'きゅうしんこく', old: '*kʷəŋ-*[g]in', third: '*kuŋ-gin', mid: 'kjuwng-zyin' },
+    { type: '傍国', k: '巴利國', ja: 'はりこく', old: '*prˤaj-*C.ri[t]-s', third: '*paj-riʔ', mid: 'pae-lijH' },
+    { type: '傍国', k: '支惟國', ja: 'きいこく', old: '*kje-*C.wij', third: '*kje-wij', mid: 'tsye-ywij' },
+    { type: '傍国', k: '烏奴國', ja: 'うなこく', old: '*ʔˤa-*nˤa', third: '*ʔɔ-nɔ', mid: "'u-nu" },
 
-// 人名
-{ type: '人名', k: '卑彌呼', ja: 'ひみこ', old: '*pe-*mij-*qʰˤa', third: '*pij-mij-qɔ', mid: 'pjie-mjie-hu' },
-{ type: '人名', k: '壹與', ja: 'いよ', old: '*ʔit-*laʔ', third: '*ʔit-jo', mid: "'jit-yoX" },
-{ type: '人名', k: '臺與', ja: 'とよ', old: '*lˤə-*laʔ', third: '*da-jo', mid: 'doj-yoX', highlight: true, note: '※魏志原文は「壹」' },
-{ type: '人名', k: '難升米', ja: 'なしめ', old: '*nˤan-*s-təŋ-*mˤejʔ', third: '*nan-s(j)əŋ-məjʔ', mid: 'nan-sying-mejX' },
-{ type: '人名', k: '都市牛利', ja: 'としごり', old: '*tˤa-*d(r)əʔ-*ŋʷa-*C.ri[t]-s', third: '*tɔ-dʑiʔ-ŋo-raj', mid: 'tuo-dzyiX-ngjuw-lijH' },
-{ type: '人名', k: '伊聲耆', ja: 'いせいき', old: '*ʔij-*l̥eŋ-*[g]ij', third: '*ʔij-s(j)eŋ-gij', mid: "'jij-syeng-gij" },
-{ type: '人名', k: '掖邪狗', ja: 'えきやく', old: '*lak-*s-la-*kˤoʔ', third: '*jak-zja-kɔʔ', mid: 'yek-zjia-kuwX' },
-{ type: '人名', k: '載斯', ja: 'さし', old: '*tsˤəʔ-*sə', third: '*tsəʔ-se', mid: 'tsojH-sje' },
-{ type: '人名', k: '烏越', ja: 'おえつ', old: '*ʔˤa-*ɢʷat', third: '*ʔɔ-ɢʷat', mid: "'u-hwat" },
-{ type: '人名', k: '卑彌弓呼', ja: 'ひみくこ', old: '*pe-*mij-*kʷəŋ-*qʰˤa', third: '*pij-mij-k(r)uŋ-qɔ', mid: 'pjie-mjie-kjuwng-hu' },
+    // 人名
+    { type: '人名', k: '卑彌呼', ja: 'ひみこ', old: '*pe-*mij-*qʰˤa', third: '*pij-mij-qɔ', mid: 'pjie-mjie-hu' },
+    { type: '人名', k: '壹與', ja: 'いよ', old: '*ʔit-*laʔ', third: '*ʔit-jo', mid: "'jit-yoX" },
+    { type: '人名', k: '臺與', ja: 'とよ', old: '*lˤə-*laʔ', third: '*da-jo', mid: 'doj-yoX', highlight: true, note: '※魏志原文は「壹」' },
+    { type: '人名', k: '難升米', ja: 'なしめ', old: '*nˤan-*s-təŋ-*mˤejʔ', third: '*nan-s(j)əŋ-məjʔ', mid: 'nan-sying-mejX' },
+    { type: '人名', k: '都市牛利', ja: 'としごり', old: '*tˤa-*d(r)əʔ-*ŋʷa-*C.ri[t]-s', third: '*tɔ-dʑiʔ-ŋo-raj', mid: 'tuo-dzyiX-ngjuw-lijH' },
+    { type: '人名', k: '伊聲耆', ja: 'いせいき', old: '*ʔij-*l̥eŋ-*[g]ij', third: '*ʔij-s(j)eŋ-gij', mid: "'jij-syeng-gij" },
+    { type: '人名', k: '掖邪狗', ja: 'えきやく', old: '*lak-*s-la-*kˤoʔ', third: '*jak-zja-kɔʔ', mid: 'yek-zjia-kuwX' },
+    { type: '人名', k: '載斯', ja: 'さし', old: '*tsˤəʔ-*sə', third: '*tsəʔ-se', mid: 'tsojH-sje' },
+    { type: '人名', k: '烏越', ja: 'おえつ', old: '*ʔˤa-*ɢʷat', third: '*ʔɔ-ɢʷat', mid: "'u-hwat" },
+    { type: '人名', k: '卑彌弓呼', ja: 'ひみくこ', old: '*pe-*mij-*kʷəŋ-*qʰˤa', third: '*pij-mij-k(r)uŋ-qɔ', mid: 'pjie-mjie-kjuwng-hu' },
 
-// 官職名
-{ type: '官職名', k: '卑狗', ja: 'ひこ', old: '*pe-*kˤoʔ', third: '*pij-kɔʔ', mid: 'pjie-kuwX' },
-{ type: '官職名', k: '卑奴母離', ja: 'ひなもり', old: '*pe-*nˤa-*mˤəʔ-*C.raj', third: '*pij-nɔ-moʔ-raj', mid: 'pjie-nu-muwX-ljej' },
-{ type: '官職名', k: '爾支', ja: 'にき', old: '*neʔ-*kje', third: '*ne-kje', mid: 'nyeX-tsye' },
-{ type: '官職名', k: '泄謨觚', ja: 'せつもこ', old: '*ljet-*ma-*kˤa', third: '*set-ma-kɔ', mid: 'sjet-mu-ku' },
-{ type: '官職名', k: '柄渠觚', ja: 'へいきょこ', old: '*praŋʔ-*g(r)a-*kˤa', third: '*pjaŋ-gja-kɔ', mid: 'pjaengX-gja-ku' },
-{ type: '官職名', k: '兕馬觚', ja: 'しまこ', old: '*s.ɢijʔ-*mˤraʔ-*kˤa', third: '*ziʔ-maʔ-kɔ', mid: 'zijX-mhaeX-ku' },
-{ type: '官職名', k: '多模', ja: 'たも', old: '*tˤaj-*ma', third: '*tˤaj-mɔ', mid: 'ta-mu' },
-{ type: '官職名', k: '彌彌', ja: 'みみ', old: '*mij-*mij', third: '*mij-mij', mid: 'mjie-mjie' },
-{ type: '官職名', k: '彌彌那利', ja: 'みみなり', old: '*mij-*mij-*nˤaj-*C.ri[t]-s', third: '*mij-mij-nɔ-raj', mid: 'mjie-mjie-na-lijH' },
-{ type: '官職名', k: '伊支馬', ja: 'いきま', old: '*ʔij-*kje-*mˤraʔ', third: '*ʔij-kje-maʔ', mid: "'jij-tsye-mhaeX" },
-{ type: '官職名', k: '彌馬升', ja: 'みましょう', old: '*mij-*mˤraʔ-*s-təŋ', third: '*mij-maʔ-s(j)əŋ', mid: 'mjie-mhaeX-sying' },
-{ type: '官職名', k: '彌馬獲支', ja: 'みまかくき', old: '*mij-*mˤraʔ-*ɢʷˤrek-*kje', third: '*mij-maʔ-ɢʷˤek-kje', mid: 'mjie-mhaeX-hwak-tsye' },
-{ type: '官職名', k: '奴佳鞮', ja: 'なかてい', old: '*nˤa-*kˤre-*tij', third: '*nɔ-kaj-tej', mid: 'nu-kea-tej' },
-{ type: '官職名', k: '狗古智卑狗', ja: 'くこちひこ', old: '*kˤoʔ-*kˤaʔ-*trje-*pe-*kˤoʔ', third: '*kɔʔ-kɔʔ-tij-pij-kɔʔ', mid: 'kuwX-kuX-tsye-pjie-kuwX' },
-{ type: '官職名', k: '大倭', ja: 'だいわ', old: '*lˤat-s-*ʔʷaj', third: '*dat-ʔwaj', mid: "dajH-'uaj" },
+    // 官職名
+    { type: '官職名', k: '卑狗', ja: 'ひこ', old: '*pe-*kˤoʔ', third: '*pij-kɔʔ', mid: 'pjie-kuwX' },
+    { type: '官職名', k: '卑奴母離', ja: 'ひなもり', old: '*pe-*nˤa-*mˤəʔ-*C.raj', third: '*pij-nɔ-moʔ-raj', mid: 'pjie-nu-muwX-ljej' },
+    { type: '官職名', k: '爾支', ja: 'にき', old: '*neʔ-*kje', third: '*ne-kje', mid: 'nyeX-tsye' },
+    { type: '官職名', k: '泄謨觚', ja: 'せつもこ', old: '*ljet-*map-*kˤa', third: '*set-ma-kɔ', mid: 'sjet-mu-ku' },
+    { type: '官職名', k: '柄渠觚', ja: 'へいきょこ', old: '*praŋʔ-*g(r)a-*kˤa', third: '*pjaŋ-gja-kɔ', mid: 'pjaengX-gja-ku' },
+    { type: '官職名', k: '兕馬觚', ja: 'しまこ', old: '*s.ɢijʔ-*mˤraʔ-*kˤa', third: '*ziʔ-maʔ-kɔ', mid: 'zijX-mhaeX-ku' },
+    { type: '官職名', k: '多模', ja: 'たも', old: '*tˤaj-*ma', third: '*tˤaj-mɔ', mid: 'ta-mu' },
+    { type: '官職名', k: '彌彌', ja: 'みみ', old: '*mij-*mij', third: '*mij-mij', mid: 'mjie-mjie' },
+    { type: '官職名', k: '彌彌那利', ja: 'みみなり', old: '*mij-*mij-*nˤaj-*C.ri[t]-s', third: '*mij-mij-nɔ-raj', mid: 'mjie-mjie-na-lijH' },
+    { type: '官職名', k: '伊支馬', ja: 'いきま', old: '*ʔij-*kje-*mˤraʔ', third: '*ʔij-kje-maʔ', mid: "'jij-tsye-mhaeX" },
+    { type: '官職名', k: '彌馬升', ja: 'みましょう', old: '*mij-*mˤraʔ-*s-təŋ', third: '*mij-maʔ-s(j)əŋ', mid: 'mjie-mhaeX-sying' },
+    { type: '官職名', k: '彌馬獲支', ja: 'みまかくき', old: '*mij-*mˤraʔ-*ɢʷˤrek-*kje', third: '*mij-maʔ-ɢʷˤek-kje', mid: 'mjie-mhaeX-hwak-tsye' },
+    { type: '官職名', k: '奴佳鞮', ja: 'なかてい', old: '*nˤa-*kˤre-*tij', third: '*nɔ-kaj-tej', mid: 'nu-kea-tej' },
+    { type: '官職名', k: '狗古智卑狗', ja: 'くこちひこ', old: '*kˤoʔ-*kˤaʔ-*trje-*pe-*kˤoʔ', third: '*kɔʔ-kɔʔ-tij-pij-kɔʔ', mid: 'kuwX-kuX-tsye-pjie-kuwX' },
+    { type: '官職名', k: '大倭', ja: 'だいわ', old: '*lˤat-s-*ʔʷaj', third: '*dat-ʔwaj', mid: "dajH-'uaj" },
 
-// おまけ (ラテン語変遷)
-{
-type: 'おまけ（ラテン語）',
-k: '来た、見た、勝った',
-ja: 'ウェーニー・ウィーディー...',
-old: 'weːniː wiːdiː wiːkiː',
-third: 'weːniː wiːdiː wiːkiː',
-mid: 'veni vidi viʧi',
-highlight: true,
-note: '羅: Veni, vidi, vici',
-labels: {
-old: { name: '古典ラテン語', year: '~100 BCE', desc: 'Classical Latin' },
-third: { name: '俗ラテン語', year: '~4c CE', desc: 'Vulgar Latin' },
-mid: { name: '教会ラテン語', year: 'Medieval', desc: 'Ecclesiastical' }
-}
-},
-{
-type: 'おまけ（ラテン語）',
-k: 'ユリウス・カエサル',
-ja: 'ジュリアス・シーザー',
-old: 'juːliʊs kaesar',
-third: 'juːliʊs kesar',
-mid: 'juːliʊs tʃesar',
-highlight: true,
-note: '変遷: カエサル(古)→ケサル(俗)→チェサル(教)',
-labels: {
-old: { name: '古典ラテン語', year: '~100 BCE', desc: 'Classical Latin' },
-third: { name: '俗ラテン語', year: '~4c CE', desc: 'Vulgar Latin' },
-mid: { name: '教会ラテン語', year: 'Medieval', desc: 'Ecclesiastical' }
-}
-}
+    // おまけ１（後漢書：帥升）
+    {
+        type: 'おまけ１（後漢書）',
+        k: '帥升',
+        ja: 'すいしょう (107年の倭国王)',
+        old: '*srut-*stəŋ',
+        third: '*srwi-*sjəŋ',
+        mid: 'srwijH-sying',
+        highlight: true,
+        note: '西暦107年朝貢。当時の規範音はSrut-ston(スリッ・ストン)という硬い響き。',
+        labels: {
+            old: { name: '晩期上古音', year: '107 CE (朝貢時)', desc: '後漢・洛陽官話（Srut-ston）' },
+            third: { name: '3世紀推定音', year: '~280 CE', desc: '魏晋時代の音変化（Srwi-shon）' },
+            mid: { name: '中古音', year: '~600 CE', desc: '隋唐・切韻体系（Sui-shing）' }
+        }
+    },
+
+    // おまけ２（ラテン語：カエサル）
+    {
+        type: 'おまけ２（ラテン語）',
+        k: '来た、見た、勝った',
+        ja: 'ウェーニー・ウィーディー・ウィーキー',
+        old: 'weːniː wiːdiː wiːkiː',
+        third: 'veni vidi viki',
+        mid: 'veni vidi viʧi',
+        highlight: true,
+        note: '羅: Veni, vidi, vici. 古典では「ウィーキー」、教会式では「ヴィーチ」',
+        labels: {
+            old: { name: '古典ラテン語', year: '~100 BCE', desc: 'カエサル時代の発音' },
+            third: { name: '俗ラテン語', year: '~4c CE', desc: '民衆のラテン語・変化期' },
+            mid: { name: '教会ラテン語', year: 'Medieval', desc: '現代も使われる典礼音' }
+        }
+    },
+    {
+        type: 'おまけ２（ラテン語）',
+        k: 'ユリウス・カエサル',
+        ja: '古典音: ユリウス・カエサル',
+        old: 'juːliʊs kaesar',
+        third: 'juːliʊs kesar',
+        mid: 'juːliʊs tʃesar',
+        highlight: true,
+        note: '英語の「シーザー」は、この「ケサル」がさらに変化したもの。',
+        labels: {
+            old: { name: '古典ラテン語', year: '~100 BCE', desc: 'Classical Latin' },
+            third: { name: '俗ラテン語', year: '~4c CE', desc: 'Vulgar Latin' },
+            mid: { name: '教会ラテン語', year: 'Medieval', desc: 'Ecclesiastical' }
+        }
+    }
 ];
 
+// --- 読込み用変換マッピング (IPA -> English TTS 近似／ブラウザ標準エンジン用) ---
 var ipaToSpeech = {
-// 母音設定
-'ɑ': 'a', 'æ': 'a', 'ʌ': 'u', 'ɒ': 'o', 'ɔ': 'o',
-'ə': 'u', 'ɛ': 'e', 'œ': 'u', 'ɪ': 'i',
-'ɨ': 'i', 'ɯ': 'u', 'ʊ': 'u', 'ø': 'eu',
-'u': 'oo', 'i': 'ee', 'e': 'e', 'o': 'o', 'a': 'a',
-'jij': 'yee', 'tuo': 'to',
-'ja': 'ya', 'ju': 'yu', 'jo': 'yo', 'je': 'ie', 'ji': 'yee',
-'jə': 'yu', 'əj': 'ui', 'j': 'i', 'y': 'y',
-'s.': 'su', 'm̥': 'hm', 'n̥': 'hn', 'l̥': 'hl',
-'ʃ': 'sh', 'ʒ': 'zh', 'θ': 'th', 'ð': 'dh', 'ŋ': 'ng',
-'ʔ': '', 'ɡ': 'g', 'ç': 'hy', 'x': 'kh', 'ɣ': 'gh',
-'χ': 'kh', 'ʁ': 'r', 'β': 'v', 'ɸ': 'f',
-'ʎ': 'li', 'ɲ': 'ny', 'ʧ': 'ch', 'ʤ': 'j',
-'ts': 'z', 'dz': 'dz', 'ʑ': 'zh', 'ɢ': 'g', 'mw': 'mu',
-'ʷ': 'u', 'hw': 'hu', 'w': 'w', 'kw': 'ku', 'gw': 'gu',
-'ˤ': '', 'ʰ': 'h', 'ʲ': 'y', 'ː': '', 'ˈ': '', 'ˌ': '', '.': '',
-'[': '', ']': '', '/': '', '*': '', '~': '', 'q': 'k',
-'-': '', 'C.': '', 'X': '', 'H': '', "'": '', ' ': ' ', '(': '', ')': ''
+    // 【最優先】特定単語の綴り読み（エス・エル・エー等）防止用
+    's-la': 'slah.',
+    'mˤraʔ': 'm-rah.',
+    'ʔit': 'it.',
+    'srut': 's-root.',
+    'zja': 'zhah.',
+    'maʔ': 'mah.',
+    'daj': 'dye.',
+    'uaj': 'why.',
+    'stəŋ': 'stuhn.',
+    'srw': 'swah.',
+    'sy': 'shuh.',
+    'ʔij': 'ee.',
+    'l̥eŋ': 'seng.',
+    '[g]ij': 'gee.',
+    'qʰˤ': 'kah.',
+    'qʰ': 'kah.',
+    'ɢʷˤ': 'gwah.',
+
+    // 基本母音・子音
+    'ɑ': 'a', 'æ': 'a', 'ʌ': 'u', 'ɒ': 'o', 'ɔ': 'o',
+    'ə': 'u', 'ɛ': 'e', 'œ': 'u', 'ɪ': 'i',
+    'ɨ': 'i', 'ɯ': 'u', 'ʊ': 'u', 'ø': 'eu',
+    'u': 'oo', 'i': 'ee', 'e': 'e', 'o': 'o', 'a': 'a',
+    'ʃ': 'sh', 'ʒ': 'zh', 'ŋ': 'ng', 'ɡ': 'g', 'x': 'kh',
+    'ʷ': 'u', 'w': 'w', 'ts': 'z', 'dz': 'dz',
+
+    // 不要な記号を徹底削除
+    'ˤ': '', 'ʰ': '', 'ʲ': 'y', 'ː': '', 'ˈ': '', 'ˌ': '',
+    '[': '', ']': '', '/': '', '*': '', '~': '', 'q': 'k',
+    'C.': '', 'X': '', 'H': '', "'": '', '(': '', ')': ''
 };
 
-// --- UI Logic ---
+// --- 読込み用変換マッピング (IPA -> eSpeak-NG 音素記法／高精度エンジン用) ---
+// eSpeak-NG の [[ ]] 音素入力（Kirshenbaum系ASCII記法）へ変換する。
+// 本データセットで実際に使われている記号のみを対象にした実用的な近似表。
+var ipaToEspeak = [
+    // 長母音（単母音より先に判定）
+    ['aː', 'a:'], ['eː', 'e:'], ['iː', 'i:'], ['oː', 'o:'], ['uː', 'u:'], ['əː', '@:'],
+    // 円唇化子音 Cʷ -> Cw
+    ['kʷ', 'kw'], ['gʷ', 'gw'], ['ɢʷ', 'gw'], ['qʷ', 'kw'], ['ŋʷ', 'Nw'], ['xʷ', 'kw'],
+    // 破擦音・子音クラスタ
+    ['tsʰ', 'ts'], ['tʃʰ', 'tS'], ['ʧʰ', 'tS'], ['dʒ', 'dZ'], ['ʧ', 'tS'], ['ʑ', 'Z'],
+    ['dz', 'dz'], ['ts', 'ts'],
+    // 有気音 -> 無気音で近似（英語の語頭閉鎖音は元々有気音のため）
+    ['pʰ', 'p'], ['tʰ', 't'], ['kʰ', 'k'], ['qʰ', 'k'],
+    // 咽頭化・無声化の付加記号 -> 除去して近似
+    ['kˤ', 'k'], ['tˤ', 't'], ['pˤ', 'p'], ['qˤ', 'k'], ['xˤ', 'k'], ['l̥', 'l'], ['r̥', 'r'],
+    // 口蓋垂音 -> 最も近い軟口蓋音で近似
+    ['ɢ', 'g'], ['q', 'k'], ['χ', 'k'], ['x', 'k'],
+    // 摩擦音・鼻音・声門音
+    ['ʃ', 'S'], ['ŋ', 'N'], ['ʔ', ','],
+    // 母音
+    ['ɔ', 'O:'], ['ə', '@'], ['ʊ', 'U'], ['ɛ', 'e'], ['ɪ', 'I'], ['ʌ', 'V'], ['ɑ', 'A:'],
+    ['a', 'a'], ['e', 'e'], ['i', 'i:'], ['o', 'o'], ['u', 'u:'],
+    // 残りの補助記号
+    ['ʷ', 'w'], ['ʰ', ''], ['ˤ', ''], ['̥', ''], ['ː', ':']
+];
+
+// eSpeak-NG WASMモジュール（jsdelivr CDNから初回使用時に遅延読み込み）
+var espeakModuleFactory = null;   // import した ESpeakNg ファクトリ関数のキャッシュ
+var espeakLoadingPromise = null;
+var EPEAK_CDN_URL = 'https://cdn.jsdelivr.net/npm/espeak-ng@1.0.2/dist/espeak-ng.js';
+
+function loadEspeakModule() {
+    if (espeakModuleFactory) return Promise.resolve(espeakModuleFactory);
+    if (espeakLoadingPromise) return espeakLoadingPromise;
+    espeakLoadingPromise = import(/* webpackIgnore: true */ EPEAK_CDN_URL)
+        .then(function (mod) {
+            espeakModuleFactory = mod.default;
+            return espeakModuleFactory;
+        })
+        .catch(function (err) {
+            espeakLoadingPromise = null;
+            throw err;
+        });
+    return espeakLoadingPromise;
+}
+
+// テキスト(IPA風表記) -> eSpeak-NG 音素記法へ変換
+function convertIPAToEspeakPhonemes(text) {
+    var s = text;
+    s = s.replace(/[\*\[\]~]/g, '');      // 再構音マーカー等
+    s = s.replace(/C\./g, '');            // Baxter-Sagart の C. 記法
+    s = s.replace(/[HX](?=[-\s]|$)/g, ''); // 中古音の声調記号(H/X)を語末で除去
+    s = s.replace(/(^|-)'/g, '$1ʔ');      // 語頭アポストロフィ=声門閉鎖音(ʔ)として正規化
+    s = s.toLowerCase();
+
+    var out = '';
+    outer:
+    for (var i = 0; i < s.length; ) {
+        if (s[i] === '-') { out += ','; i++; continue; } // 音節境界->短いポーズ
+        for (var k = 0; k < ipaToEspeak.length; k++) {
+            var ipa = ipaToEspeak[k][0], esp = ipaToEspeak[k][1];
+            if (s.startsWith(ipa, i)) { out += esp; i += ipa.length; continue outer; }
+        }
+        out += s[i]; // 未定義の記号(英字等)はそのまま通す
+        i++;
+    }
+    return out;
+}
+
+// eSpeak-NG で音声合成し、再生する。Web Speech APIのspeak()と対になる非同期版。
+function speakWithEspeak(rawText, onEndCallback) {
+    setStatus(false);
+    updateEspeakStatus('読込中(初回は約18MB)...');
+    loadEspeakModule().then(function (ESpeakNg) {
+        var phonemes = convertIPAToEspeakPhonemes(rawText);
+        document.getElementById('conversionPreview').textContent =
+            'eSpeak-NG音素変換: [[' + phonemes + ']]';
+        var rate = parseFloat(document.getElementById('rate').value);
+        var pitch = parseFloat(document.getElementById('pitch').value);
+        var volume = parseFloat(document.getElementById('volume').value);
+        var wpm = Math.max(80, Math.min(450, Math.round(150 * rate)));
+        var pArg = Math.max(0, Math.min(99, Math.round(50 * pitch)));
+        var aArg = Math.max(0, Math.min(200, Math.round(150 * volume)));
+        var outFile = 'out.wav';
+        updateEspeakStatus('合成中...');
+        return ESpeakNg({
+            arguments: ['-w', outFile, '-v', 'en-us', '-s', String(wpm), '-p', String(pArg), '-a', String(aArg), '[[' + phonemes + ']]']
+        }).then(function (mod) {
+            var wav = mod.FS.readFile(outFile);
+            var blob = new Blob([wav], { type: 'audio/wav' });
+            var url = URL.createObjectURL(blob);
+            var audio = new Audio(url);
+            currentEspeakAudio = audio;
+            audio.onplay = function () { setStatus(true); };
+            audio.onended = function () {
+                setStatus(false);
+                updateEspeakStatus('');
+                URL.revokeObjectURL(url);
+                if (onEndCallback) onEndCallback();
+            };
+            audio.onerror = function () {
+                setStatus(false);
+                updateEspeakStatus('再生エラー');
+                if (onEndCallback) onEndCallback();
+            };
+            return audio.play();
+        });
+    }).catch(function (err) {
+        console.error(err);
+        setStatus(false);
+        updateEspeakStatus('eSpeak-NGの読込/合成に失敗しました(ネットワーク環境をご確認ください)');
+        if (onEndCallback) onEndCallback();
+    });
+}
+
+var currentEspeakAudio = null;
+
+function updateEspeakStatus(msg) {
+    var el = document.getElementById('espeakStatus');
+    if (el) el.textContent = msg;
+}
+
+function stopEspeak() {
+    if (currentEspeakAudio) {
+        currentEspeakAudio.pause();
+        currentEspeakAudio = null;
+    }
+    updateEspeakStatus('');
+}
+
+function getSelectedEngine() {
+    var el = document.getElementById('engineSelect');
+    return el ? el.value : 'browser';
+}
+
+// --- UI Logic ----
 
 function updatePeriodLabels(customLabels) {
-var map = customLabels || defaultLabels;
+    var map = customLabels || defaultLabels;
+    var dOld = map.old;
+    document.querySelector('#card-old .p-name').innerHTML = `${dOld.name} <span class="year-text">${dOld.year}</span>`;
+    document.querySelector('#card-old .p-desc').textContent = dOld.desc;
+    var dThird = map.third;
+    document.querySelector('#card-third .p-name').innerHTML = `${dThird.name} <span class="year-text">${dThird.year}</span>`;
+    document.querySelector('#card-third .p-desc').textContent = dThird.desc;
+    var dMid = map.mid;
+    document.querySelector('#card-mid .p-name').innerHTML = `${dMid.name} <span class="year-text">${dMid.year}</span>`;
+    document.querySelector('#card-mid .p-desc').textContent = dMid.desc;
 
-var dOld = map.old;
-document.querySelector('#card-old .p-name').innerHTML = `${dOld.name} <span class="year-text">${dOld.year}</span>`;
-document.querySelector('#card-old .p-desc').textContent = dOld.desc;
-
-var dThird = map.third;
-document.querySelector('#card-third .p-name').innerHTML = `${dThird.name} <span class="year-text">${dThird.year}</span>`;
-document.querySelector('#card-third .p-desc').textContent = dThird.desc;
-
-var dMid = map.mid;
-document.querySelector('#card-mid .p-name').innerHTML = `${dMid.name} <span class="year-text">${dMid.year}</span>`;
-document.querySelector('#card-mid .p-desc').textContent = dMid.desc;
-
-periodNames['old'] = dOld.name;
-periodNames['third'] = dThird.name;
-periodNames['mid'] = dMid.name;
+    periodNames['old'] = dOld.name;
+    periodNames['third'] = dThird.name;
+    periodNames['mid'] = dMid.name;
 }
 
 function updateUrlState() {
-var url = new URL(window.location);
-url.searchParams.set('period', currentAncientPeriod);
-
-var currentText = document.getElementById('textInput').value.trim();
-
-if (selectedWordIndex !== null) {
-url.searchParams.set('word', ancientData[selectedWordIndex].k);
-url.searchParams.delete('text');
-} else if (currentText !== "") {
-url.searchParams.delete('word');
-url.searchParams.set('text', currentText);
-} else {
-url.searchParams.delete('word');
-url.searchParams.delete('text');
-}
-
-window.history.replaceState(null, '', url);
+    var url = new URL(window.location);
+    url.searchParams.set('period', currentAncientPeriod);
+    var currentText = document.getElementById('textInput').value.trim();
+    if (selectedWordIndex !== null) {
+        url.searchParams.set('word', ancientData[selectedWordIndex].k);
+        url.searchParams.delete('text');
+    } else if (currentText !== "") {
+        url.searchParams.delete('word');
+        url.searchParams.set('text', currentText);
+    } else {
+        url.searchParams.delete('word');
+        url.searchParams.delete('text');
+    }
+    window.history.replaceState(null, '', url);
 }
 
 function copyCurrentUrl() {
-updateUrlState();
-var url = window.location.href;
-navigator.clipboard.writeText(url).then(function() {
-var btn = document.getElementById('copyUrlBtn');
-var originalText = btn.textContent;
-btn.textContent = "✅";
-btn.classList.add('copied');
-setTimeout(function() {
-btn.textContent = originalText;
-btn.classList.remove('copied');
-}, 2000);
-});
+    updateUrlState();
+    var url = window.location.href;
+    navigator.clipboard.writeText(url).then(function() {
+        var btn = document.getElementById('copyUrlBtn');
+        var originalText = btn.textContent;
+        btn.textContent = "✅";
+        btn.classList.add('copied');
+        setTimeout(function() {
+            btn.textContent = originalText;
+            btn.classList.remove('copied');
+        }, 2000);
+    });
 }
 
 function shareOnX() {
-updateUrlState();
-var url = window.location.href;
-var text = "魏志倭人伝・古代発音プレーヤー";
-var hashtags = "古代日本語,邪馬台国";
-
-if (selectedWordIndex !== null) {
-var data = ancientData[selectedWordIndex];
-var pron = document.getElementById('textInput').value;
-text = `「${data.k}」の${periodNames[currentAncientPeriod]}：${pron} を再生中🔊`;
-} else {
-var manualText = document.getElementById('textInput').value.trim();
-if (manualText) {
-text = `IPA「${manualText}」の${periodNames[currentAncientPeriod]}発音を再生中🔊`;
-}
-}
-
-var shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}&hashtags=${encodeURIComponent(hashtags)}`;
-window.open(shareUrl, '_blank');
+    updateUrlState();
+    var url = window.location.href;
+    var text = "魏志倭人伝・古代発音プレーヤー";
+    var hashtags = "古代日本語,邪馬台国";
+    if (selectedWordIndex !== null) {
+        var data = ancientData[selectedWordIndex];
+        var pron = document.getElementById('textInput').value;
+        text = `「${data.k}」の${periodNames[currentAncientPeriod]}：${pron} を再生中🔊`;
+    }
+    var shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}&hashtags=${encodeURIComponent(hashtags)}`;
+    window.open(shareUrl, '_blank');
 }
 
 function populateVoiceList() {
-voices = synth.getVoices();
-var voiceSelect = document.getElementById('voiceSelect');
-voiceSelect.innerHTML = '<option value="">自動選択 (推奨)</option>';
-
-voices.forEach(function(voice, index) {
-if (voice.lang.indexOf('en') === 0) {
-var option = document.createElement('option');
-option.textContent = `${voice.name} (${voice.lang})`;
-option.value = index;
-voiceSelect.appendChild(option);
-}
-});
+    voices = synth.getVoices();
+    var voiceSelect = document.getElementById('voiceSelect');
+    voiceSelect.innerHTML = '<option value="">自動選択 (推奨)</option>';
+    voices.forEach(function(voice, index) {
+        if (voice.lang.indexOf('en') === 0) {
+            var option = document.createElement('option');
+            option.textContent = `${voice.name} (${voice.lang})`;
+            option.value = index;
+            voiceSelect.appendChild(option);
+        }
+    });
 }
 
 function updateBadges(wordText, isHighlight) {
-var wordBadge = document.getElementById('currentWordDisplay');
-var periodBadge = document.getElementById('currentPeriodDisplay');
-
-if (!wordText && selectedWordIndex === null) {
-wordBadge.style.display = 'none';
-periodBadge.style.display = 'none';
-} else {
-wordBadge.textContent = '語句: ' + wordText;
-wordBadge.style.display = 'inline-block';
-wordBadge.style.color = isHighlight ? 'var(--danger)' : 'var(--primary-dark)';
-periodBadge.textContent = '体系: ' + periodNames[currentAncientPeriod];
-periodBadge.style.display = 'inline-block';
-}
+    var wordBadge = document.getElementById('currentWordDisplay');
+    var periodBadge = document.getElementById('currentPeriodDisplay');
+    if (!wordText && selectedWordIndex === null) {
+        wordBadge.style.display = 'none';
+        periodBadge.style.display = 'none';
+    } else {
+        wordBadge.textContent = '語句: ' + wordText;
+        wordBadge.style.display = 'inline-block';
+        wordBadge.style.color = isHighlight ? 'var(--danger)' : 'var(--primary-dark)';
+        periodBadge.textContent = '体系: ' + periodNames[currentAncientPeriod];
+        periodBadge.style.display = 'inline-block';
+    }
 }
 
 function selectPeriod(cardElementOrId, period) {
-var card;
-if (typeof cardElementOrId === 'string') {
-card = document.getElementById(cardElementOrId);
-} else {
-card = cardElementOrId;
-}
-
-document.querySelectorAll('.period-card').forEach(el => el.classList.remove('active'));
-if (card) card.classList.add('active');
-
-if (card) {
-var radio = card.querySelector('input');
-if (radio) radio.checked = true;
-}
-
-currentAncientPeriod = period;
-
-if (selectedWordIndex !== null) {
-var data = ancientData[selectedWordIndex];
-var newPron = data[currentAncientPeriod];
-
-updateBadges(data.k, data.highlight);
-
-if (newPron && newPron !== "(データなし)") {
-document.getElementById('textInput').value = newPron;
-updatePreview();
-if (!isHistoryPlaying) {
-setTimeout(speak, 50);
-}
-}
-}
-
-updateUrlState();
-
-var searchTerm = document.getElementById('searchInput').value;
-updateAncientExamples(searchTerm);
-updatePreview();
+    var card = (typeof cardElementOrId === 'string') ? document.getElementById(cardElementOrId) : cardElementOrId;
+    document.querySelectorAll('.period-card').forEach(el => el.classList.remove('active'));
+    if (card) card.classList.add('active');
+    currentAncientPeriod = period;
+    if (selectedWordIndex !== null) {
+        var data = ancientData[selectedWordIndex];
+        var newPron = data[currentAncientPeriod];
+        updateBadges(data.k, data.highlight);
+        if (newPron && newPron !== "(データなし)") {
+            document.getElementById('textInput').value = newPron;
+            updatePreview();
+            if (!isHistoryPlaying) { setTimeout(speak, 50); }
+        }
+    }
+    updateUrlState();
+    updateAncientExamples(document.getElementById('searchInput').value);
 }
 
 function updateAncientExamples(filterTerm) {
-var container = document.getElementById('examplesList');
-container.innerHTML = '';
-
-var types = ['主要国名', '傍国', '人名', '官職名', 'おまけ（ラテン語）'];
-
-types.forEach(function(type) {
-var filteredItems = ancientData.filter(function(d) {
-if (d.type !== type) return false;
-if (!filterTerm) return true;
-return d.k.includes(filterTerm) ||
-(d.ja && d.ja.includes(filterTerm));
-});
-
-if (filteredItems.length === 0) return;
-
-var group = document.createElement('div');
-group.className = 'category-group';
-
-// Changed to h3
-var header = document.createElement('h3');
-header.className = 'category-header';
-header.textContent = type;
-group.appendChild(header);
-
-var grid = document.createElement('div');
-grid.className = 'item-grid';
-
-filteredItems.forEach(function(data) {
-var originalIndex = ancientData.indexOf(data);
-var pron = data[currentAncientPeriod] || "(データなし)";
-var kanjiClass = data.highlight ? 'wc-kanji text-variant' : 'wc-kanji';
-var noteHtml = data.highlight ? `<div class="wc-note">${data.note}</div>` : '';
-var jaText = data.ja ? data.ja : '';
-
-var card = document.createElement('div');
-card.className = 'word-card';
-card.innerHTML = `
-<div class="${kanjiClass}">${data.k}</div>
-<div class="wc-ja">${jaText}</div>
-<div class="wc-pron">${pron}</div>
-${noteHtml}
-`;
-
-card.onclick = function() {
-if (isHistoryPlaying) stopHistory();
-if (pron && pron !== "(データなし)") {
-selectedWordIndex = originalIndex;
-
-if (data.labels) {
-updatePeriodLabels(data.labels);
-} else {
-updatePeriodLabels(null);
-}
-
-updateBadges(data.k, data.highlight);
-
-document.getElementById('textInput').value = pron;
-updatePreview();
-updateUrlState();
-speak();
-}
-};
-grid.appendChild(card);
-});
-
-group.appendChild(grid);
-container.appendChild(group);
-});
+    var container = document.getElementById('examplesList');
+    container.innerHTML = '';
+    var types = ['主要国名', '傍国', '人名', '官職名', 'おまけ１（後漢書）', 'おまけ２（ラテン語）'];
+    types.forEach(function(type) {
+        var filteredItems = ancientData.filter(function(d) {
+            if (d.type !== type) return false;
+            if (!filterTerm) return true;
+            return d.k.includes(filterTerm) || (d.ja && d.ja.includes(filterTerm));
+        });
+        if (filteredItems.length === 0) return;
+        var group = document.createElement('div');
+        group.className = 'category-group';
+        var header = document.createElement('h3');
+        header.className = 'category-header';
+        header.textContent = type;
+        group.appendChild(header);
+        var grid = document.createElement('div');
+        grid.className = 'item-grid';
+        filteredItems.forEach(function(data) {
+            var originalIndex = ancientData.indexOf(data);
+            var pron = data[currentAncientPeriod] || "(データなし)";
+            var kanjiClass = data.highlight ? 'wc-kanji text-variant' : 'wc-kanji';
+            var noteHtml = data.highlight ? `<div class="wc-note">${data.note}</div>` : '';
+            var jaText = data.ja ? data.ja : '';
+            var card = document.createElement('div');
+            card.className = 'word-card';
+            card.innerHTML = `<div class="${kanjiClass}">${data.k}</div><div class="wc-ja">${jaText}</div><div class="wc-pron">${pron}</div>${noteHtml}`;
+            card.onclick = function() {
+                if (isHistoryPlaying) stopHistory();
+                if (pron && pron !== "(データなし)") {
+                    selectedWordIndex = originalIndex;
+                    if (data.labels) { updatePeriodLabels(data.labels); } else { updatePeriodLabels(null); }
+                    updateBadges(data.k, data.highlight);
+                    document.getElementById('textInput').value = pron;
+                    updatePreview();
+                    updateUrlState();
+                    speak();
+                }
+            };
+            grid.appendChild(card);
+        });
+        group.appendChild(grid);
+        container.appendChild(group);
+    });
 }
 
 function convertIPAToSpeech(text) {
-var result = text;
-var keys = Object.keys(ipaToSpeech);
-keys.sort(function(a, b) { return b.length - a.length; });
-for (var i = 0; i < keys.length; i++) {
-var ipa = keys[i];
-var replacement = ipaToSpeech[ipa];
-if (replacement !== undefined) {
-var escaped = ipa.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-var reg = new RegExp(escaped, 'g');
-result = result.replace(reg, replacement);
-}
-}
-return result.toLowerCase();
+    var result = text;
+    var keys = Object.keys(ipaToSpeech);
+    keys.sort(function(a, b) { return b.length - a.length; });
+    for (var i = 0; i < keys.length; i++) {
+        var ipa = keys[i];
+        var replacement = ipaToSpeech[ipa];
+        var escaped = ipa.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        var reg = new RegExp(escaped, 'g');
+        result = result.replace(reg, replacement);
+    }
+    return result.toLowerCase();
 }
 
 function updatePreview() {
-var text = document.getElementById('textInput').value;
-var previewDiv = document.getElementById('conversionPreview');
-previewDiv.textContent = text.trim() ? '読上げ用変換: ' + convertIPAToSpeech(text) : '';
+    var text = document.getElementById('textInput').value;
+    var previewDiv = document.getElementById('conversionPreview');
+    if (!text.trim()) { previewDiv.textContent = ''; return; }
+    if (getSelectedEngine() === 'espeak') {
+        previewDiv.textContent = 'eSpeak-NG音素変換: [[' + convertIPAToEspeakPhonemes(text) + ']]';
+    } else {
+        previewDiv.textContent = '読上げ用変換: ' + convertIPAToSpeech(text);
+    }
 }
 
 function updateValue(id) {
-document.getElementById(id + 'Value').textContent = document.getElementById(id).value;
+    document.getElementById(id + 'Value').textContent = document.getElementById(id).value;
 }
 
 function setStatus(isPlaying) {
-var statusContainer = document.getElementById('playStatus');
-var statusLabel = document.getElementById('statusLabel');
-if (isPlaying) {
-statusContainer.classList.add('playing');
-statusLabel.textContent = "再生中...";
-} else {
-statusContainer.classList.remove('playing');
-statusLabel.textContent = "待機中";
-}
+    var statusContainer = document.getElementById('playStatus');
+    var statusLabel = document.getElementById('statusLabel');
+    if (isPlaying) {
+        statusContainer.classList.add('playing');
+        statusLabel.textContent = "再生中...";
+    } else {
+        statusContainer.classList.remove('playing');
+        statusLabel.textContent = "待機中";
+    }
 }
 
 function speak(onEndCallback) {
-if (synth.speaking) synth.cancel();
-setStatus(false);
+    var text = document.getElementById('textInput').value;
+    if (!text.trim()) { if (onEndCallback) onEndCallback(); return; }
 
-var text = document.getElementById('textInput').value;
-if (!text.trim()) {
-if (onEndCallback) onEndCallback();
-return;
-}
+    if (getSelectedEngine() === 'espeak') {
+        if (synth.speaking) synth.cancel();
+        stopEspeak();
+        speakWithEspeak(text, onEndCallback);
+        return;
+    }
 
-var textToSpeak = convertIPAToSpeech(text);
-var utterance = new SpeechSynthesisUtterance(textToSpeak);
-utterance.rate = parseFloat(document.getElementById('rate').value);
-utterance.pitch = parseFloat(document.getElementById('pitch').value);
-utterance.volume = parseFloat(document.getElementById('volume').value);
-
-var voiceSelect = document.getElementById('voiceSelect');
-var selectedVoiceIndex = voiceSelect.value;
-
-if (selectedVoiceIndex !== "") {
-utterance.voice = voices[selectedVoiceIndex];
-} else {
-var enVoice = null;
-if (voices.length > 0) {
-for (var i = 0; i < voices.length; i++) {
-if (voices[i].lang === 'en-US') { enVoice = voices[i]; break; }
-}
-if (!enVoice) {
-for (var i = 0; i < voices.length; i++) {
-if (voices[i].lang.indexOf('en') === 0) { enVoice = voices[i]; break; }
-}
-}
-if (enVoice) utterance.voice = enVoice;
-}
-}
-
-utterance.onstart = function() { setStatus(true); };
-utterance.onend = function() {
-setStatus(false);
-if (onEndCallback) onEndCallback();
-};
-utterance.onerror = function(e) {
-console.error("Speech Error:", e);
-setStatus(false);
-if (onEndCallback) onEndCallback();
-};
-
-synth.speak(utterance);
+    if (synth.speaking) synth.cancel();
+    stopEspeak();
+    setStatus(false);
+    var textToSpeak = convertIPAToSpeech(text);
+    document.getElementById('conversionPreview').textContent = text.trim() ? '読上げ用変換: ' + textToSpeak : '';
+    var utterance = new SpeechSynthesisUtterance(textToSpeak);
+    utterance.rate = parseFloat(document.getElementById('rate').value);
+    utterance.pitch = parseFloat(document.getElementById('pitch').value);
+    utterance.volume = parseFloat(document.getElementById('volume').value);
+    var voiceSelect = document.getElementById('voiceSelect');
+    if (voiceSelect.value !== "") { utterance.voice = voices[voiceSelect.value]; }
+    utterance.onstart = function() { setStatus(true); };
+    utterance.onend = function() { setStatus(false); if (onEndCallback) onEndCallback(); };
+    synth.speak(utterance);
 }
 
 function stopSpeech() {
-synth.cancel();
-setStatus(false);
-stopHistory();
+    synth.cancel();
+    stopEspeak();
+    setStatus(false);
+    stopHistory();
 }
 
 function playHistory() {
-if (selectedWordIndex === null) {
-alert("先に一覧から語句を選択してください。");
-return;
-}
-if (isHistoryPlaying) return;
-
-isHistoryPlaying = true;
-document.getElementById('historyBtn').classList.add('active');
-document.getElementById('historyBtn').textContent = "⬛ 停止";
-
-var sequence = ['old', 'third', 'mid'];
-var seqIndex = 0;
-
-function playNextStep() {
-if (!isHistoryPlaying) return;
-if (seqIndex >= sequence.length) {
-stopHistory();
-return;
-}
-
-var p = sequence[seqIndex];
-selectPeriod('card-' + p, p);
-
-setTimeout(function() {
-if (!isHistoryPlaying) return;
-speak(function() {
-seqIndex++;
-setTimeout(playNextStep, 800);
-});
-}, 500);
-}
-playNextStep();
+    if (selectedWordIndex === null) { alert("先に一覧から語句を選択してください。"); return; }
+    if (isHistoryPlaying) return;
+    isHistoryPlaying = true;
+    document.getElementById('historyBtn').classList.add('active');
+    document.getElementById('historyBtn').textContent = "⬛ 停止";
+    var sequence = ['old', 'third', 'mid'];
+    var seqIndex = 0;
+    function playNextStep() {
+        if (!isHistoryPlaying) return;
+        if (seqIndex >= sequence.length) { stopHistory(); return; }
+        var p = sequence[seqIndex];
+        selectPeriod('card-' + p, p);
+        setTimeout(function() {
+            if (!isHistoryPlaying) return;
+            speak(function() { seqIndex++; setTimeout(playNextStep, 800); });
+        }, 500);
+    }
+    playNextStep();
 }
 
 function stopHistory() {
-isHistoryPlaying = false;
-document.getElementById('historyBtn').classList.remove('active');
-document.getElementById('historyBtn').textContent = "🔁 変遷再生";
+    isHistoryPlaying = false;
+    document.getElementById('historyBtn').classList.remove('active');
+    document.getElementById('historyBtn').textContent = "🔁 変遷再生";
 }
 
-function toggleHistory() {
-if (isHistoryPlaying) {
-stopSpeech();
-} else {
-playHistory();
-}
-}
+function toggleHistory() { if (isHistoryPlaying) stopSpeech(); else playHistory(); }
 
 function checkUrlParams() {
-var params = new URLSearchParams(window.location.search);
-var word = params.get('word');
-var period = params.get('period');
-var textParam = params.get('text');
-
-if (period && ['old', 'third', 'mid'].includes(period)) {
-selectPeriod('card-' + period, period);
-}
-
-if (word) {
-var index = ancientData.findIndex(function(d) {
-return d.k === word;
-});
-
-if (index !== -1) {
-selectedWordIndex = index;
-var data = ancientData[index];
-var pron = data[currentAncientPeriod];
-
-if (data.labels) {
-updatePeriodLabels(data.labels);
-} else {
-updatePeriodLabels(null);
-}
-
-updateBadges(data.k, data.highlight);
-if (pron) {
-document.getElementById('textInput').value = pron;
-updatePreview();
-}
-document.getElementById('searchInput').value = word;
-updateAncientExamples(word);
-}
-} else if (textParam) {
-document.getElementById('textInput').value = textParam;
-updatePreview();
-updatePeriodLabels(null);
-}
+    var params = new URLSearchParams(window.location.search);
+    var word = params.get('word');
+    var period = params.get('period');
+    var textParam = params.get('text');
+    if (period && ['old', 'third', 'mid'].includes(period)) { selectPeriod('card-' + period, period); }
+    if (word) {
+        var index = ancientData.findIndex(d => d.k === word);
+        if (index !== -1) {
+            selectedWordIndex = index;
+            var data = ancientData[index];
+            if (data.labels) updatePeriodLabels(data.labels);
+            updateBadges(data.k, data.highlight);
+            if (data[currentAncientPeriod]) document.getElementById('textInput').value = data[currentAncientPeriod];
+            updatePreview();
+            updateAncientExamples(word);
+        }
+    } else if (textParam) {
+        document.getElementById('textInput').value = textParam;
+        updatePreview();
+    }
 }
 
 function init() {
-document.getElementById('speakBtn').onclick = function() { speak(); };
-document.getElementById('stopBtn').onclick = stopSpeech;
-document.getElementById('historyBtn').onclick = toggleHistory;
-document.getElementById('copyUrlBtn').onclick = copyCurrentUrl;
-document.getElementById('shareXBtn').onclick = shareOnX;
-
-document.getElementById('searchInput').addEventListener('input', function(e) {
-updateAncientExamples(e.target.value);
-});
-
-document.getElementById('textInput').oninput = function() {
-selectedWordIndex = null;
-updatePeriodLabels(null);
-updateBadges(null);
-updatePreview();
-updateUrlState();
-if (isHistoryPlaying) stopHistory();
-};
-
-['rate', 'pitch', 'volume'].forEach(id => {
-document.getElementById(id).oninput = function() { updateValue(id); };
-});
-
-document.addEventListener('keydown', function(e) {
-if (e.target.tagName !== 'TEXTAREA' && e.target.tagName !== 'INPUT') {
-if (e.code === 'Space') {
-e.preventDefault();
-if (synth.speaking) stopSpeech();
-else speak();
-}
-}
-});
-
-populateVoiceList();
-if (speechSynthesis.onvoiceschanged !== undefined) {
-speechSynthesis.onvoiceschanged = populateVoiceList;
+    document.getElementById('speakBtn').onclick = function() { speak(); };
+    document.getElementById('stopBtn').onclick = stopSpeech;
+    document.getElementById('historyBtn').onclick = toggleHistory;
+    document.getElementById('copyUrlBtn').onclick = copyCurrentUrl;
+    document.getElementById('shareXBtn').onclick = shareOnX;
+    document.getElementById('searchInput').addEventListener('input', e => updateAncientExamples(e.target.value));
+    document.getElementById('textInput').oninput = function() {
+        selectedWordIndex = null;
+        updatePeriodLabels(null);
+        updateBadges(null);
+        updatePreview();
+        updateUrlState();
+        if (isHistoryPlaying) stopHistory();
+    };
+    ['rate', 'pitch', 'volume'].forEach(id => {
+        document.getElementById(id).oninput = () => updateValue(id);
+    });
+    document.getElementById('engineSelect').onchange = function () {
+        stopSpeech();
+        updatePreview();
+    };
+    populateVoiceList();
+    if (speechSynthesis.onvoiceschanged !== undefined) speechSynthesis.onvoiceschanged = populateVoiceList;
+    updateAncientExamples();
+    checkUrlParams();
 }
 
-updateAncientExamples();
-checkUrlParams();
-}
-
-if (document.readyState === 'loading') {
-document.addEventListener('DOMContentLoaded', init);
-} else {
-init();
-}
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 </script>
-<div style="
-position: fixed;
-bottom: 20px;
-right: 20px;
-font-size: 0.8rem;
-color: #333;
-background: rgba(255, 255, 255, 0.9);
-padding: 5px 10px;
-border-radius: 5px;
-box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-z-index: 9999;
-">
+<div style="position: fixed; bottom: 20px; right: 20px; font-size: 0.8rem; color: #333; background: rgba(255, 255, 255, 0.9); padding: 5px 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
 License: <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" style="color: #0066cc; text-decoration: underline;">CC BY-NC-SA 4.0</a>
+/ 音声合成に<a href="https://github.com/espeak-ng/espeak-ng" target="_blank" style="color: #0066cc; text-decoration: underline;">eSpeak-NG</a>(<a href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank" style="color: #0066cc; text-decoration: underline;">GPL-3.0</a>, jsDelivr CDN経由)を使用
 </div>
 </body>
 </html>
